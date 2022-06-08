@@ -1,0 +1,63 @@
+
+<ng-container>
+  <mat-form-field appearance="fill">
+    <mat-label>Versions</mat-label>
+    <mat-select multiple (selectionChange)="updateRelNoteItems($event)">
+      <mat-option *ngFor="let relNote of relNotesList" [value]="relNote.version">{{relNote.version}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</ng-container>
+
+<ng-container>
+  <mat-form-field appearance="fill">
+    <mat-label>Compare Versions</mat-label>
+    <mat-select multiple (selectionChange)="compareRelNoteItems($event)">
+      <mat-option *ngFor="let relNote of relNotesList" [value]="relNote.version">{{relNote.version}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</ng-container>
+
+<ng-container>
+  <mat-table class="" [dataSource]="selectedRelNotes">
+
+    <ng-container matColumnDef="version">
+        <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
+        <mat-cell *matCellDef="let relnotes">{{relnotes.version}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="cat">
+      <mat-header-cell *matHeaderCellDef>cat</mat-header-cell>
+      <mat-cell *matCellDef="let relnotes">{{relnotes.cat}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="ref">
+      <mat-header-cell *matHeaderCellDef>ref</mat-header-cell>
+      <mat-cell *matCellDef="let relnotes">{{relnotes.ref}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="summary">
+      <mat-header-cell *matHeaderCellDef>summary</mat-header-cell>
+      <mat-cell *matCellDef="let relnotes">{{relnotes.summary}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="details">
+      <mat-header-cell *matHeaderCellDef>details</mat-header-cell>
+      <mat-cell *matCellDef="let relnotes">{{relnotes.details}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="impact">
+      <mat-header-cell *matHeaderCellDef>impact</mat-header-cell>
+      <mat-cell *matCellDef="let relnotes">{{relnotes.impact}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="side">
+      <mat-header-cell *matHeaderCellDef>side</mat-header-cell>
+      <mat-cell *matCellDef="let relnotes">{{relnotes.side}}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+  </mat-table>
+</ng-container>

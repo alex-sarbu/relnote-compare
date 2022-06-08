@@ -1,8 +1,10 @@
 const inputDir = 'input/';
+const outputFile = 'relnote-viewer/src/assets/relnotes.json';
 
 let fs = require('fs');
-let inputFiles = fs.readdirSync(inputDir);
 let xlsx = require('node-xlsx');
+
+let inputFiles = fs.readdirSync(inputDir);
 
 console.log(inputFiles);
 
@@ -15,6 +17,12 @@ let relnoteEntries = inputFiles.map(element => {
 });
 
 console.log(relnoteEntries);
+
+let jsonString = JSON.stringify(relnoteEntries,null, 2);
+
+console.log(jsonString);
+
+fs.writeFileSync(outputFile, jsonString);
 
 //var obj = xlsx.parse(__dirname + '/myFile.xlsx'); // parses a file
 
