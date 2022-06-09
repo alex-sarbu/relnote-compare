@@ -3,570 +3,665 @@
     "version": "2022.1.0",
     "items": [
       {
+        "compo": "AFP_ADMIN_TOOL",
         "ref": "AFP-44304",
         "cat": "Story",
         "summary": "BU Specific WebAdmin Stats Pane",
         "details": "It is now possible to set the Web Admin base parameter on a per-BU basis. If the existing global parameter avaloq.front.admin.elasticsearch.enabled is set to false, it can be enabled for one or more BUs using avaloq.front.admin.elasticsearch.enabled.<bu_id>. Note that id the global value is true, any per-BU option is superseded. \r\n\r\nIt is now possible to include the BU ID in any of the Elastic Search reports. This can be achieved by using the string {{BuId}} within the report template, similar to the {{To}} and {{From}} parameters used for the date range."
       },
       {
+        "compo": "AFP_ADMIN_TOOL",
         "ref": "AFP-41824",
         "cat": "Bug",
         "summary": "High severity vulnerability CVE-2021-21351 in xstream-1.4.15.jar",
         "details": "Fix for CVE-2021-21351"
       },
       {
+        "compo": "AFP_ADMIN_TOOL",
         "ref": "AFP-44012",
         "cat": "Bug",
         "summary": "High severity vulnerability CVE-2021-40690 in xmlsec-2.1.4.jar",
         "details": "Fix for CVE-2021-40690. Update xmlsec to version 2.2.3."
       },
       {
+        "compo": "AFP_ADMIN_TOOL",
         "ref": "AFP-44395",
         "cat": "Bug",
         "summary": "Move to log4j>=2.15.0 in avaloq-wb-web-admin for CVE-2021-44228",
         "details": "Fix for CVE-2021-44228"
       },
       {
+        "compo": "AFP_ADMIN_TOOL",
         "ref": "AFP-44402",
         "cat": "Bug",
         "summary": "Move to com.avaloq.base >= 7.0.25 in web for log4j vulnerability CVE-2021-44228 & CVE-2021-45046",
         "details": "Fix for CVE-2021-44228 & CVE-2021-45046"
       },
       {
+        "compo": "AFP_ADMIN_TOOL",
         "ref": "AFP-44456",
         "cat": "Bug",
         "summary": "Move to log4j>=2.16.0 in avaloq-wb-front-web for CVE-2021-45046",
         "details": "Fix for CVE-2021-45046"
       },
       {
+        "compo": "AFP_ADMIN_TOOL",
         "ref": "AFP-44708",
         "cat": "Bug",
         "summary": "High severity vulnerability CVE-2020-28052 in org.bouncycastle:bcprov-jdk15",
         "details": "High level vulnerability CVE-2020-28052 has been fixed."
       },
       {
+        "compo": "AFP_ADMIN_TOOL",
         "ref": "AFP-44567",
         "cat": "Bug",
         "summary": "log4j >= 2.17.1 required in avaloq-wb-web-admin for CVE-2021-44832",
         "details": "Fix for CVE-2021-44832"
       },
       {
+        "compo": "AFP_ADMIN_TOOL",
         "ref": "AFP-44656",
         "cat": "Bug",
         "summary": "Config Errors in avaloq-wb-web-admin",
         "details": "New installator parameter AVALOQ_WB_WEB_ADMIN_TRUST_PROPAGATION_MECHANISM added to allow easy selection of JWT or SAML. Defaults to recommended JWT. \r\nRenaming of advanced SAML-only parameters in example security.properties file that had outdated names, preventing Web Admin from starting when SAML was configured."
       },
       {
+        "compo": "AFP_ADMIN_TOOL",
         "ref": "AFP-44873",
         "cat": "Bug",
         "summary": "Update avaloq.front.admin to xstream >=1.4.19",
         "details": "Fixes for a number of vulnerabilities in xstream. Dependency is now upgraded to version 1.4.19."
       },
       {
+        "compo": "AFP_BOOK, AFP_REP",
         "ref": "AFP-43029",
         "cat": "Story",
         "summary": "Configure mobile layout table columns differently in Maturity Analysis and Booking List",
         "details": "web-banking-wealth-portfolio-analysis-maturity-banklet and web-banking-wealth-booking-list-banklet can be configured to display different columns in mobile then desktop screen. Export will reflect always the desktop configured columns."
       },
       {
+        "compo": "AFP_BOOK",
         "ref": "AFP-44017",
         "cat": "Story",
         "summary": "Add support for all columns Booking List mobile",
         "details": "Booking List banklet displays all configured columns in the mobile view. The mobile view was adjusted to display a label-value list and the space was reduced for a better user experience."
       },
       {
+        "compo": "AFP_BOOK",
         "ref": "AFP-44318",
         "cat": "Story",
         "summary": "bookingTextDetails should be constructed in booking list",
         "details": "Added a new column \"TEXT_DETAILS\". The new column is an extended version of the column \"TEXT\" and is custom composed to show additional information about a payment booking. \r\n\r\nThe additional information includes: \r\n- beneficiary \r\n- paymentReason \r\n- dtaFileName"
       },
       {
+        "compo": "AFP_BOOK",
         "ref": "AFP-43616",
         "cat": "Bug",
         "summary": "Filter context sometimes missing in portfolio booking list",
         "details": "Fixed a bug which was breaking the filter feature in Booking List for some positions."
       },
       {
+        "compo": "AFP_BOOK",
         "ref": "AFP-43740",
         "cat": "Bug",
         "summary": "Currency in exported account booking list column heading",
         "details": "Booking list: Exporting booking list table to a spreadsheet now displays the currency of the booking in the header . This applied to bookings of positions only and not portfolio bookings."
       },
       {
+        "compo": "AFP_BOOK",
         "ref": "AFP-44016",
         "cat": "Bug",
         "summary": "Filter position bookings not available. No filter icon to open modal.",
         "details": "Bokking list: Filter component was added in booking list for non money account positions. A default filter configuration was added for this filter. \r\nDefault values are : \r\nBookingListFilter.TEXT, \r\nBookingListFilter.TIME_PERIOD, \r\nBookingListFilter.CUSTOM_DATE_RANGE, \r\nBookingListFilter.QUANTITY_RANGE, \r\n\r\nNOTE: If the column AMOUNT_RANGE is configured in the filter of nonMaccPositionContext, the values entered in the amount min and amount max might not return the expected results. The reason is that the NET_VALUE displayed in the table, for a security for example, is returned from the service as a positive value. Because it is a \"buy\" operation on that security we display the minus (-) sign in front of the amount in the banklet. But since the filtering is done on the server, and on the server the amount is positive, filtering for a negative value might not return the desired results."
       },
       {
+        "compo": "AFP_BOOK",
         "ref": "AFP-41396",
         "cat": "Bug",
         "summary": "Booking Details: misaligned label/value pairs",
         "details": "In wealth banklet ('@web-banking-wealth-booking-detail-banklet') value and label pairs are aligned."
       },
       {
+        "compo": "AFP_BOOK",
         "ref": "AFP-43174",
         "cat": "Bug",
         "summary": "\"CLIENT_PRICE\" table column missing to define in wealth booking list",
         "details": "Booking list: A new table column for Client price can be configured in the banklet. \r\n\r\nThe column can be displayed by adding BookingListColumn.CLIENT_PRICE in the tableColumns array of the configuration. \r\n\r\nThe translation key for this column is \"web-banking-wealth-booking-list-banklet.wealth-booking-list.column-header.client-price\": \"Client price\""
       },
       {
+        "compo": "AFP_BOOK",
         "ref": "AFP-43474",
         "cat": "Bug",
         "summary": "Newlines in reason text in Booking List",
         "details": "Fix the formatting of new line character by adding a new css class."
       },
       {
+        "compo": "AFP_BOOK",
         "ref": "AFP-43995",
         "cat": "Bug",
         "summary": "Dates should not line-wrap in document safe, collaboration. Description is bold",
         "details": "With the change, the dates in Document Safe and Collaboration list banklets do not wrap in any scenario, even in narrow windows. The description column content remains with the default font-weight, even when they are new."
       },
       {
+        "compo": "AFP_COLLAB",
         "ref": "AFP-44023",
         "cat": "Story",
         "summary": "Attachments in Collaboration should be closer to message with same timestamp",
         "details": "\"@avaloq/web-banking-self-service-collaboration-conversation-banklet\" was changed to display together comments and attachments that are done within 2 seconds."
       },
       {
+        "compo": "AFP_COLLAB",
         "ref": "AFP-43994",
         "cat": "Story",
         "summary": "Resolve collaboration action should be text button not icon on desktop",
         "details": "The change replaces the icon from the resolution button with text, making it more user friendly."
       },
       {
+        "compo": "AFP_COLLAB",
         "ref": "AFP-44282",
         "cat": "Story",
         "summary": "'Resolved' table row strikeout is inconsistent and unclear",
         "details": "Following banklets have been updated to display resolved/deleted/expired items without being strikeout \r\n- Document Safe (@avaloq/web-banking-document-safe-overview-banklet): 'deleted' documents \r\n- Collaboration (@avaloq/web-banking-self-service-collaboration-overview-banklet): 'resolved' conversation \r\n- Investment Proposal (@avaloq/web-banking-self-service-investment-proposal-overview-banklet) 'expired' and 'rejected' proposals"
       },
       {
+        "compo": "AFP_COLLAB",
         "ref": "AFP-44335",
         "cat": "Story",
         "summary": "Resolve collaboration action should be text button not icon on mobile browser",
         "details": "The change replaces the icon from the resolution button with text, making it more user friendly."
       },
       {
+        "compo": "AFP_COLLAB",
         "ref": "AFP-42948",
         "cat": "Bug",
         "summary": "Prevent users from closing collaboration messages through configuration option",
         "details": "In Notification overview and Notification Detail page we introduced a configuration to hide the Resolve button"
       },
       {
+        "compo": "AFP_COLLAB",
         "ref": "AFP-41324",
         "cat": "Bug",
         "summary": "Collaboration - Similar date/time proposals should not be allowed when creating new appointment/phone call",
         "details": "In Collaboration banklet (@avaloq/web-banking-self-service-collaboration-issue-creation-banklet), when user requests a new appointment/phone-call and inputs same date and time proposals for both options, they are considered invalid."
       },
       {
+        "compo": "AFP_COMMON",
         "ref": "AFP-44124",
         "cat": "Story",
         "summary": "Success dialogue after major workflow finishes (impl)",
         "details": "Type AvqUINotification from @avaloq/web-banking-banklet-api has been extended with new sub-types for single-payment and recurring-payment ui-notifications. These subtypes provide additional metadata that gives application authors more flexibility at the time of rendering these ui-notifications. \r\n\r\n@avaloq/web-banking still displays these ui-notifications as a snack-bar, however, application authors can disable the snack-bars and create their own way to render notifications (see release notes of AFP-44125). \r\n\r\n@avaloq/web-banking-portal now disables the default snack-bar, instead, it uses its own sub-system for rendering ui-notifications. The default mechanism for legacy ui-notifications remains a snack-bar, but for the newly introduced ui-notification types for single-payments and recurring-payments it uses instead a success dialog that also provide additional navigation options."
       },
       {
+        "compo": "AFP_COMMON",
         "ref": "AFP-44125",
         "cat": "Story",
         "summary": "Toast design refresh (snackbar message)",
         "details": "The public-API adds the injection token UI_NOTIFICATION_STREAM (@avaloq/web-banking-banklet-sdk) together with the type AvqUINotification (@avaloq/web-banking-banklet-api). \r\n\r\nApplication authors can now inject UI_NOTIFICATION_STREAM in order to listen to the broadcasting of UI-Notifications from every banklet. \r\nThis gives application authors freedom to decide where and how to render these UI-notifications. \r\n\r\nThe type AvqUINotification is a composition of multiple UI-notification sub-types. Additional sub-types will be added over the time for different business domains. \r\n\r\nSub-types of AvqUINotification include various metadata that give application authors extra flexibility at the time of rendering these notifications on their own app-shell. \r\n\r\nWeb-banking still shows UI-notifications in a snack-bar (Angular Material). You can disable these snack-bars by setting to false the property 'enableSnackBarUINotifications' in 'WebBankingModule.forRoot()'."
       },
       {
+        "compo": "AFP_COMMON",
         "ref": "AFP-44123",
         "cat": "Bug",
         "summary": "avq-history-back omits /wb/ui for home page dashboard",
         "details": "Only for applications using @avaloq/web-banking-portal. Solved issue where, if the application is deployed under a 'baseHref' (https://angular.io/api/common/PathLocationStrategy#description), on a history navigation (for example: clicking on the back button), the application would redirect the browser to a wrong URL (without the baseHref) instead of restoring the previously visited portal-page."
       },
       {
+        "compo": "AFP_COMMON",
         "ref": "AFP-44476",
         "cat": "Bug",
         "summary": "Client portal custom configuration that depends on AvqI18nService makes application crash",
         "details": "Fixed issue that lead to @avaloq/web-banking-portal triggering calculation of its configuration before the application initialization completes. This could lead to crashes in some applications that make use of additional dependencies in order to calculate the portal configuration that cannot be instantiated before the app inititalization has completed. \r\n\r\nBesides, the method 'injectUponSuccessfulInitialization' of service 'WebBankingInitializationService' has been now moved to a new service 'WebBankingInjectUponInitializationService'. This method now waits for the app to initialize on top of waiting for the initialization of the web-banking libraries. With an optional toggle to switch to the previous behaviour."
       },
       {
+        "compo": "AFP_COMMON",
         "ref": "AFP-44305",
         "cat": "Bug",
         "summary": "[Containerization] Liquibase: Cleanup the connection",
         "details": "Cleanup the connection used by liquibase to prevent potential db deadlocks when multiple pods try to upgrade the DB."
       },
       {
+        "compo": "AFP_COMMON",
         "ref": "AFP-44312",
         "cat": "Bug",
         "summary": "[Containerization] Liquibase: Recompile invalids and clean up",
         "details": "Schema migration fixes : recompile the invalids always at the end of the run. Increase the lock wait timeout from default 5 to 40 min."
       },
       {
+        "compo": "AFP_CONTENT",
         "ref": "AFP-43844",
         "cat": "Bug",
         "summary": "20 items not shown per page of Liferay news feed",
         "details": "Pagination of Liferay news feed"
       },
       {
+        "compo": "AFP_CONTENT",
         "ref": "AFP-43845",
         "cat": "Bug",
         "summary": "\"Top\" news article confuses Liferay pagination",
         "details": "Fixed pagination of news stories, when one is marked as \"top\"."
       },
       {
+        "compo": "AFP_DASHBOARD",
         "ref": "AFP-44147",
         "cat": "Bug",
         "summary": "Animated total wealth value is funny but not professional",
         "details": "Display a loading indicator until the final totals are calculated so that the user does not see intermediate values."
       },
       {
+        "compo": "AFP_DD, AFP_FILE_XFER",
         "ref": "AFP-41223",
         "cat": "Bug",
         "summary": "Advice setting for pain.008 gets ignored",
         "details": "A change was made to use any pain.008 debit advice note setting on the file upload page in each individual direct debit created from the file."
       },
       {
+        "compo": "AFP_DOCU_SAFE",
         "ref": "AFP-43987",
         "cat": "Story",
         "summary": "Status in Document Safe overview table column",
         "details": "When listing the documents, the information includes the status in which the document is. When it is a table, there is a column for that value, and when it is presented as a set of cards in the mobile view, the information is integrated as part of the rest of data. \r\nThis feature is configurable."
       },
       {
+        "compo": "AFP_DOCU_SAFE",
         "ref": "AFP-43990",
         "cat": "Story",
         "summary": "Status of Collaboration in overview table column",
         "details": "The change adds a configuration property to define the columns to show in the table. It includes the column for the resolution button (column name \"ARCHIVE\"), so the use of the property \"showResolveButton\" turns to be deprecated. \r\nThe change also adds a new column to the table to show the status of the issues."
       },
       {
+        "compo": "AFP_EBILL",
         "ref": "AFP-43658",
         "cat": "Story",
         "summary": "eBill API Migration to V6",
         "details": "Updated SiX Ebill api from v4 to v6. \r\n- Technical migration. No affected functionalities \r\n- Support for migrating users from one BusinessEbillUser to another one has been deprecated and dropped by SiX. This can now only be done by deregistering and registering again."
       },
       {
+        "compo": "AFP_EBILL",
         "ref": "AFP-38832",
         "cat": "Story",
         "summary": "Feature toggle for eBill",
         "details": "Added a feature toggle for ebill \r\n\r\nWhen ebill is disabled from feature toggle: \r\nThe ebill banklet gets hidden from the sidebar. \r\nBanner after a new payment is hidden. \r\nNavigation to ebill through URL redirects to home now."
       },
       {
+        "compo": "AFP_EXPORT, AFP_REP",
         "ref": "AFP-43477",
         "cat": "Bug",
         "summary": "Right align BookingListColumn.QUANTITY in PDF export, and missing horizontal table lines",
         "details": "Booking list: fixed the style of empty cells in the table when it's exported as pdf."
       },
       {
+        "compo": "AFP_FILE_XFER",
         "ref": "AFP-38825",
         "cat": "Story",
         "summary": "PAIN.002 download report of uploaded file's status. US11u",
         "details": "Data transfer upload details section now contains a button to download PAIN 002 report when PAIN 001 is successfully uploaded"
       },
       {
+        "compo": "AFP_FILE_XFER",
         "ref": "AFP-43988",
         "cat": "Bug",
         "summary": "Faulty uploaded payments context actions",
         "details": "The user is provided with the 'Update' context action on faulty payments. \r\nSo now when payment from a file reaches the state 'faulty' it can be edited and submitted."
       },
       {
+        "compo": "AFP_FX, AFP_TRADE",
         "ref": "AFP-44043",
         "cat": "Story",
         "summary": "Add wealth data to Money Accounts and Portfolios in trading/forex",
         "details": "Added the keys directly to the payment/trading model and add/update services that augment the raw payment/trading data with the additional info taken from the wealth core facade. This is similar to how the wealth core facade itself augments data with e.g. business partners. This allows the pipes to be pure and efficient."
       },
       {
+        "compo": "AFP_FX",
         "ref": "AFP-44081",
         "cat": "Bug",
         "summary": "Customer ticket: Quantity not sent to the server",
         "details": "fixed a bug where the quantity was not sent to the server at the request of the exchange rate call"
       },
       {
+        "compo": "AFP_FX, AFP_TRADE",
         "ref": "AFP-44404",
         "cat": "Bug",
         "summary": "Trading - Move to log4j>=2.15.0 in avaloq-wb-web-admin for CVE-2021-44228",
         "details": "Zero-day critical vulnerability in log4j2 requires the web project to pull in at least 7.0.24 of com.avaloq.base.*"
       },
       {
+        "compo": "AFP_FX",
         "ref": "AFP-43914",
         "cat": "Bug",
         "summary": "Customer ticket: Global filter causes problems in Forex banklet",
         "details": "Solved an issue that was preventing the user to create forex order when having just one portfolio."
       },
       {
+        "compo": "AFP_FX",
         "ref": "AFP-43931",
         "cat": "Bug",
         "summary": "Customer ticket: forex banklet - mediumId set to null",
         "details": "\r\n"
       },
       {
+        "compo": "AFP_FX",
         "ref": "AFP-43074",
         "cat": "Bug",
         "summary": "Context action 'Export to PDF' missing from Forex Overview",
         "details": "trading-forex-overview-banklet.config.default.ts \r\n\r\nexportGroupOrder: { \r\nsections: [ \r\n{ \r\nid: 'general', \r\nname: asTranslationKey('web-banking-trading-forex-overview-banklet.general.header'), \r\nfields: ['portfolio', 'orderDate', 'orderId'], \r\n}, \r\n{ \r\nid: 'maturity-date', \r\nname: asTranslationKey('web-banking-trading-forex-overview-banklet.maturity-date.header'), \r\nfields: ['maturityDate', 'orderType'], \r\n}, \r\n{ \r\nid: 'details', \r\nname: asTranslationKey('web-banking-trading-forex-overview-banklet.details.header'), \r\nfields: ['executionType', 'limitAmount', 'expirationDate'], \r\n}, \r\n{ \r\nid: 'margining-details', \r\nname: asTranslationKey('web-banking-trading-forex-overview-banklet.margining-details.header'), \r\nfields: ['marginAccount', 'initialMargin'], \r\n}, \r\n], \r\n},"
       },
       {
+        "compo": "AFP_FX",
         "ref": "AFP-44302",
         "cat": "Bug",
         "summary": "Context action 'Export to PDF' missing from Group Overview",
         "details": "trading-collective-overview-banklet.config.default.ts \r\n\r\nexportGroupOrder: { \r\nsections: [ \r\n{ \r\nid: 'general', \r\nname: asTranslationKey('web-banking-trading-collective-overview-banklet.general-section.header'), \r\nfields: ['groupReference', 'orderId', 'orderDate'], \r\n}, \r\n{ \r\nid: 'instrument', \r\nname: asTranslationKey('web-banking-trading-collective-overview-banklet.instrument-section.header'), \r\nfields: ['instrument', 'instrumentType', 'assetIsin', 'assetTkn', 'assetTks'], \r\n}, \r\n{ \r\nid: 'execution', \r\nname: asTranslationKey('web-banking-trading-collective-overview-banklet.execution-section.header'), \r\nfields: [ \r\n'tradingPlace', \r\n'executionType', \r\n'limitPrice', \r\n'triggerPrice', \r\n'trailingAmount', \r\n'trailingAmountType', \r\n'visibleSize', \r\n'validity', \r\n'expiryDate', \r\n'executionRestriction', \r\n'investmentMethod', \r\n], \r\n}, \r\n{ \r\nid: 'already-traded', \r\nname: asTranslationKey('web-banking-trading-collective-overview-banklet.already-traded-section.header'), \r\nfields: [ \r\n'alreadyTraded', \r\n'alreadyTradedType', \r\n'alreadyTradedBroker', \r\n'alreadyTradedClientReference', \r\n'alreadyTradedExecutionPrice', \r\n], \r\n}, \r\n{ \r\nid: 'additional-info', \r\nname: asTranslationKey('web-banking-trading-collective-overview-banklet.additional-info-section.header'), \r\nfields: ['remarks', 'motivation', 'justification'], \r\n}, \r\n], \r\n},"
       },
       {
+        "compo": "AFP_FX",
         "ref": "AFP-44468",
         "cat": "Bug",
         "summary": "Forex: Replace fields \"Order type\" with \"Execution type\"",
         "details": "Relocated the section and the fields in the confirmation view: \r\n\r\nSections old: 1 Portfolio / 2 Maturity date / 3 Trade details / 4 Exchange rate \r\nSections new: 1 Portfolio / 2 Trade details / 3 Maturity date / 4 Exchange rate \r\n\r\nFields in Sections: \r\nMaturity date old: 1 Maturity date / 2 Order Type \r\nMaturity date new: 1 Maturity date / 2 Execution Type \r\nTrade details old: 1 Sell / 2 Buy / 3 Execution Type \r\nTrade details new: 1 Sell / 2 Buy / 3 Order Type"
       },
       {
+        "compo": "AFP_FX",
         "ref": "AFP-44554",
         "cat": "Bug",
         "summary": "Rename \"New trade\" to \"New forex trade\"",
         "details": "Renamed \"New trade\" to \"New forex trade\""
       },
       {
+        "compo": "AFP_FX",
         "ref": "AFP-44946",
         "cat": "Bug",
         "summary": "Release 3+: Prevent Neutralization with maturity date in the past",
         "details": "Neutralization with maturity date in the past will be prevented by not displaying the \"Neutralization\" context action"
       },
       {
+        "compo": "AFP_MOBILE_HYB",
         "ref": "AFP-43631",
         "cat": "Bug",
         "summary": "Download by hybrid event from document safe banklet",
         "details": "Documents stored in document safe will be opened on the mobile device when the banklet is used in a hybrid mobile/web environment. This includes documents listed in the document safe banklet and payment advices."
       },
       {
+        "compo": "AFP_MOBILE_HYB, AFP_PORTAL",
         "ref": "AFP-42138",
         "cat": "Bug",
         "summary": "Hide page headings on hybrid pages",
         "details": "Added configuration to the portal (@avaloq/web-banking-portal) to allow hiding the title and / or subtitle of portal-page headers centrally. \r\nModified the default overrides of the portal-configuration in @avaloq/web-banking-portal-hybrid so that header-titles are hidden by default in hybrid mode (subtitles are still shown). \r\nThe portal-page-layout component now checks on whether any content / breadcrumbs are present in the page header. If none is visible, the portal-page-layout component will hide the entire header panel."
       },
       {
+        "compo": "AFP_NTFCN",
         "ref": "AFP-43619",
         "cat": "Bug",
         "summary": "Too many notifications crashes the notifications banklet",
         "details": "Notification status is updated in parallel chunks of maximum 100. This fixes the issue crashing the banklet when a large number of new notifications are loaded."
       },
       {
+        "compo": "AFP_NTFCN",
         "ref": "AFP-44351",
         "cat": "Bug",
         "summary": "Category of notification should be essential for WBUI list",
         "details": "Notification banklet (@avaloq/web-banking-self-service-notifications) filters out notifications without a category, as they are considered not valid."
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-43303",
         "cat": "Story",
         "summary": "Mass submit single orders for multi-selected payment templates (general story)",
         "details": "New banklet '@avaloq/web-banking-payment-mass-template-submission-banklet' has been introduced to allow mass payment template submission. It is available in the UI from the Template Overview, by selecting several templates and clicking the button to submit them together. \r\n\r\nTechnically, it takes array of template ids as input and allows User to amend amount and reason/reference number before submission. Configuration for table columns has been provided with following defaults: \r\ntableColumns: [ \r\nTemplateTableColumn.DEBIT_ACCOUNT, \r\nTemplateTableColumn.BENEFICIARY, \r\nTemplateTableColumn.REASON_OR_REFERENCE, \r\nTemplateTableColumn.PAYMENT_TYPE, \r\nTemplateTableColumn.AMOUNT, \r\n] \r\n"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-43799",
         "cat": "Story",
         "summary": "Disable recurring payment form",
         "details": "A new feature toggle has been added to control whether to show recurring payments and recurring account transfers. When disabled, it will also not be possible to create either recurring payments, recurring account transfers, nor recurring conditional account transfers. As a consequence of this new feature the following two properties have been added: \r\n- web-banking-payment-account-transfer-banklet -> enableRecurringAccountTransfer \r\n- payment-form-banklet.config.definition.ts enableRecurringPayments \r\n"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-43802",
         "cat": "Story",
         "summary": "Account Transfer feature toggle",
         "details": "A feature toggle has been introduced for Account Transfer payments. By default (if not specified), it follows the main payments feature toggle. An account transfer allows users to transfer money between their own money accounts. \r\n\r\nWithin AvqFeaturePayments, it is called accountTransfers . \r\n"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-44231",
         "cat": "Story",
         "summary": "Standing Order - Currency Selection",
         "details": "Adds the feature to restrict the end-user from creating standing orders in certain currencies when using the online banking solution."
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-44278",
         "cat": "Story",
         "summary": "Reason and Booking Text should be configurable in Mass account transfer",
         "details": "Added configurations for payment reason and booking text in mass account transfer so that an EAM user can make mass account transfers with relevant information on the screen. \r\nConfigurations affect the table on both transfers and confirm steps in @avaloq/web-banking-payment-mass-account-transfer-banklet."
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-44309",
         "cat": "Story",
         "summary": "Currency warning on mass account transfer",
         "details": "Currency warning notification added on mass account transfer with different currencies (@avaloq/web-banking-payment-mass-account-transfer-banklet)"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-44310",
         "cat": "Story",
         "summary": "Prepopulated mass account transfer form may already be valid. Allow NEXT button",
         "details": "If the pre-populated values of Mass Account Transfer are already valid in a step, the user can move forward to the next step."
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-44462",
         "cat": "Story",
         "summary": "Common details of MAT should be asked later after transfer details",
         "details": "The position of common details step has been set after transfers step for mass account transfer banklet."
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-42794",
         "cat": "Story",
         "summary": "ACP Order number in payment overview table",
         "details": "A new field called PaymentsTableColumn.EXTERNAL_ORDER_ID is available in Payment Overview. It will display the ACP order number from the core banking platform."
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-43613",
         "cat": "Story",
         "summary": "Hide \"all negative balances\" in mass account transfer if invalid",
         "details": "In Mass Account Transfer following options will be hidden: \r\n- 'All negative balances' when there is no credit account with negative balance \r\n- 'All positive balances' when there is no debit account with positive balance"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-43723",
         "cat": "Story",
         "summary": "Show Validation errors on pre-populated payment form e.g. scanned QR-Bill",
         "details": "The payment form fields that have maxLength defined and are prefilled with data show the validation status if they contain errors. \r\nSame applies to selection fields when they are populated with invalid value."
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-44082",
         "cat": "Story",
         "summary": "Mass Template Submission - add Save/Update templates button",
         "details": "'Save templates' button has been added in Mass Template Submission banklet that allows User to store changes applied to opened templates."
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-44589",
         "cat": "Story",
         "summary": "Heading wrong for CORD payment page. Says \"Group trades\"",
         "details": "In payment banklet ('@web-banking-portal-pages-payments') heading for CORD payment page is correct."
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-35442",
         "cat": "Story",
         "summary": "lastUsedDate and beneficiaryIban should be provided by Payment Templates REST API",
         "details": "Templates are now updated with the last time they were executed."
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-43669",
         "cat": "Bug",
         "summary": "PurposeOfPayment required at validation even for non-PoP countries",
         "details": "Fixed several issues with Purpose of Payment, when selecting banks requiring PoP then changing to one which does not, and related areas. Improved performance of payment form with redundant searching of PoP data."
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-43198",
         "cat": "Bug",
         "summary": "Payment housekeeping job blocked for one of our client",
         "details": "Fixes a constraint issue which would cause the housekeeping to fail if there is a reference from an old legacy table called \"PAYNET_STATE_UPDATE\" to a payment order that should be cleaned up by the housekeeping."
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-43645",
         "cat": "Bug",
         "summary": "PoP not shown in Confirm step of payment form or details. Purpose",
         "details": "The \"Purpose of payment\" fields are now visible in the confirmation, details and export views."
       },
       {
+        "compo": "AFP_PAY, AFP_REP",
         "ref": "AFP-43891",
         "cat": "Bug",
         "summary": "Unupdated balance for money accounts after account transfer",
         "details": "Refresh the positions when the component loads so that it always displays the latest data."
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-44122",
         "cat": "Bug",
         "summary": "Scanning QR Bills with unstructured addresses cannot be processed. The street name and number are empty.",
         "details": "Updated the address fields visualization for QR Bills by adding a checkbox to allow address format to be changed when creating a new payment (@avaloq/web-banking-payment-form-banklet)"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-44217",
         "cat": "Bug",
         "summary": "Beneficiary account missing on payment details PDF export",
         "details": "The export of Payment details banklet (@avaloq/web-banking-payment-details-banklet) has been refactored to reflect banklet information"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-44315",
         "cat": "Bug",
         "summary": "Amount and date input parameters to AvqPaymentAccountTransferFormPartialTransfer and AvqPaymentFormPartialPayment account transfer banklet",
         "details": "AvqPaymentAccountTransferFormPartialTransfer and AvqPaymentFormPartialPayment have been extended with the following new properties: amount, currencyIsoCode, executionDate. \r\n\r\nWith these new fields it's possible to prefill the payment-form with a certain amount to be transferred and specify when the payment or account transfer will be executed."
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-41772",
         "cat": "Bug",
         "summary": "positionKey needed in BusinessObjectNameFormatter pipes PaymentMoneyAccountToName, TradingMoneyAccountToName , PaymentPortfolioToName",
         "details": "The business object naming formatters for payment money account and trading money account are now passed the position keys that were already available to the money account formatter. \r\n\r\nThe business object naming formatter for payment portfolio is now passed the portfolio keys that were already available to the portfolio formatter"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-43122",
         "cat": "Bug",
         "summary": "Filter details missing in payment PDF export",
         "details": "Added filter parameters while generating the above header content and displaying the selected filters."
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-43342",
         "cat": "Bug",
         "summary": "Detailed error message from server when updating payment template",
         "details": "Added error message while handling creditorreference error"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-43469",
         "cat": "Bug",
         "summary": "Favourite filters broken in Payment Overview",
         "details": "It is possible to save \"favourite\" filters for Payment Overview"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-43478",
         "cat": "Bug",
         "summary": "Debit/credit account not using object name formatter",
         "details": "view formatter is being used for both debit and credit payment objects"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-43481",
         "cat": "Bug",
         "summary": "No line wrapping of Error message breaks table in data-transfer-upload-details banklet",
         "details": "Updated the styling of error messages in `@avaloq/web-banking-data-transfer-upload-details-banklet` table so that they wrap onto the next line, if required."
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-43535",
         "cat": "Bug",
         "summary": "Table sort change in Payment Overviews does not change the page index",
         "details": "Pagination is restarted to the first page when the user sorts the payments table."
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-44154",
         "cat": "Bug",
         "summary": "Multiple consecutive payment overview list calls. Redundant, repeated",
         "details": "An unnecessary duplicate call to a REST web service has been removed from Payment Overview."
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-44239",
         "cat": "Bug",
         "summary": "Payment widget overview banklet states \"in work\" should be \"approved\"",
         "details": "Fixes the filter for Upcoming Payments on the retail dashboard so that payments in an \"approved\" state are displayed as upcoming as well. \r\n\r\nIn addition to payments with status \"IN_WORK\" these payment states are now being displayed as upcoming: \r\n- 'APPROVED' \r\n- 'MODIFICATION_TO_BE_APPROVED' \r\n- 'MODIFICATION_PARTIAL_APPROVED' \r\n- 'DELETION_TO_BE_APPROVED' \r\n- 'DELETION_PARTIAL_APPROVED' \r\n- 'DD_REJECTION_TO_BE_APPROVED' \r\n- 'DD_REJECTION_PARTIAL_APPROVED' \r\n- 'DD_REJECTION_REQUESTED'"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-44251",
         "cat": "Bug",
         "summary": "Feature toggle payment group doesn't hide button for mass submit templates as group",
         "details": "New banklet configuration property \"bulkActions\" was added to handle mass template action buttons (@avaloq/web-banking-payment-template-list-banklet and @avaloq/web-banking-payment-template-overview-banklet)"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-39412",
         "cat": "Bug",
         "summary": "Cancel button is missing on Reading Device dlg",
         "details": "Cancel button was added to Reading Device dialog for scanning payments (@avaloq/web-banking-payment-overview-reading-device-banklet)"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-43260",
         "cat": "Bug",
         "summary": "Zip field not marked with * when mandatory. Postcode of beneficiary address in payment form",
         "details": "In payment form ('@web-banking-payment-form'), mandatory field `Zip (Postcode)` is marked with '*'."
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-43958",
         "cat": "Bug",
         "summary": "StandingOrder - Execution date update problem",
         "details": "A bug was fixed that caused updating standing orders that had been executed in the past, to not change the next execution date."
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-44089",
         "cat": "Bug",
         "summary": "Server: Properly update purpose of payment fields for templates",
         "details": "A bug was fixed that would cause purpose of payment fields in an international payment template to not be correctly updated when the beneficiary bank country was changed."
       },
       {
+        "compo": "AFP_PERF",
         "ref": "AFP-34590",
         "cat": "Story",
         "summary": "Choose dates for period within the Performance Overview banklet impl",
         "details": "Enhances the Performance Overview and Wealth Overview with three more selections for custom date ranges for historical performance. \r\n\r\nThese are for Custom Date, Month and Year ranges. \r\n\r\nEach of these comes with its own predefined granularity and range limits, to align with the replicated performance figures: \r\n1) Custom Date Range: \r\nIt retrieves daily performance figures and can go up to 30 days in the past. \r\n2) Custom Month Range: \r\nIt retrieves monthly performance figures and can go up to 36 months in the past. \r\n3) Custom Year Range: \r\nIt retrieves yearly performance figures and can go up to 10 years in the past."
       },
       {
+        "compo": "AFP_PERF",
         "ref": "AFP-43830",
         "cat": "Bug",
         "summary": "Performance history Tablet view shows both table and card",
         "details": "Not showing both copies of the same data between window widths of 580px and 820px."
       },
       {
+        "compo": "AFP_PERF, AFP_REPL",
         "ref": "AFP-44921",
         "cat": "Bug",
         "summary": "Adapter: Remove obsolete parameter i_eop in perf figure repl tasks",
@@ -574,84 +669,98 @@
         "impact": "Task templates based on task_afs_perf which use i_eop need to be adapted."
       },
       {
+        "compo": "AFP_PORTAL",
         "ref": "AFP-42728",
         "cat": "Story",
         "summary": "Hide counter badges from top bar and QFs for collaboration, documents",
         "details": "Added a configuration to hide/show the counter badges from quick filter of Document safe and Collaboration banklets. \r\nshowCounterBadgeOnQuickFilters: true // default is true \r\n\r\nAdded a configuration to hide/show the badges from the counter list and the indicator from the bell. \r\nshowAlertCounterBadges: true // default is true"
       },
       {
+        "compo": "AFP_PORTAL",
         "ref": "AFP-44121",
         "cat": "Bug",
         "summary": "Polling for new notifications",
         "details": "New notifications are fetched periodically similar to Attention Items Counters. The polling period is set in AlertConfig - pollingInterval."
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-43800",
         "cat": "Story",
         "summary": "Position name removed from wealth-position-header-banklet.",
         "details": "The `wealth-position-header-banklet` will display the position name if the `showPositionName` banklet input is set to `true`. The position name is not displayed by default. \r\nThe layout in the Avaloq portal can still be adjusted, e.g. with <ng-container avqPortalPageHeaderExtras> instead of <ng-container avqPortalPageHeaderActions> \r\n"
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-43851",
         "cat": "Story",
         "summary": "moreInfoOnAsset should include currency from Position Details",
         "details": "The public type AvqPosition is being extended with the new properties 'positionCurrency' and 'asset'. Additionally, two new public types AvqCurrency and AvqAsset are added to the public API of @avaloq/web-banking-banklet-api. The AvqAsset type includes the Id, name and, ISIN (optional) of the asset. \r\n\r\nNotice that this information will be now available in every public interface that was already using the AvqPosition type. \r\n\r\nMoreover, in banklet avq-web-banking-wealth-position-detail-banklet, the output 'moreInfoOnAsset' was deprecated in favor of a new output 'showAssetInformation' which now emits as payload the enhanced AvqPosition. \r\n\r\nIn @avaloq/web-banking-portal the configuration property 'showInstrumentDetails' of page PositionDetailPage has been updated with a new second parameter that includes the AvqPosition object emitted by the banklet."
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-43897",
         "cat": "Story",
         "summary": "Maturity input filter for Position List analysis banklet to show maturing positions",
         "details": "Position list banklet ('@avaloq/web-banking-wealth-position-list-banklet') has a new input parameter (showOnlyPositionsWithMaturityDate: boolean) to display only positions with maturity date."
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-43917",
         "cat": "Story",
         "summary": "Drill down click on allocation chart segment to Position List",
         "details": "When user clicks on Portfolio asset allocation charts, similar to the click on the legend, it is outputted the node clicked. This allows the user to navigate to details on the clicked series"
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-44371",
         "cat": "Story",
         "summary": "Overflow layout in Position List with long labels.",
         "details": "New CSS classes have been created for values in Position List, to allow customisation by the bank, for example to change the line-wrapping layout on mobile devices. However this solution is not recommended in general and not supported as a stable part of Avaloq's API. Selectors based on these classes should not depend on the DOM structure, as we can not guarantee DOM structure will not change. \r\n\r\nCSS class names are identical to the column names in the tables, for example BUSINESS_PARTNER . The following banklets expose CSS classes for each configured column in mobile and desktop: \r\n- @avaloq/web-banking-wealth-booking-list-banklet \r\n- @avaloq/web-banking-wealth-portfolio-analysis-maturity-banklet \r\n- @avaloq/web-banking-wealth-position-list-banklet"
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-43425",
         "cat": "Story",
         "summary": "Address of BP client should be shown in position details",
         "details": "Position details (@avaloq/web-banking-wealth-position-detail-banklet) displays now the Business Partner address fetched from the server."
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-43901",
         "cat": "Story",
         "summary": "Initial time period config for Performance Overview",
         "details": "A default time period for historical reporting banklets like Performance Overview has been added. This can be defined in WealthCoreConfig as initialHistoricalPerformancePeriod: AvqHistoricalPerformancePeriod; \r\n\r\nDefault period used by historical performance features. On the first request, historical performance data will be loaded for the period set in this configuration. Data for different periods will be loaded as needed, e.g. when the user changes the active period in the UI. \r\n\r\nThe default default value is LAST_12_MONTHS."
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-43902",
         "cat": "Story",
         "summary": "Initial time period config for Maturities Analysis",
         "details": "Added initial config groupByPeriodDefault for time period in maturity analysis. \r\nThis will configure the portfolio analysis maturity banklet to launch with particular one of the available time periods. For example 'MONTH'"
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-44127",
         "cat": "Story",
         "summary": "Slow runtime performance of Position List banklet loading",
         "details": "Performance of Position List banklet (@avaloq/web-banking-wealth-position-list-banklet) was improved to render faster the table in case of a large list of positions."
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-44276",
         "cat": "Story",
         "summary": "includeClosedPositions in booking details and other banklets to fix AvqCurrencyPipe with closed positions",
         "details": "Fixed Wealth Booking Details banklet (@avaloq/web-banking-wealth-booking-detail-banklet) to display bookings belonging to a closed position. In this case, position name is displayed as a simple text and not as a link."
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-44327",
         "cat": "Story",
         "summary": "positionValue and referenceCurrency filter in Position List input parameters",
         "details": "A new input (positionsFilter) was added to Position List banklet (@avaloq/web-banking-wealth-position-list-banklet) to filter the displayed positions. This input can filter positions by: \r\n- onlyWithMaturityDate: filter in only positions with maturity date \r\n- positionValue: AvqPositionValueFilter: filter in positions based on their currentValueInReportingCurrency \r\n- referenceCurrencyIsoCode: filter in only positions with certain reference currency ISO code"
       },
       {
+        "compo": "AFP_REP, AFP_REPL",
         "ref": "AFP-33279",
         "cat": "Story",
         "summary": "Adapter - Shaping \"Book value in reference currency\" column configurable for an asset class",
@@ -659,144 +768,168 @@
         "impact": "If required, base parameter avq.afs.suppr_hist_val_asset_id_list can be set to also include asset classes of money account assets."
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-41171",
         "cat": "Story",
         "summary": "Default sort order configuration in Position List",
         "details": "Position list: In web-banking-wealth-position-list-banklet a new configuration option was added to allow the banklet to be sorted by two columns on the initial load. \r\nThe name of the configuration option is 'initialSorting' and it accepts an array of sorting criteria. Each sorting criteria consists of the column name and the sorting order of that column. Two columns can be configured to be sorted as show in the example below. \r\ninitialSorting: [ \r\n{ \r\ncolumn: TableColumn.NAME, \r\nsortOrder: ListSortOrder.ASCENDING, \r\n}, \r\n{ \r\ncolumn: TableColumn.QUANTITY, \r\nsortOrder: ListSortOrder.DESCENDING, \r\n}, \r\n],"
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-43266",
         "cat": "Story",
         "summary": "Total balance hide by config in Position list",
         "details": "A new input parameter (showTotalValue - boolean) was added for '@avaloq/web-banking-wealth-position-list-banklet' indicating if the banklet should display or not the Total Value on top of the banklet. This flag is true by default and affects also the pdf export."
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-44382",
         "cat": "Story",
         "summary": "Banklet - PEG 629: wealth-position-list: multi-level initial sorting",
         "details": "Position list: In web-banking-wealth-position-list-banklet a new configuration option was added to allow the banklet to be sorted on the initial load. \r\nThe name of the configuration option is 'initialSorting' and it accepts an array of sorting criteria. Each sorting criteria consists of the column name and the sorting order of that column. The columns can be configured to be sorted as show in the example below. \r\ninitialSorting: [ \r\n{ \r\ncolumn: TableColumn.NAME, \r\nsortOrder: ListSortOrder.ASCENDING, \r\n}, \r\n{ \r\ncolumn: TableColumn.QUANTITY, \r\nsortOrder: ListSortOrder.DESCENDING, \r\n}, \r\n{ \r\ncolumn: TableColumn.CURRENT_VALUE_IN_REPORTING_CURRENCY, \r\nsortOrder: ListSortOrder.ASCENDING, \r\n} \r\n], \r\n\r\nThere is not limit to the number of columns that can be defined in the initialSorting configuration"
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-44574",
         "cat": "Story",
         "summary": "[BLKB-4737]: AFP 3: GroupByToggle on Position List missing",
         "details": "Wealth Position List: Fixed the issue where displaying the GroupBy toggle is dependent with the Asset Allocation switch. The GroupBy toggle and Asset Allocation switch can now be shown independently."
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-44249",
         "cat": "Bug",
         "summary": "Portfolio dropdown in Position List reset because of different reference currency",
         "details": "In Position List banklet (@avaloq/web-banking-wealth-position-list-banklet), when the list of portfolios is reloaded because of reporting currency changed, the previous selected portfolio is preserved."
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-44378",
         "cat": "Bug",
         "summary": "Portfolio selector does not work for wealth position list",
         "details": "Position list banklet (@avaloq/web-banking-wealth-position-list-banklet) reacts to the change of `activePortfolioIds` input. This was a bug we introduced in release 2021.1.20 . \r\n"
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-44581",
         "cat": "Bug",
         "summary": "Calling buisnessPartnerAddressList for many BP breaks the endpoint",
         "details": "Position details (@avaloq/web-banking-wealth-position-detail-banklet) fetches the buisnessPartnerAddressList individual, and not in a bulk, as the request header may be too large for certain EAM users."
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-43728",
         "cat": "Bug",
         "summary": "Aggregated allocation missing in collapsible parent row of Position List",
         "details": "In Wealth Position List banklet, we added support for displaying multi-values columns in the table group header. \r\nWith this change , ALLOCATION and CURRENT_VALUE_IN_REPORTING_CURRENCY columns can be displayed in same cell. \r\nNote: Mobile cards display the configured columns, without keeping the configuration order."
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-44256",
         "cat": "Bug",
         "summary": "Total amount does not consider assetAllocationSelection in wealth position list",
         "details": "In Wealth position list banklet (@avaloq/web-banking-wealth-position-list-banklet), total value figure is calculated based on the filtered selection of positions displayed in the banklet, so that asset allocation config is reflected in this figure."
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-44328",
         "cat": "Bug",
         "summary": "Empty export because data not fully processed in Performance Overview",
         "details": "Added the disabled attribute to the export button to prevent the generation of the pdf before data are processed (@avaloq/web-banking-wealth-performance-chart-banklet)"
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-44342",
         "cat": "Bug",
         "summary": "unrealizedYTDProfitTotalPct percentage value x100 for TOTAL_GAIN_LOSS_YTD_PCT in Position List",
         "details": "Calculation of column TOTAL_GAIN_LOSS_YTD_PCT in Wealth Position List banklet (@avaloq/web-banking-wealth-position-list-banklet) was fixed to display correct percentage values."
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-42930",
         "cat": "Bug",
         "summary": "Make Instrument type on account statement export configurable",
         "details": "Booking list banklet (@avalow/web-banking-wealth-booking-list-banklet) export title was updated to use the Naming pipe. With this, the portal(Avaloq default portal) page title and export title are aligned ."
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-43386",
         "cat": "Bug",
         "summary": "Nominal / Quantity translation keys in position list depending on config for assets or loans",
         "details": "Table columns in Position list banklet (@avaloq/ web-banking-wealth-position-list-banklet) can be configured to use custom translations for the header text. \r\nEg: \r\nConfiguring a column like \r\n{ translationKey: 'foo.baz.de', column: TableColumn.QUANTITY, } \r\nit will use 'foo.baz.de' as the key for the translations. \r\n\r\nIf default translation key of a certain column supports some parameters, the configured translation key will be resolved passing the same parameters. \r\n"
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-44052",
         "cat": "Bug",
         "summary": "Click on Position table row ignored. Should go to Position Details",
         "details": "Maturity Analysis banklet (@avaloq/web-banking-wealth-portfolio-analysis-maturity-banklet) navigates to position details on table-row/card click."
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-44555",
         "cat": "Bug",
         "summary": "Line breaks need to be respected by the UI for position details",
         "details": "Position Details banklet (@avaloq/web-banking-wealth-position-detail-banklet) respects the line breaks in UI and export."
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-44562",
         "cat": "Bug",
         "summary": "Sort order of portfolio dropdown is not alphabetically",
         "details": "Portfolio dropdowns are sorted ascending in: \r\n- web-banking-document-safe-order-report-banklet \r\n- web-banking-document-safe-overview-banklet \r\n- web-banking-wealth-position-list-banklet \r\n- web-banking-product-shop-request-account-banklet - Request account \r\n- web-banking-wealth-portfolio-selector-banklet \r\n\r\nSearch feature for portfolio dropdowns (by default, for dropdowns containing more then 8 items) was added in: \r\n- web-banking-product-shop-request-account-banklet - Request account \r\n- web-banking-wealth-portfolio-selector-banklet"
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-44299",
         "cat": "Bug",
         "summary": "Banklet: Position list exported excel file incorrect allocation percentages",
         "details": "Position list: In web-banking-wealth-position-list-banklet percentage values were wrongly displayed when exporting the table in an EXCEL format. This has been fixed now."
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-44408",
         "cat": "Bug",
         "summary": "Booking details are missing for Redemption type order type because referenceCurrencyId missing from (closed?) position",
         "details": "Booking details banklet (@avaloq/web-banking-wealth-booking-detail-banklet) can display now details of a closed position."
       },
       {
+        "compo": "AFP_REP_ORDER",
         "ref": "AFP-44636",
         "cat": "Bug",
         "summary": "Adapter: TASK_AFS_REPORD_LIST# bad query performance",
         "details": "We have added a cardinality hint for the global temporary table dtm_afs_repord_list_temp_i to speed up the query in task_afs_repord_list#."
       },
       {
+        "compo": "AFP_REPKIT",
         "ref": "AFP-39614",
         "cat": "Story",
         "summary": "Hierarchical tables in RepKit tailored reports",
         "details": "The tailored reports banklet (@avaloq/web-banking-self-service-tailored-reports-banklet) now provides basic support REPKIT reports containing hierarchical tables. \r\nHowever, there are limitations to what hierarchical tables are supported: \r\n- Only tables with 2 or 3 levels (i.e. one or two levels of ancestors and one level or leaf rows) \r\n- The tree must be balanced, i.e. all branches of the tree must have the same depth \r\n- No support for header- total- or footer-rows \r\nOther features, such as export or custom-styling capabilities will be added later on"
       },
       {
+        "compo": "AFP_REPL",
         "ref": "AFP-22147",
         "cat": "Story",
         "summary": "Adapter: Derelease abs_doc_id",
         "details": "The order key afs_doc_id is not used anymore in the replication of stex orders."
       },
       {
+        "compo": "AFP_REPL",
         "ref": "AFP-44303",
         "cat": "Bug",
         "summary": "Adapter: Performance fix for SDS collection replicaiton",
         "details": "Performance fix for replication of collection objects. Mainly relevant for SDS replication."
       },
       {
+        "compo": "AFP_REPL",
         "ref": "AFP-33822",
         "cat": "Bug",
         "summary": "Adapter: Housekeeping for AFS_REPL_PRL",
         "details": "Small enhancement on afs_repl_prl (helper table for parallelization in initial replication task, task_afs_upld (1694)): \r\n- Added timestamp to support issue analysis \r\n- Introduced garbage collection (entries are deleted after 40d, mainly relevant if task_afs_upld is used frequently)"
       },
       {
+        "compo": "AFP_REPL",
         "ref": "AFP-44379",
         "cat": "Bug",
         "summary": "Adapter: Improve fake stats - set default for fake stats in task_afs_upld to false",
@@ -804,216 +937,252 @@
         "impact": "Existing task templates based on task_afs_upld (Task ID: 1694) which do not have the parameter \"Fake FWOM Statistics\" explicitly set to \"Yes\" or \"No\" should be reviewed and adapted if necessary."
       },
       {
+        "compo": "AFP_REPL",
         "ref": "AFP-44639",
         "cat": "Bug",
         "summary": "Adapter: Fix in \"replication API for external data\" for OE",
         "details": "Fixed a bug the \"replication API for external data\" for OE objects which led to replication error \"ORA-01400: cannot insert NULL into (\"AFS\".\"AFS_OBJ_OE\".\"BU_ID\") in AFS.ERR$_AFS_OBJ_OE."
       },
       {
+        "compo": "AFP_TOOLS",
         "ref": "AFP-41826",
         "cat": "Bug",
         "summary": "High severity vulnerability CVE-2021-23337 in lodash-4.17.20.tgz",
         "details": "Updated lodash version to 4.17.21, in Web UI front-end."
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-44000",
         "cat": "Story",
         "summary": "Customer ticket: Group Order: Remarks gets lost when an override is triggered",
         "details": "Group Order: Fixed a bug where the remarks were not sent when the order was modified."
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-42516",
         "cat": "Story",
         "summary": "IMPL - Enable trading of non bank universe assets",
         "details": "Added a notification when an asset, searched via WebFG, is not tradable."
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-43912",
         "cat": "Story",
         "summary": "Customer ticket: IMPL - No Calculation of the Xrate when no quantity is entered",
         "details": "In the Forex entry banklet, only when the user enters or changes the amount, the exchange rate is calculated."
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-44438",
         "cat": "Story",
         "summary": "Csv File Tables: remove mouse pointer icon",
         "details": "Added filters and save favorite filters functionality to file upload overview table."
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-42523",
         "cat": "Story",
         "summary": "Customer ticket: Add PDF Export to single order in order overview",
         "details": "It's now possible to export the order details directly from the order overview via context action. \r\nThe export will include all the tabs (details, investor protection, history) \r\nAdditional information on how to configure 'Custom Context Actions' is available in the Web Banking docs under 'Recipes -> Custom Context Actions'. \r\n\r\nhttps://docs.avaloq.com/web-banking/3.20.0/#/recipes/custom-context-actions"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-43540",
         "cat": "Story",
         "summary": "Csv File Overview: Upload Table",
         "details": "Added backend pagination and column sort to file upload table in @avaloq/web-banking-trading-upload-overview-banklet"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-43542",
         "cat": "Story",
         "summary": "Csv Files Table Filters",
         "details": "Added filters and save favorite filters functionality to file upload overview table."
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-43571",
         "cat": "Story",
         "summary": "Default configuration for CSV Files Overview banklet",
         "details": "Fine tune the default and possible configuration for Csv File Overview banklet"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-43572",
         "cat": "Story",
         "summary": "CSV File Overview: Default configuration for upload csv file banklet",
         "details": "Fine-tuned the default configuration for CSV File Overview banklet"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-43690",
         "cat": "Story",
         "summary": "Customer ticket: Config for default quick filter",
         "details": "We have added a configuration possibility to define the default quick filter"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-43877",
         "cat": "Story",
         "summary": "remove editable config from 4.x and 5.x",
         "details": "Removed the editable config from `web-banking-trading-collective-overview-banklet`"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-44313",
         "cat": "Story",
         "summary": "Remove orders with hard errors",
         "details": "Added the possibility to remove orders with hard errors so that the user is able to continue with the file upload and placement process."
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-44434",
         "cat": "Story",
         "summary": "Csv File Overview: Set Open as default quick filter",
         "details": "Added option to preselect default quick filter in file upload overview table."
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-44435",
         "cat": "Story",
         "summary": "Csv File Overview: Upload details table for corner case",
         "details": "Added filters and save favorite filters functionality to file upload overview table."
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-44436",
         "cat": "Story",
         "summary": "Csv File Overview: add applied filters in export to file",
         "details": "Added filters and save favorite filters functionality to file upload overview table."
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-44437",
         "cat": "Story",
         "summary": "Csv File Update: add error banner in update upload file",
         "details": "Added filters and save favorite filters functionality to file upload overview table."
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-44489",
         "cat": "Story",
         "summary": "Csv File Upload: show notification error if file syntax is wrong",
         "details": "Added filters and save favorite filters functionality to file upload overview table."
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-43430",
         "cat": "Bug",
         "summary": "Customer ticket: Add new rebalancing method",
         "details": "Add new property for group order entry to allow a new allocation method: \r\n\r\nallowedRebalanceMethods: ['ABSOLUTE', 'AVAILABLE_AMOUNT', 'SELL_ALL', 'AVAILABLE_AMOUNT_PORTFOLIO'], \r\n"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-43611",
         "cat": "Bug",
         "summary": "Customer ticket: Hide Investor Protection for Single Details",
         "details": "The investor protection tab should be hidden in the details view if the MiFID feature toggle is disabled. \r\nThis was already working for group orders and now it is also true for single orders \r\n/** Determine the tabs shown in the page which will follow the same order as in this array */ \r\ntabs: TradingSingleDetailsPageTab[]; \r\nexport type TradingSingleDetailsPageTab = 'details' | 'investor-protection' | 'history';"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-43832",
         "cat": "Bug",
         "summary": "UI: single and forex overview throws error in console",
         "details": "A default behavior on the Single and Group order overview are now aligned. If there are not orders for the default quick filter, then we switch to the \"all\" orders quick filter."
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-44008",
         "cat": "Bug",
         "summary": "Customer ticket: Change label (credit account instead of debit account)",
         "details": "The label of the money account is now labeled as Credit Account in a Sell order creation in the single details view"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-43724",
         "cat": "Bug",
         "summary": "Customer ticket: Remarks with unlimited length error",
         "details": "We have limited the number of characters in the field remarks to 150 as in the previous release 2.4.x"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-43815",
         "cat": "Bug",
         "summary": "UI : fix failing build trading banklets",
         "details": "fixed failing tests caused by AFP-43604"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-44171",
         "cat": "Bug",
         "summary": "Click on row in Group trade details (Transactions tab)",
         "details": "The user is now able to click on the Trading Group transactions rows to display the details of the generated single order."
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-44381",
         "cat": "Bug",
         "summary": "Customer ticket - Event 'cancellationRequested' not working",
         "details": "Fixed a bug where the \"Discard\" context action in the \"Resolve group trade conflicts\" view would not work correctly"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-44465",
         "cat": "Bug",
         "summary": "Customer ticket - Add currency of the limit price",
         "details": "Added the currency of the limit price"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-44495",
         "cat": "Bug",
         "summary": "Customer ticket: UI: Single Entry Trading Banklet ignores selectedPositionId and selectedPortfolioId",
         "details": "Fix single entry banklet in standalone mode which was not accepting external inputs."
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-44504",
         "cat": "Bug",
         "summary": "UI: add TradeForexDetailsService in web-banking-trading module",
         "details": "Added TradeForexDetailsService from the providers in WebBankingTradingModule."
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-44665",
         "cat": "Bug",
         "summary": "Add currency of the trigger price",
         "details": "Added the currency of the limit/trigger price"
       },
       {
+        "compo": "AFP_TRX_SIGN",
         "ref": "AFP-42933",
         "cat": "Story",
         "summary": "Translation keys from propertyKey field for 2FA",
         "details": "Second Factor Authentication banklet can be translated on web-banking app or on server side."
       },
       {
+        "compo": "AFP_USER_SETTINGS",
         "ref": "AFP-43836",
         "cat": "Bug",
         "summary": "Invariant names of accounts in user settings labels",
         "details": "User settings banklets for accounts and portfolios (web-banking-self-service-user-settings-accounts-payments-banklet and web-banking-self-service-user-settings-portfolios-banklet) were updated to display always the original name of the account/portfolio even when the user set a custom name. \r\n"
       },
       {
+        "compo": "AFP_USER_SETTINGS",
         "ref": "AFP-44498",
         "cat": "Bug",
         "summary": "mobileTransactionSigningEnabled needs to be available without mobileBankingEnabled set to true",
         "details": "In user settings banklet ('@avaloq/web-banking-self-service-user-settings-general-banklet'), mobileTransactionSigningEnabled setting is available without the need to set true mobileBankingEnabled."
       },
       {
+        "compo": "AFP_USER_SETTINGS",
         "ref": "AFP-43518",
         "cat": "Bug",
         "summary": "Transaction Signing for mobile option missing in User Settings",
         "details": "Added possibility to enable or disable Transaction Signing for mobile banking via the User Settings page."
       },
       {
+        "compo": "AFP_USER_SETTINGS",
         "ref": "AFP-42619",
         "cat": "Bug",
         "summary": "Appliction crashes on failure of 'rest/userSettings/settings' and 'rest/systemperformance/ownsession'",
@@ -1037,156 +1206,182 @@
     "version": "2022.1.1",
     "items": [
       {
+        "compo": "AFP_BOOK",
         "ref": "AFP-40961",
         "cat": "Story",
         "summary": "Show details of CORD booking group in booking list (dev impl)",
         "details": "Added the possibility to show details of CORD booking directly from the booking list (@avaloq/web-banking-wealth-booking-detail-banklet, @avaloq/web-banking-wealth-booking-list-banklet)"
       },
       {
+        "compo": "AFP_BOOK",
         "ref": "AFP-44599",
         "cat": "Story",
         "summary": "CORD booking modal header fields in collection summary flex/table",
         "details": "Added an header section in the details view of CORD booking when displayed starting from the booking list (@avaloq/web-banking-wealth-booking-detail-banklet, @avaloq/web-banking-wealth-booking-list-banklet)"
       },
       {
+        "compo": "AFP_BOOK",
         "ref": "AFP-44987",
         "cat": "Bug",
         "summary": "Implement multi cell behavior in booking list",
         "details": "Wealth Booking List (@avaloq/web-banking-wealth-booking-list-banklet): Implement the multi-cell feature."
       },
       {
+        "compo": "AFP_COLLAB",
         "ref": "AFP-44923",
         "cat": "Story",
         "summary": "Front end - New filters for Business Partner & portfolio (implementation in core)",
         "details": "In the collaboration overview banklet new filters Business Partner and Portfolio are now available. You can enable them via configuration. \r\n\r\n"
       },
       {
+        "compo": "AFP_COLLAB",
         "ref": "AFP-44959",
         "cat": "Story",
         "summary": "Attachments - Icon and filename should be clickable",
         "details": "In the collaboration details banklet, the icon and filename for the attachments are now clickable for downloading."
       },
       {
+        "compo": "AFP_COLLAB",
         "ref": "AFP-41529",
         "cat": "Bug",
         "summary": "Collaboration detail banklet should load by its own all data needed for the banklet",
         "details": "Both @avq-web-banking-self-service-collaboration-details-banklet and @avq-web-banking-self-service-collaboration-conversation-banklet are working in a standalone environment."
       },
       {
+        "compo": "AFP_COLLAB, AFP_NTFCN, AFP_REP_ORDER",
         "ref": "AFP-43523",
         "cat": "Bug",
         "summary": "Search in multi-select dropdowns with many elements",
         "details": "Added the search fuctionality in multi-select dropdown with many element (@avaloq/web-banking-document-safe-order-report-banklet, @avaloq/web-banking-document-safe-report-subscriptions-banklet and @avaloq/web-banking-self-service-notifications-subscription-form-banklet)"
       },
       {
+        "compo": "AFP_COMMON",
         "ref": "AFP-44930",
         "cat": "Story",
         "summary": "nameLong of asset in PositionNameFormatter business object formatter pipe",
         "details": "Added nameLong of an asset in positionNameFormatter business object formatter pipe."
       },
       {
+        "compo": "AFP_COMMON",
         "ref": "AFP-45331",
         "cat": "Story",
         "summary": "Delete chip X icon should only be shown on currently selected favourite filter",
         "details": "- 'X' icon is now only visible on currently selected favorite filter chip, to prevent accidental removal of the filter. \r\n- After removal of the filter chip, form will be populated with the values from it, giving user a chance to save those values again if he wishes to."
       },
       {
+        "compo": "AFP_COMMON",
         "ref": "AFP-44125",
         "cat": "Story",
         "summary": "Toast design refresh (snackbar message)",
         "details": "The public-API adds the injection token UI_NOTIFICATION_STREAM (@avaloq/web-banking-banklet-sdk) together with the type AvqUINotification (@avaloq/web-banking-banklet-api). \r\n\r\nApplication authors can now inject UI_NOTIFICATION_STREAM in order to listen to the broadcasting of UI-Notifications from every banklet. \r\nThis gives application authors freedom to decide where and how to render these UI-notifications. \r\n\r\nThe type AvqUINotification is a composition of multiple UI-notification sub-types. Additional sub-types will be added over the time for different business domains. \r\n\r\nSub-types of AvqUINotification include various metadata that give application authors extra flexibility at the time of rendering these notifications on their own app-shell. \r\n\r\nWeb-banking still shows UI-notifications in a snack-bar (Angular Material). You can disable these snack-bars by setting to false the property 'enableSnackBarUINotifications' in 'WebBankingModule.forRoot()'."
       },
       {
+        "compo": "AFP_COMMON",
         "ref": "AFP-44326",
         "cat": "Story",
         "summary": "banklet-context pattern in Collaboration to restore context on back-navigation",
         "details": "Banklet '@avaloq/web-banking-self-service-collaboration-overview-banklet' implements a pattern named 'banklet-context' as the first adopter. \r\n\r\nThis allows possibilities such as: \r\n- Run multiple independent instances of this banklet in parallel \r\n- Restore previously edited UI state (filters, sorting, etc) when navigating back to the banklet from a different page \r\n\r\nMore detailed about the 'banklet-context' pattern will be available in a new recipe on the web-banking documentation. \r\n\r\nFor banks using the '@avaloq/web-banking-portal': \r\n\r\n- The portal now incorporates logic in the navigation system to determine when to restore and when to rest a banklet's context. 'Back navigations' (e.g. browser back button and breadcrumbs) will restore the previous UI state of the banklet. 'Imperative navigations' (e.g., clicking on the main menu) will reset the UI state. \r\n\r\n- The portal already takes of providing the right context-request to the collaboration overview banklet. \r\n\r\n- The 'NavigationService' of the portal includes a new method 'navigateToPreviousPageWithFallback' that allows the page to request the portal to navigate to the previous page. This will also restore a banklet's context in the used by the previous page. \r\nThese navigations requests will be processed unless the current page is the first page (application just loaded) or if the previous navigation had the flag 'resetHistoryNavigation' enabled (i.e. hybrid view requests will not lead to inconsistent navigation), in case the request cannot be processed the portal will navigate using the fallback navigation-intent passed as argument to method 'navigateToPreviousPageWithFallback'. \r\n\r\n- For authors of custom portal pages, the abstract class 'PortalPageComponent' includes a new public method 'bankletContextRequest$' that provides a banklet-context request based on the standard logic the portal uses to determine when to restore or reset the banklet context. \r\n\r\n- Both 'PortalPageComponent.bankletContextRequest$' and 'NavigationService.navigateToPreviousPageWithFallback' are public-api. Application developers are free to use both in their custom portal-pages."
       },
       {
+        "compo": "AFP_COMMON",
         "ref": "AFP-45253",
         "cat": "Bug",
         "summary": "Wrong property name",
         "details": "Fix the property name for the jwt token password."
       },
       {
+        "compo": "AFP_CRED_CARD",
         "ref": "AFP-45325",
         "cat": "Bug",
         "summary": "Time missing in debit cards transactions",
         "details": "Timestamp was added to the transaction list in debit cards page."
       },
       {
+        "compo": "AFP_CRED_CARD",
         "ref": "AFP-45342",
         "cat": "Bug",
         "summary": "Limits update fails in debit card page",
         "details": "Limits updates successfully in debit card page."
       },
       {
+        "compo": "AFP_CRED_CARD",
         "ref": "AFP-45385",
         "cat": "Bug",
         "summary": "[Debit Cards] Can't update limit again when first updated with zero amount",
         "details": "After changing the daily limit to zero, user was not able to see limit textbox, a fix is released for this."
       },
       {
+        "compo": "AFP_DASHBOARD",
         "ref": "AFP-45260",
         "cat": "Bug",
         "summary": "Total cash banklet - Total cash NaN if ptf value is undefined",
         "details": "Fixed a problem where, when the list of portfolios included some where no performance data is available, the total cash value calculation in the EAM dashboard would break, and no value would be displayed."
       },
       {
+        "compo": "AFP_DD",
         "ref": "AFP-42673",
         "cat": "Story",
         "summary": "Menu text for DD Mandates",
         "details": "Rename 'Direct debit' to 'Direct debit mandates' in the portal menu"
       },
       {
+        "compo": "AFP_DOCU_SAFE, AFP_INFRA",
         "ref": "AFP-44701",
         "cat": "Story",
         "summary": "[Containerization] New referenceId param for doc upload",
         "details": "Document Upload New referenceId Parameter \r\nA new request parameter named referenceId has been introduced for /multi-file and /single-file services. If referenceId is present, the value passed via this parameter will be used to create a subfolder in the file system to group the files being uploaded under that referenceId. E.g. referenceId 123456 will create the subfolder REFID_123456 in the file system. \r\n\r\nThe /status service accepts the referenceId parameter to pull and view the files inside the subfolder created when the refrenceId parameter was used when doing batch document uploads. If present, the referenceId is used as additional filter when pulling files for view. \r\nE.g. \r\nhttps://docupload-c0d00996.dev01.cp.avaloq.net/wb/document-import/status?startDateTime=2022-02-01T00:00:00Z&endDateTime=2022-02-17T23:59:59Z&referenceId=123456 \r\n\r\n{ \r\n\"documentList\": [ \r\n{ \r\n\"buId\": \"9002\", \r\n\"fileName\": \"/9002/processed/fast_import/REFID_123456/AAAadvice_position_one_time_refid1.pdf.metadata\", \r\n\"status\": \"processed\", \r\n\"referenceId\": \"123456\", \r\n\"uploadDate\": \"2022-02-16T07:24:14.827Z\", \r\n\"lastModified\": \"2022-02-16T07:24:14.827Z\" \r\n}, \r\n{ \r\n\"buId\": \"9002\", \r\n\"fileName\": \"/9002/processed/fast_import/REFID_123456/AAAadvice_position_one_time_refid1.pdf\", \r\n\"status\": \"processed\", \r\n\"referenceId\": \"123456\", \r\n\"uploadDate\": \"2022-02-16T07:24:14.818Z\", \r\n\"lastModified\": \"2022-02-16T07:24:14.818Z\" \r\n} \r\n] \r\n} \r\n\r\n"
       },
       {
+        "compo": "AFP_EBILL",
         "ref": "AFP-38862",
         "cat": "Story",
         "summary": "At least one debit Account must be selected for eBill in administration",
         "details": "Output checkbox status in `web-banking-payment-ebill` in order to block from saving or continuing in `web-banking-payment-ebill-administration` and `web-banking-payment-ebill-registration` banklets when no account has been selected."
       },
       {
+        "compo": "AFP_EBILL",
         "ref": "AFP-44512",
         "cat": "Bug",
         "summary": "WEB3: eBill Banklet: Confirmation Step different from Selection Step",
         "details": "Show updated information in confirmation step and solved user-interaction issue (@avaloq/web-banking-payment-ebill, @avaloq/web-banking-payment-ebill-registration-banklet)"
       },
       {
+        "compo": "AFP_EXT_SVC_UI",
         "ref": "AFP-45192",
         "cat": "Bug",
         "summary": "Import jQuery invalid syntax in latest TypeScript. WebFG banklet crashes",
         "details": "In the ('@web-banking-third-party-webfg-banklet') import for 'JQuery' adapted for 6.0.0 TypeScript version."
       },
       {
+        "compo": "AFP_FX",
         "ref": "AFP-44430",
         "cat": "Story",
         "summary": "IMPL - Stepper Info for Foreign Exchange Order",
         "details": "Implemented stepper info for FX Trading"
       },
       {
+        "compo": "AFP_FX",
         "ref": "AFP-45190",
         "cat": "Bug",
         "summary": "Customer ticket: Forex order export incomplete",
         "details": "add the following field to sections config: \r\n- sellQuantity \r\n- buyQuantity \r\n- buyMoneyAccount \r\n- sellMoneyAccount \r\n- exchangeRate \r\n- orderStatus"
       },
       {
+        "compo": "AFP_FX",
         "ref": "AFP-41866",
         "cat": "Bug",
         "summary": "Reset timer when user clicks back",
         "details": "The exchange rate is refreshed as soon as the user switches views during the creation of a foreign exchange order."
       },
       {
+        "compo": "AFP_FX_ORDER",
         "ref": "AFP-43098",
         "cat": "Bug",
         "summary": "avq-amount widget should be used in third-party-foreign-banknotes-request-delivery",
         "details": "Currency amount fields in the Foreign Banknotes request delivery are formatted using `avq-amount` widget alongside '⇄' implementation between the two currency fields in the same banklet."
       },
       {
+        "compo": "AFP_INFRA",
         "ref": "AFP-44261",
         "cat": "Story",
         "summary": "Pinging attentionItemCounters should not prolongate session (keep alive)",
@@ -1194,6 +1389,7 @@
         "impact": "If you are using the new ui please configure the ping url to the new location ( /wb/ui/session/ping) so that the W3__OC3_WB__Monitor is matched."
       },
       {
+        "compo": "AFP_INFRA",
         "ref": "AFP-44654",
         "cat": "Story",
         "summary": "[Containerization]: Fix pod startup issues",
@@ -1201,42 +1397,49 @@
         "impact": "In case you configured a big delay for AVALOQ_WB_APPLICATION_SERVER_LIVENESS_PROBE_INITIAL_DELAY_SECONDS and the equivalent one for sync manager, they can not be reduced again."
       },
       {
+        "compo": "AFP_INVEST_PROP",
         "ref": "AFP-41614",
         "cat": "Story",
         "summary": "Customer ticket: Disable approve proposals in login-on-behalf LOB",
         "details": "Removed actions for a user in login-on-behalf (bank user for instance from smartclient)"
       },
       {
+        "compo": "AFP_NTFCN",
         "ref": "AFP-44798",
         "cat": "Story",
         "summary": "includedEventTypes config in WBUI Notification",
         "details": "Banks can now configure which notification event-types are shown in the Notification Subscription Overview and in the Notification Subscription Form. If the configuration function notificationEventTypeFilter in SelfServiceNotificationsConfig is not defined, it will default to all event-types. \r\n"
       },
       {
+        "compo": "AFP_NTFCN",
         "ref": "AFP-45198",
         "cat": "Bug",
         "summary": "Notification subscription deactivation makes delivery channel disappear temporarily",
         "details": "Notification subscription activation/deactivation made the delivery channel disappear temporarily, with this release it should not dissappear."
       },
       {
+        "compo": "AFP_NTFCN",
         "ref": "AFP-43517",
         "cat": "Bug",
         "summary": "Missing object name formatting for notification subscriptions",
         "details": "Added missing object name formatters in notification subscriptions (@avaloq/web-banking-self-service-notifications-subscription, @avaloq/web-banking-self-service-notifications-subscription-form-banklet)"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-44797",
         "cat": "Story",
         "summary": "Change default payment type for new beneficiary",
         "details": "Releases: 2021.1.26, 2021.3.8, 2022.1.1 \r\nThe default selected payment type in payment form was sepa-payment. Now it's domestic payment. \r\n\r\nReleases: 2021.3.8, 2022.1.1 \r\nA new configuration in payment-core.config has been added that allows setting the precedence that should be applied in case the default one provided is not convenient. \r\nThis precedence can be set under the field displayPaymentSuggestions where now it also accepts as value: \r\n{ \r\n/** Specifies the payment suggestions will be grouped by beneficiary */ \r\ndisplay: 'groupedByBeneficiary'; \r\n/** Defines a custom order of precedence */ \r\nprecedence: SupportedPaymentType[]; \r\n}"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-44277",
         "cat": "Story",
         "summary": "More table column configurations for mass account transfer. BP name, Balance, IBAN",
         "details": "Added configurations for table columns in mass account transfer so that an EAM user can make mass account transfers with more information on the screen. \r\nConfigurations affect the table on both transfers and confirm steps in @avaloq/web-banking-payment-mass-account-transfer-banklet."
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-44361",
         "cat": "Story",
         "summary": "Decommissioning of Red and Orange Postal Slips",
@@ -1244,300 +1447,350 @@
         "impact": "In preparation for decommissioning of the orange and red payment slips, two new properties have been added to the avaloq.front.server.payments.properties file to set the last allowed date to create such a payment via AFP. \r\n\r\n# The last date that an orange/red payment slip is allowed to be executed on, \r\n# before these payment types are decommissioned. \r\n# The value has to be in format YYYY-MM-DD. \r\navaloq.front.server.payment.lastDayForOrangeAndRed=2022-09-30 \r\n\r\n# Apply the last execution date for orange and red payment slips to standing orders too \r\navaloq.front.server.payment.lastDayForOrangeAndRed.includeStandingOrders=false"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-44460",
         "cat": "Story",
         "summary": "Spreadsheet style editing on main page of Mass Account Transfer",
         "details": "Clicking on a transfer row in the desktop or tablet mode no longer displays a popup dialog to edit the item, instead the row displays input fields which can be used to edit the item. Only a single item can be edited at a time. It is also possible to use the keyboard to navigate between rows. \r\n\r\nMobile view remains the same as before."
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-44702",
         "cat": "Story",
         "summary": "Interaction should be disabled after form submission in Account Transfer",
         "details": "The form in banklet @avaloq/web-banking-payment-account-transfer-banklet now becomes disabled after the form is submitted in order to prevent further interaction with the form."
       },
       {
+        "compo": "AFP_PAY, AFP_REP",
         "ref": "AFP-44941",
         "cat": "Story",
         "summary": "Full text should be shown in Portfolio dropdown and Account selector. Multi-line drop down",
         "details": "Portfolio and Money-account selector banklets no longer trim long names. \r\nThis apply to banklets: \r\n* avq-web-banking-wealth-portfolio-selector-banklet (e.g. Portfolio Details page) \r\n* avq-web-banking-wealth-money-account-selector-banklet (e.g. Balance Forecast page) \r\n\r\nWhen the selector is open, the overlay panel showing the options can grow more to adjust to longer names. In case of exceptionally long names, the name will be wrapped in multiple lines instead of cutting it and showing an elipsis. \r\n\r\nWhen the selector is closed, the selector will display the full name. These width of these two banklets is not fix anymore and the application developer can decide how much space these banklets can occupy. \r\nIf the name of the selected entity is longer than the allocated space, the name will be wrapped in multiple lines instead of trimming it and showing an ellipsis."
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-43341",
         "cat": "Story",
         "summary": "Tooltips on Single Payment Form for every form field",
         "details": "New configuration 'tooltips' in web-banking-payment-form-banklet has been added to set tooltips in every form field from payment form."
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-44461",
         "cat": "Story",
         "summary": "Context menu simpler for Mass Account Transfer",
         "details": "Removed the context menu from the rows and added a single button for delete. Clicking on the delete button removes the row without a confirmation prompt."
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-44745",
         "cat": "Story",
         "summary": "Tooltips on account transfer forms for every form field",
         "details": "New configuration 'tooltips' in web-banking-payment-account-transfer-banklet has been added to set tooltips in every form field from this banklet for which Avaloq was not already providing a tooltip. In later cases the solution with provided translation keys still applies."
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-41514",
         "cat": "Story",
         "summary": "defaultDateRange of payment overview should be more generous",
         "details": "Changed 'daysBack' in defaultDateRange configuration from 7 days to 30 days so that it is not too strict and the user can explore older dates."
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-44958",
         "cat": "Story",
         "summary": "Payment assistant UI layout upgrade",
         "details": "Updated the UI for the suggestions and added a new config `displayPaymentSuggestions: 'all' | 'groupedByBeneficiary'` to `@avaloq/web-banking-payment-core' that controls how the suggestions are displayed."
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-45162",
         "cat": "Bug",
         "summary": "en-GB.json' is not defined by \"exports\" in web-banking-payment-overview-collective-banklet",
         "details": "In all web banking npm packages the reference translations in the avq-i18n-reference folder are now available for import into code once more, facilitating tooling for extracting reference translations. \r\n\r\nIt is not recommended to use the reference translations directly in an application as they may change over time."
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-41167",
         "cat": "Bug",
         "summary": "SEPA payment doesn't correctly require beneficiary1OrParty",
         "details": "Sepa payments form are based also on beneficiary1OrParty server configuration (@avaloq/web-banking-payment-form)"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-43298",
         "cat": "Bug",
         "summary": "Submit templates as group fails with fullReloadException",
         "details": "Solved fullReloadException occurring when submitting templates as group (@avaloq/web-banking-payment-template)"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-43508",
         "cat": "Bug",
         "summary": "Warn user of invalid execution date on non-urgent International payment instead of automatically changing",
         "details": "Warn user of invalid provided execution date if payment is not urgent (@avaloq/web-banking-payment-form)"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-43600",
         "cat": "Bug",
         "summary": "Future date range filter dropdown in pending payments",
         "details": "Added new date ranges for future dates in the filter dropdown of payments for both execution date and creation date. \r\nAlso added a new date range for filtering dates belonging to the past 365 days."
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-44888",
         "cat": "Bug",
         "summary": "Wrong ISO currency shown in payment cost details",
         "details": "Fix visualization of ISO currencies in payment cost details (@avaloq/web-banking-payment-core)"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-45146",
         "cat": "Bug",
         "summary": "\"Unconfirmed actions\" filter to be removed through banklet configuration",
         "details": "Filter modal content can be customized and bulk actions to be used can be setted in each banklet (@avaloq/web-banking-banklet-api, @avaloq/web-banking-payment-overview, @avaloq/web-banking-payment-overview-collective-banklet, @avaloq/web-banking-payment-overview-file-banklet, @avaloq/web-banking-payment-overview-group-banklet, @avaloq/web-banking-payment-overview-recurring-banklet, @avaloq/web-banking-payment-overview-single-banklet, @avaloq/web-banking-payment-overview-recent-single-banklet)"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-45218",
         "cat": "Bug",
         "summary": "beneficiary1OrParty without country not submitted for validation for SEPA payment form",
         "details": "Sepa payments form are based also on beneficiary1OrParty server configuration (@avaloq/web-banking-payment-form)"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-45219",
         "cat": "Bug",
         "summary": "beneficiary1OrParty validation error not displayed on field",
         "details": "Sepa payments form are based also on beneficiary1OrParty server configuration (@avaloq/web-banking-payment-form)"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-43887",
         "cat": "Bug",
         "summary": "Missing Error Message after failed move of a Payment Template without Debit MACC",
         "details": "Added the visualization of an error message when moving a payment template without a debit money account setted (@avaloq/web-banking-common, @avaloq/web-banking-payment-template)"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-44531",
         "cat": "Bug",
         "summary": "QR BILL: Default Value for Beneficiary Country",
         "details": "When the QR bill payment type is selected, the beneficiary country is automatically setted to Switzerland (@avaloq/web-banking-payment-form)"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-44770",
         "cat": "Bug",
         "summary": "payment template - mass execution without debit macc",
         "details": "Added the possibility to change the debit account in mass submit template functionality if the debit account has been closed (@avaloq/web-banking-payment-mass-template-submission-banklet, @avaloq/web-banking-payment-template)"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-45124",
         "cat": "Bug",
         "summary": "No quick filter pending selected when navigating to pending payments through context action",
         "details": "When navigating to Pending payments on a context action it will bring you to the payment list banklet with the pending quick filter selected. before the pending quick filter wasn't selected."
       },
       {
+        "compo": "AFP_PORTAL",
         "ref": "AFP-44245",
         "cat": "Story",
         "summary": "Ping endpoint should be moved to enable WAF config",
         "details": "Moved the session expire ping request, into a dedicated context /session/ping \r\nto allow defining a WAF mapping special for this path that doesn't refresh the session."
       },
       {
+        "compo": "AFP_PORTAL",
         "ref": "AFP-44535",
         "cat": "Story",
         "summary": "Greeting banklet - EDR private dashboard (implementation in core)",
         "details": "Greetings banklet offers the possibility to choose different formatting for the user's name"
       },
       {
+        "compo": "AFP_PRODSHOP",
         "ref": "AFP-45178",
         "cat": "Bug",
         "summary": "\"New portfolio\" option in Product Shop New Account Request cannot be disabled",
         "details": "Option \"New Portfolio\" can now be hidden on the request account in product-shop."
       },
       {
+        "compo": "AFP_PRODSHOP",
         "ref": "AFP-45177",
         "cat": "Bug",
         "summary": "Product shop - new account request details shows wrong credit interest",
         "details": "When a new account is requested in product shop, the correct “credit interest” is shown."
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-42303",
         "cat": "Story",
         "summary": "Display \"Withdrawal Period\" on Account Details",
         "details": "Service: \r\nAdded withdrawal period in Asset Details \r\nBanklet: \r\nWealth Position Details (@avaloq/web-banking-wealth-position-detail-banklet): Changed the Account Conditions Section to Withdrawal Conditions Section and included the Withdrawal Period information."
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-42496",
         "cat": "Story",
         "summary": "Top positions banklet (most valuable)",
         "details": "Added a new banklet (web-banking-wealth-position-top-securities-banklet) to display the top 5 performing securities."
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-41408",
         "cat": "Story",
         "summary": "Config excluded portfolios from reporting banklets by classes",
         "details": "Wealth banklets were updated to offer a configuration callback for filtering the available portfolios. In addition, a helper method (getPortfolioIpsAvailablePredicateByClassificationsConfig) is offered to generate a config callback that will filter portfolios by the list of ACP classifications portfolios have to include/excluded. \r\n\r\nAffected banklets: \r\n- @avaloq/web-banking-document-safe-order-report-banklet \r\n- @avaloq/web-banking-product-shop-request-account-banklet \r\n- @avaloq/web-banking-wealth-portfolio-selector-banklet \r\n- @avaloq/web-banking-wealth-position-list-banklet"
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-42212",
         "cat": "Story",
         "summary": "Chart data is displayed in CHF instead of the account currency balance forecast banklet",
         "details": "Fixed the Balance forecast banklet (@avaloq/web-banking-wealth-balance-forecast-overview-banklet) to display the chart with the correct currency ISO code."
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-44752",
         "cat": "Story",
         "summary": "Event emitter for global filter change",
         "details": "Global Filter selection is emitted to a stream accessible by a public injection token: GLOBAL_FILTER_STREAM."
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-35475",
         "cat": "Story",
         "summary": "Show full name of assets on position list column",
         "details": "Added config for new column nameLong. \r\nConfig when on it displays the new column in desktop view, mobile view, and exports on @avaloq/web-banking-wealth-position-list-banklet."
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-44597",
         "cat": "Story",
         "summary": "[LUKB-12616]: PEG 629: Portfolioübersicht: wealth-portfolio-list-table ist nicht responsive",
         "details": "Portfolio list table banklet (@avaloq/web-banking-wealth-portfolio-list-table-banklet) displays data in mobile view as cards. It also offers the possibility to specify different columns for mobile then desktop."
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-44838",
         "cat": "Story",
         "summary": "wealth-booking-details: Enhance NameFormatter for position name",
         "details": "Booking details displays the Money Account positions calculating the name with the money-account specific naming formatter. Other type of positions displays the name based on position generic formatter."
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-44919",
         "cat": "Story",
         "summary": "Add row click event",
         "details": "Added row/card click event for avq-web-banking-wealth-portfolio-list-table-banklet and \r\navq-web-banking-wealth-balance-forecast-overview-banklet. \r\n\r\nOn click, Portfolio table list banklet emits PORTFOLIO_DETAILS context action and Balance forecast emits 'SHOW_PAYMENT' or 'EDIT_PLANNED_BOOKING' context action, depending on the booking type."
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-44749",
         "cat": "Bug",
         "summary": "Add availableAmount column to position list",
         "details": "Added config for new column availableAmount. \r\nConfig when on it displays the new column in desktop view, mobile view, and exports on @avaloq/web-banking-wealth-position-list-banklet."
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-44842",
         "cat": "Bug",
         "summary": "Mobile: Asset allocation by asset class: chart description doesn't fit to the screen",
         "details": "Chart descriptions are now more compact"
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-44932",
         "cat": "Bug",
         "summary": "Banklet: Translation key reuse in Portfolio Analysis banklet prevents proper customization",
         "details": "wealth-portfolio-analysis-overview-banklet(@avaloq/web-banking-wealth-portfolio-analysis-overview-banklet): Added another translation key for the chart title."
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-42197",
         "cat": "Bug",
         "summary": "avq-amount field should be used in Balance forecast form",
         "details": "Amount field within of balance form will now properly render"
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-43114",
         "cat": "Bug",
         "summary": "Percentage formatting in Portfolio list table export",
         "details": "Portfolio table list exports correctly the TWRR in xls/csv."
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-44750",
         "cat": "Bug",
         "summary": "Blank line in address of corporate BP in position list",
         "details": "Wealth position detail: Fixed the displaying of the address of Business Partner where no empty row is displayed if first and last name is not available."
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-45014",
         "cat": "Bug",
         "summary": "Porfolio name missing from Portfolio analysis PDF export fromClientData",
         "details": "The name of the portfolio will be shown on the PDF export from portfolio analysis banklet \"avq-web-banking-wealth-portfolio-analysis-overview-banklet\""
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-45089",
         "cat": "Bug",
         "summary": "Links from \"View all\" on dashboard account list navigates to wrong page",
         "details": "\"View all\" button of Accounts dashboard widget (@avq-web-banking-wealth-account-list-table-banklet) is navigating to correct destination ('/accounts'). \r\n\"View al\" button of Bookings dashboard widget (@web-banking-wealth-booking-recent-banklet) is removed, due to the widget showing several types of bookings, for which there is no corresponding banklet that can show the same information."
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-45267",
         "cat": "Bug",
         "summary": "Font size on portfolio performance overview page",
         "details": "Fixed font size and the large space on the top page of Portfolio overview"
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-44565",
         "cat": "Bug",
         "summary": "[SB3-523] Payment amount not consistent between Avaloq and E-banking",
         "details": "Wealth booking list: Fix the inconsistency of the credit/debit value shown between ACP/Smartclient and Web banking."
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-44596",
         "cat": "Bug",
         "summary": "[LUKB-12550]: PEG 629: Kontoauszug: Spalte \"Belastung\" ohne Minuszeichen (inkl. Export)",
         "details": "Wealth booking list (@avaloq/web-banking-wealth-booking-list-banklet): Remove the negative sign from the Debit value."
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-44630",
         "cat": "Bug",
         "summary": "Export to PDF is missing on Booking details banklet",
         "details": "Wealth booking detail: Add the pdf export button."
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-44938",
         "cat": "Bug",
         "summary": "Improve performance figure migration",
         "details": "Improve database migration performance of the performance figure table."
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-44948",
         "cat": "Bug",
         "summary": "Asset Allocation banklet should load all its dependecies",
         "details": "Fixed the data dependencies for Portfolio allocation charts banklet(avq-web-banking-wealth-portfolio-allocation-charts-banklet) so that it can be loaded stand alone and for all-portfolio use-case."
       },
       {
+        "compo": "AFP_REP_ORDER",
         "ref": "AFP-44803",
         "cat": "Bug",
         "summary": "Portfolio / BP is not preselected on report ordering, if navigating there from portfolio list",
         "details": "Added a new input (objectsFilter) in Order report banklet to filter displayed objects. Currently, the possible filters are only Portfolio. \r\n\r\nWith this implementation, Order report context action was updated and it will open the Report Ordering banklet displaying only reports available for a Portfolio and limited to the selected portfolio."
       },
       {
+        "compo": "AFP_REPL",
         "ref": "AFP-45324",
         "cat": "Task",
         "summary": "Adapter: Option to replicate closed users",
@@ -1545,6 +1798,7 @@
         "impact": "Use new task parameter \"Include closed users\" (i_incl_closed_user) in task_afs_upld (task ID 1694) if required."
       },
       {
+        "compo": "AFP_REPL, AFP_SECEVT",
         "ref": "AFP-45274",
         "cat": "Story",
         "summary": "Adapter: Exclude sectrx replication by container class",
@@ -1552,60 +1806,70 @@
         "impact": "To user the feature to exclude security transaction orders by container class, the item \"excl_cont_class_id_list\" of base parameter avq.afs can be set to a list of container classes. \r\nPlease note that already replicated orders are not affected by this option, they won't get deleted/de-replicated, neither when the base parameter is set or changed, nor when a container class changes."
       },
       {
+        "compo": "AFP_REPL",
         "ref": "AFP-44926",
         "cat": "Bug",
         "summary": "Adapter: Adaptions for change of code_invstr_prot_docm_status",
         "details": "Fix in replication of code table afs_code_inpr_docm_status: The source code table has been changed from code_invstr_prot_docm_status to code_invstr_prot_docm_state, as code_invstr_prot_docm_status has been replaced by code_invstr_prot_docm_state in ACP already with 5.1 (IDs have been preserved)."
       },
       {
+        "compo": "AFP_REPL",
         "ref": "AFP-45278",
         "cat": "Bug",
         "summary": "Adapter: Fix in parallelization of obj repl",
         "details": "Fix in initial person replication: In task_afs_upld (task ID 1694), there was a bug in the parallelization logic for person objects. In case that there are persons and OE objects to be replicated and the task is started with parallel degree > 1, it could happen that some of the chunks of person objects was not replicated. This has been fixed now."
       },
       {
+        "compo": "AFP_REPL",
         "ref": "AFP-45407",
         "cat": "Bug",
         "summary": "Adapter: Replace precondition for duplicate source cleanup with script",
         "details": "The \"unstable\" installation precondition \"3595044.CHECK_DUPL_SRC_DROP\" in AFS adapter has been replaced by a script which prepares the installer tables for the drop of duplicate source CODE_UI_APPL_POBJ_LOOKUP.AFS (CODE TAB)."
       },
       {
+        "compo": "AFP_STYLE",
         "ref": "AFP-45091",
         "cat": "Bug",
         "summary": "Coloured styling on kebab menu",
         "details": "Context menu icon is no longer depending on the primary template color, it is always black."
       },
       {
+        "compo": "AFP_STYLE",
         "ref": "AFP-45092",
         "cat": "Bug",
         "summary": "Vertical bar | should be removed from split buttons",
         "details": "Vertical lines ('|') are removed from split buttons throughout the app."
       },
       {
+        "compo": "AFP_TOOLS",
         "ref": "AFP-45355",
         "cat": "Story",
         "summary": "Compile libraries with Ivy compilation mode 'partial'",
         "details": "Change compilation mode of all the libraries to 'partial'"
       },
       {
+        "compo": "AFP_TOOLS",
         "ref": "AFP-44712",
         "cat": "Story",
         "summary": "Projection of page content from banklet to app-shell for form stepper Next button etc teleport. Sticky panel",
         "details": "A new 'App-shell outlet' framework is now available in '@avaloq/web-banking-banklet-sdk'. \r\n\r\nSome banklets include UI content that can be projected outside of the boundaries of the HTML element of the banklet. \r\nApp-shell outlets allow application developers create a container in their app-shell inside which this content should be rendered. \r\n\r\nIf no app-shell outlet is defined by the application, banklet will render projectable content within the boundaries of their HTML element. \r\n\r\nAn instances of app-shell outlets is fixed to a content category. The first category defined in this framework is 'formNavigation'. \r\n\r\nEvery banklet using a multi-step is now capable of projecting the stepper controls (cancel, back, next and submit buttons) via this app-shell outlet. \r\n\r\nFor banks using '@avalo/web-banking-portal', the portal layout now renders all content projected via the 'formNavigation' app-shell outlet in a footer fixed to the bottom of the viewport. \r\n\r\nA detailed description for application developers on how to use app-shell outlets will be soon available in the 'Recipes' section of the web-banking UI documentation."
       },
       {
+        "compo": "AFP_TOOLS",
         "ref": "AFP-45019",
         "cat": "Story",
         "summary": "Update ui-sdk to 3.4.0",
         "details": "The peer dependencies on UI-SDK libraries have been updated to version ^3.4.0"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-45224",
         "cat": "Story",
         "summary": "Customer ticket: Reintroduce customization item to select position for group order",
         "details": "Reintroduced group order customization item to select the position based on the trading currency"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-45256",
         "cat": "Story",
         "summary": "Customer ticket: Disable \"Trading Place\" drop-down field for SELL orders only",
@@ -1613,24 +1877,28 @@
         "impact": "\"tradingPlaceReadOnly\" accept 2 value types: \r\n- boolean: if true the trading place will be always readonly no matter what the order type is (if false the trading place will be editable); \r\n- AvqTradingAction[]: it can accept 'buy' and / or 'sell'. Depending on the values added to the array, the trading place will be readonly based on the trading actions."
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-42527",
         "cat": "Story",
         "summary": "Customer ticket: Design Scroll to the bottom of the page?",
         "details": "A new 'App-shell outlet' framework is now available in '@avaloq/web-banking-banklet-sdk'. \r\n\r\nSome banklets include UI content that can be projected outside of the boundaries of the HTML element of the banklet. \r\nApp-shell outlets allow application developers create a container in their app-shell inside which this content should be rendered. \r\n\r\nIf no app-shell outlet is defined by the application, banklet will render projectable content within the boundaries of their HTML element. \r\n\r\nAn instances of app-shell outlets is fixed to a content category. The first category defined in this framework is 'formNavigation'. \r\n\r\nEvery banklet using a multi-step is now capable of projecting the stepper controls (cancel, back, next and submit buttons) via this app-shell outlet. \r\n\r\nFor banks using '@avalo/web-banking-portal', the portal layout now renders all content projected via the 'formNavigation' app-shell outlet in a footer fixed to the bottom of the viewport. \r\n\r\nA detailed description for application developers on how to use app-shell outlets will be soon available in the 'Recipes' section of the web-banking UI documentation."
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-44821",
         "cat": "Story",
         "summary": "No quantity modification of money-driven orders allowed",
         "details": "In case of a modification request: Amount field disabled when order is not quantity driven."
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-45238",
         "cat": "Story",
         "summary": "Customer ticket: Multi-line dropdown in trading forms to show full text of account",
         "details": "The whole formatted name of an account is now visible when selecting it in a form drop-down."
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-43838",
         "cat": "Story",
         "summary": "IMPL - Different Adaptations on Group Order Transaction Table UI",
@@ -1638,6 +1906,7 @@
         "impact": "new config added for web-banking-trading-collective-entry-banklet and web-banking-trading-collective-update-banklet: \r\n\r\ntransactionTableColumns: [ \r\n['portfolio', 'position', 'overrides', 'errors'], \r\n'moneyAccount', \r\n['quantity', 'totalValue'], \r\n'removeAction', \r\n],"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-44241",
         "cat": "Story",
         "summary": "IMPL - Add MiFID II disclaimer",
@@ -1645,42 +1914,49 @@
         "impact": "New configuration added in trading-single-entry-banklet.config.default.ts: \r\n\r\n- showConfirmationDisclaimer: true / false \r\n\r\nNew translation added for customize the disclaimer text: \r\n\r\n- web-banking-trading-single-entry-banklet.trading-form.step.confirmation.general-disclaimer"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-44426",
         "cat": "Story",
         "summary": "IMPL - Stepper Info for Single Order",
         "details": "Implemented stepper info for single order trading"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-44428",
         "cat": "Story",
         "summary": "IMPL - Stepper Info for Group Order",
         "details": "Implemented stepper info for group order trading"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-44451",
         "cat": "Story",
         "summary": "IMPL - Success Notification for Single Order",
         "details": "Success Notification introduced for single order"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-44829",
         "cat": "Story",
         "summary": "Customer ticket: Add search feature to Broker list drop-down",
         "details": "Added search feature inside broker list dropdown for advanced already traded."
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-44870",
         "cat": "Story",
         "summary": "Customer ticket: Fix breaking change",
         "details": "Changed endpoint for retrieving the group orders in group overview from /grouporders to /orders"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-44871",
         "cat": "Story",
         "summary": "Customer ticket: Instrument lookup on mobile",
         "details": "removed fixed height from instrument cards in mobile view."
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-45056",
         "cat": "Story",
         "summary": "UI: smal adjustments group entry transaction table",
@@ -1688,48 +1964,56 @@
         "impact": "new config added for web-banking-trading-collective-entry-banklet and web-banking-trading-collective-update-banklet: \r\n\r\ntransactionTableColumns: [ \r\n['portfolio', 'position', 'overrides', 'errors'], \r\n'moneyAccount', \r\n['quantity', 'totalValue'], \r\n'removeAction', \r\n],"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-44954",
         "cat": "Bug",
         "summary": "All Constellation Test: Creation of trading order generates error",
         "details": "It is possible to create single orders with correct request send to the server."
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-45041",
         "cat": "Bug",
         "summary": "Customer ticket: UI: remove default config from apps",
         "details": "Fixed a bug that would prevent the user from submitting the order because the \"Buy/Sell\" button was disabled"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-45349",
         "cat": "Bug",
         "summary": "UI: infinite loader when creating a new single order",
         "details": "It is possible to create single orders with correct request send to the server."
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-38875",
         "cat": "Bug",
         "summary": "Customer ticket: Information from previous steps needs to be displayed",
         "details": "Introduced stepper info for single, group and forex trading"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-45094",
         "cat": "Bug",
         "summary": "Customer ticket - Card height of recent trade radio buttons should be consistent.",
         "details": "The instrument card height now remains with the same height, even when a key is missing"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-45211",
         "cat": "Bug",
         "summary": "Customer ticket: Complete position name needs to be displayed",
         "details": "Now using the \"nameLong\" for the position name"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-45262",
         "cat": "Bug",
         "summary": "Customer ticket: Align \"Limit Price\" to \"Trigger Price\"",
         "details": "The behaviour of the trigger price is now aligned with the one of the limit price"
       },
       {
+        "compo": "AFP_USER_SETTINGS",
         "ref": "AFP-45040",
         "cat": "Story",
         "summary": "Config excluded portfolios from user-settings banklets",
@@ -1741,228 +2025,266 @@
     "version": "2022.1.2",
     "items": [
       {
+        "compo": "AFP_BOOK",
         "ref": "AFP-38231",
         "cat": "Bug",
         "summary": "Link to Payment Order from booking",
         "details": "On Booking list banklet (web-banking-wealth-booking-list-banklet), 'NAVIGATE_TO_BOOKING_DETAILS' context action was extended to contain information about the bookingOrder. \r\n\r\nBooking details banklet (web-banking-wealth-booking-detail-banklet) displays now a link to Order Details for the case of Payment or Trading Booking. \r\n"
       },
       {
+        "compo": "AFP_COMMON, AFP_PAY",
         "ref": "AFP-42380",
         "cat": "Bug",
         "summary": "Stepper hide breakpoints wrong size",
         "details": "Fixed the stepper hider so that now the stepper uses the overridden breakpoints to show or hide."
       },
       {
+        "compo": "AFP_COMMON, AFP_PAY",
         "ref": "AFP-43467",
         "cat": "Bug",
         "summary": "Date field auto-completes date starting 0 in payment form",
         "details": "Fix issue that resulted in reverting User's changes of date form fields (in payment, template and account transfer forms) when new value started with '0' or a non-digit character."
       },
       {
+        "compo": "AFP_FILE_XFER, AFP_PAY",
         "ref": "AFP-45304",
         "cat": "Bug",
         "summary": "Date cannot be displayed in data-transfer-download-overview-banklet",
         "details": "Date in data-transfer can be displayed when returned as ISO string (@avaloq/web-banking-common, @avaloq/web-banking-data-transfer-download)"
       },
       {
+        "compo": "AFP_FX",
         "ref": "AFP-45345",
         "cat": "Story",
         "summary": "Customer ticket - IMPL - FX read-only as transaction type/functional access code",
         "details": "A new access right was introduced in ACP to specify if a portfolio has FX Readonly rights. \r\nThe new access right can be assigned from Adminstration Tool."
       },
       {
+        "compo": "AFP_FX",
         "ref": "AFP-44455",
         "cat": "Story",
         "summary": "IMPL - Success Notification for Foreign Exchange Order",
         "details": "Success Notification introduced for foreign exchange order"
       },
       {
+        "compo": "AFP_FX",
         "ref": "AFP-45123",
         "cat": "Story",
         "summary": "IMPL - Success Notification for CSV File Upload",
         "details": "Introduce the success notification subwindow for CSV file upload"
       },
       {
+        "compo": "AFP_FX",
         "ref": "AFP-45597",
         "cat": "Bug",
         "summary": "Customer ticket: Maturity Date not enabled when debit account is not selected",
         "details": "Fixed a bug where Maturity Date was not enabled when the debit account is not selected"
       },
       {
+        "compo": "AFP_FX",
         "ref": "AFP-45667",
         "cat": "Bug",
         "summary": "Customer ticket - No Calculation of the Xrate when no quantity is entered",
         "details": "In the Forex entry banklet, only when the user enters the amount, the exchange rate is calculated."
       },
       {
+        "compo": "AFP_NTFCN",
         "ref": "AFP-45213",
         "cat": "Story",
         "summary": "Envelope icon should be removed from Notification overview",
         "details": "- Envelope icons in ('@avaloq/web-banking-self-service-notifications-inbox-banklet') are removed from notification overview rows. \r\n- Bulk action envelope icon is replaced with more intuitive \"Mark as read\" or \"Mark as unread\" button in ('@avaloq/web-banking-self-service-notifications-inbox-banklet')."
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-45853",
         "cat": "Bug",
         "summary": "Not possible to create a SEPA payment",
         "details": "Fixed bug that didn't allow to create new payments when there was no suggestion based on an already used beneficiary."
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-41167",
         "cat": "Bug",
         "summary": "SEPA payment doesn't correctly require beneficiary1OrParty",
         "details": "Sepa payments form are based also on beneficiary1OrParty server configuration (@avaloq/web-banking-payment-form)"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-43470",
         "cat": "Bug",
         "summary": "Show LCR information when MACC has close_date",
         "details": "LCR withdrawal message shown where default payment MACC is closed (@avaloq/web-banking-payment-form)"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-44792",
         "cat": "Bug",
         "summary": "Form validation in payment assistant is misleading",
         "details": "Improved payment assistant validation (@avaloq/web-banking-payment-form)"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-45096",
         "cat": "Bug",
         "summary": "Cancel and form stepper buttons inconsistent in Payment Group form",
         "details": "Cancel and form stepper button in payment group form made consistent with the overall application (@avaloq/web-banking-payment-overview-group-banklet)"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-45146",
         "cat": "Bug",
         "summary": "\"Unconfirmed actions\" filter to be removed through banklet configuration",
         "details": "Filter modal content can be customized and bulk actions to be used can be set in each banklet (@avaloq/web-banking-banklet-api, @avaloq/web-banking-payment-overview, @avaloq/web-banking-payment-overview-collective-banklet, @avaloq/web-banking-payment-overview-file-banklet, @avaloq/web-banking-payment-overview-group-banklet, @avaloq/web-banking-payment-overview-recurring-banklet, @avaloq/web-banking-payment-overview-single-banklet, @avaloq/web-banking-payment-recent-single-banklet)"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-45218",
         "cat": "Bug",
         "summary": "beneficiary1OrParty without country not submitted for validation for SEPA payment form",
         "details": "Sepa payments form are based also on beneficiary1OrParty server configuration (@avaloq/web-banking-payment-form)"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-45429",
         "cat": "Bug",
         "summary": "Name in Assistant drop-down is not beneficiary name",
         "details": "The assistant drop down now displays the actual beneficiary name of previously executed payments and templates in the suggestion instead of the displaying the search text."
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-45074",
         "cat": "Bug",
         "summary": "Debit account detail fields in Confirm step of payment form",
         "details": "Add account owner name in confirmation step (@avaloq/web-banking-payment-core, @avaloq/web-banking-payment-form)"
       },
       {
+        "compo": "AFP_PAY, AFP_REPL",
         "ref": "AFP-45553",
         "cat": "Bug",
         "summary": "Adapter: Support QR bill in payment migr API",
         "details": "Payment migration API now also supports QR bill payments."
       },
       {
+        "compo": "AFP_PORTAL",
         "ref": "AFP-45633",
         "cat": "Story",
         "summary": "Portal - quick links should be accessible",
         "details": "Accessibility improvements on the quick-link buttons typically used in several pages of @avaloq/web-banking-portal (most frequently in dashboards). \r\nThese buttons are now focusable and they can be reached by keyboard navigation."
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-45158",
         "cat": "Story",
         "summary": "Maturity analysis: display position aggregated",
         "details": "The maturity chart now aggregates amounts with the same currency and date"
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-44762",
         "cat": "Story",
         "summary": "Custom context action cannot be handled in the banklet component instance",
         "details": "- Custom context actions: new property 'bankletContextId' available in the metadata passed to the resolvers of custom context actions implemented by application developers on the application configuration. The new property can be found in type 'AvqCustomContextActionBankletContext' of @avaloq/web-banking-banklet-api. Banklets that adopts the banklet-context pattern now pass the banklet-context Id defined by the application developer, so that these custom context actions can be further personalised (e.g. only visible for some banklet-context or different behaviour). \r\nFor more information about custom context actions, please check the related article in the 'recipes' section of the web-banking UI documentation. \r\n\r\n- Portfolio and position context actions can now be overridden in banklets. \r\nThese context actions are defined centrally in @avaloq/web-banking-wealth-core/config. With this change application developers can override these context actions for specific banklet types / instances. \r\nMultiple banklet configurations now extend the interfaces 'AvqConfigWithPortfolioContextActions' and 'AvqConfigWithPositionContextActions' from @avaloq/web-banking-banklet-api. \r\nWhen a banklet configuration specify a value with context actions for the property defined by these interfaces, the banklet instances consuming that configuration will use that list instead of the list defined in @avaloq/web-banking-wealth-core. This include both default and custom context actions. \r\nCurrently the following banklets accept passing overrides: \r\n- @avaloq/web-banking-wealth-account-cards-banklet \r\n- @avaloq/web-banking-wealth-account-list-banklet \r\n- @avaloq/web-banking-wealth-portfolio-list-table-banklet \r\n- @avaloq/web-banking-wealth-position-detail-banklet \r\n- @avaloq/web-banking-wealth-position-list-banklet"
       },
       {
+        "compo": "AFP_REP_ORDER",
         "ref": "AFP-45577",
         "cat": "Bug",
         "summary": "document safe Order subscriptions page redirecting to document safe Order reports",
         "details": "Fixed a bug in Document Safe - Order Report (web-banking-document-safe-order-report-banklet) so that subscription-type of reports are displayed when user wants to order a subscription."
       },
       {
+        "compo": "AFP_REPKIT",
         "ref": "AFP-44049",
         "cat": "Story",
         "summary": "Export of Hierarchical Tables in RepKit",
         "details": "Adds export config options to show / hide export button in hierarchical tailored reports. AvqRepkitHierarchicalTableDisplayConfig now contains: \r\nhideButton: false, \r\nfileNameKey: ''"
       },
       {
+        "compo": "AFP_REPL",
         "ref": "AFP-45512",
         "cat": "Bug",
         "summary": "Adapter: Adapt \"gather stats\" for IBANKING",
         "details": "The possibility to trigger the \"gather stats\" script for IBANKING schema ACP (as part of or after the initial replication) has been fixed, after it was broken since the introduction of the containerized backend. \r\nIt can be triggered by the script report TASK_AFS_EXTL_SYS.AFS_INSTALL_GATHER_STATS"
       },
       {
+        "compo": "AFP_REPL",
         "ref": "AFP-45855",
         "cat": "Bug",
         "summary": "Adapter: Registration of trusted WFA callers",
         "details": "Registration of trusted caller of WF actions: Starting with ACP 4.10, there is an additional security check which assures that the user is eligible to execute the WF action. This also affects AFP users which perform actions that trigger the execution of WF actions in ACP. \"Trusted callers\" of WF actions can be registered in CODE_SEC_WFA_TRUST_CALLER, to avoid the necessity of setting up all required WFA rights on the users. \"Trusted callers\" are programs which execute WF actions that cannot be overruled by the session user (e.g. AFP user), but are given by the system and therefore do not need to be explicitly granted to the user, which simplifies the WFA security administration. \r\nWith this release, we have registered all relevant sources in which WF actions are triggered by AFP users."
       },
       {
+        "compo": "AFP_TOOLS",
         "ref": "AFP-45467",
         "cat": "Story",
         "summary": "Update ui-sdk to 3.7.1 on develop/6.x",
         "details": "The peer dependencies on UI-SDK libraries have been updated to version ^3.4.0"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-45093",
         "cat": "Story",
         "summary": "IMPL - Provide position(s) for Group Order",
         "details": "As soon as the portfolio, asset or position is selected, the system automatically forwards the user to the next step."
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-45488",
         "cat": "Story",
         "summary": "IMPL - Customer ticket: Preselect portfolio filter if Client filter is set",
         "details": "The portfolio filter is now pre-selected if the client filter is already set \r\n"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-44453",
         "cat": "Story",
         "summary": "IMPL - Success Notification for Group Order",
         "details": "Success Notification introduced for group order"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-45422",
         "cat": "Bug",
         "summary": "Customer ticket: Add property ISIN to TAN text in Transaction Signing",
         "details": "Reintroduced the behaviour of the trade/minimum trade unit input/interpretation as in 2.4.47.x"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-45538",
         "cat": "Bug",
         "summary": "Customer ticket - Trading collective entry banklet breaks on load",
         "details": "Fixed a bug where the portfolios were not loaded when the server property of the default money account calculation was enabled"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-45690",
         "cat": "Bug",
         "summary": "Customer ticket: \"New Trade\" should be disabled without FX trading rights",
         "details": "fixed a bug where the web banking user was able to click \"New Trade\" in the Forex banklet if he had no trading rights"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-45608",
         "cat": "Bug",
         "summary": "Customer ticket: Currency instead of \"%\" during order modification",
         "details": "Fixed a bug where the Limit and the Trigger price were displayed in currency instead of \"%\" when modifying a bond order"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-45623",
         "cat": "Bug",
         "summary": "Customer ticket: No preselected portfolio",
         "details": "We have fixed a bug where the portfolio were not preselected and the system could not proceed to the second step"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-45642",
         "cat": "Bug",
         "summary": "Customer ticket: Reduce space to subsection in single details view",
         "details": "We have removed the space between subsections in the single details view to make it display more concise"
       },
       {
+        "compo": "AFP_TRX_SIGN",
         "ref": "AFP-45163",
         "cat": "Bug",
         "summary": "AFP Trx Signing: MODIFY generates SUBMIT message",
@@ -1975,78 +2297,91 @@
     "version": "2022.1.3",
     "items": [
       {
+        "compo": "AFP_BOOK",
         "ref": "AFP-45255",
         "cat": "Bug",
         "summary": "bookingPaymentOrder should contain the Order id",
         "details": "modified the assigned value to id in BookingPaymentOrderPTO to the id in IBANKING.PAYMENT_ORDER"
       },
       {
+        "compo": "AFP_COLLAB, AFP_FILE_XFER, AFP_REP",
         "ref": "AFP-45346",
         "cat": "Story",
         "summary": "Favorite filters missing from some banklets advanced filter tabs",
         "details": "Ability to save favourites filters is now available in the following banklets: \r\n\r\nweb-banking-wealth-portfolio-list-table-banklet \r\nweb-banking-data-transfer-upload-overview-banklet \r\nweb-banking-self-service-collaboration-overview-banklet"
       },
       {
+        "compo": "AFP_COMMON",
         "ref": "AFP-45099",
         "cat": "Story",
         "summary": "Exact amount in pie chart legends, not rounded with K, M, B",
         "details": "Application can provide a custom formatter for currency compact amounts depending on the locale. The output of the formatter can be any string, which allows the application to decide on all aspects of the format such as: \r\n- decimal rounding depending on the locale, should values be rounded or not, separators, characters and symbols used, etc. \r\n\r\nIn order to provide custom formatters for one or multiple locales, use method `provideCurrencyCompactAmountFormatters` which produces an Angular provider."
       },
       {
+        "compo": "AFP_COMMON",
         "ref": "AFP-45801",
         "cat": "Story",
         "summary": "Update moment dep to 2.29.2 to fix high vuln",
         "details": "Update 'moment' dependency to latest 2.29.2 version"
       },
       {
+        "compo": "AFP_COMMON",
         "ref": "AFP-45730",
         "cat": "Bug",
         "summary": "avaloq-icons-mixins.scss should be exported from npm packages",
         "details": "('@avaloq/web-banking') is now exporting avaloq-icons-mixins.scss file. You can import it using: \r\n@use '~@avaloq/web-banking/icons/avaloq-icons-mixin';"
       },
       {
+        "compo": "AFP_DOCU_SAFE",
         "ref": "AFP-45194",
         "cat": "Story",
         "summary": "link document safe and bookings",
         "details": "Added bookingId and BookingText in the documentList for advice documents"
       },
       {
+        "compo": "AFP_FILE_XFER, AFP_REPL",
         "ref": "AFP-45993",
         "cat": "Bug",
         "summary": "Adapter: Fix in afs_rep_exec_util due to 5.3 compiler change",
         "details": "Fixed a bug in the file download functionality, which was caused by a wrongly used \"id obj\" parameter together with an Avaloq Script compiler change on ACP 5.3 and higher. The impact of the bug was that the file download request could fail in ACP with an \"ORA-01426: numeric overflow\" exception."
       },
       {
+        "compo": "AFP_FILE_XFER",
         "ref": "AFP-44823",
         "cat": "Bug",
         "summary": "Extend date range filter for data-download and data-upload banklets",
         "details": "Added new date range filters i.e 'This week', 'This month', 'This year', avq-web-banking-data-transfer-upload-overview-banklet and avq-web-banking-data-transfer-download-request-banklet."
       },
       {
+        "compo": "AFP_FILE_XFER",
         "ref": "AFP-44853",
         "cat": "Bug",
         "summary": "Delete context action missing for faulty payments in data transfer banklet",
         "details": "Added new 'Delete' context action for payments that are faulty, so that the user is able to delete faulty payments in their uploaded file and the file can be processed."
       },
       {
+        "compo": "AFP_FX, AFP_REPL",
         "ref": "AFP-46057",
         "cat": "Bug",
         "summary": "Adapter: Fix display-xrate calc in fxtr repl",
         "details": "Fixed a bug in the FXTR order replication: The \"xrate_display\" was sometimes replicated wrongly (currencies interchanged). This has been fixed."
       },
       {
+        "compo": "AFP_FX",
         "ref": "AFP-45987",
         "cat": "Bug",
         "summary": "Customer ticket: When just one portfolio available it is impossible to create a forex order",
         "details": "fixed a bug where it was not possible to proceed with the forex order when just one portfolio is available"
       },
       {
+        "compo": "AFP_GRP_MGR",
         "ref": "AFP-46025",
         "cat": "Bug",
         "summary": "global-filter-selection-banklet does not show portfolios",
         "details": "Fixed a bug in web-banking-wealth-global-filter-selection-banklet preventing the display of the portfolio list."
       },
       {
+        "compo": "AFP_INFRA",
         "ref": "AFP-45985",
         "cat": "Bug",
         "summary": "Vuln Issue - esapi",
@@ -2054,102 +2389,119 @@
         "impact": "While upgrading the esapi library, the logger class changed from ESAPI.Logger=org.owasp.esapi.reference.JavaLogFactory to ESAPI.Logger=org.owasp.esapi.logging.slf4j.Slf4JLogFactory, so if you have modified the default ESAPI.properties provided by Avaloq, please adjust the logger."
       },
       {
+        "compo": "AFP_INVEST_PROP",
         "ref": "AFP-45719",
         "cat": "Story",
         "summary": "IMPL - Status Icon Size",
         "details": "The status icon size in the investment proposal overview has been aligned"
       },
       {
+        "compo": "AFP_INVEST_PROP",
         "ref": "AFP-45722",
         "cat": "Story",
         "summary": "IMPL - Add \"Expand all\" to \"Final composition\" tab",
         "details": "The \"Expand all\" feature has been added to the tab \"Final Composition\""
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-45062",
         "cat": "Story",
         "summary": "Value date in payment Confirm step",
         "details": "Show value date in confirmation step (@avaloq/web-banking-payment-core, @avaloq/web-banking-payment-form)"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-45439",
         "cat": "Bug",
         "summary": "Toast feedback to the user after requesting Direct Debit Mandate cancellation",
         "details": "In banklet @avaloq/web-banking-payment-direct-debit-mandates-banklet. When the user request to cancel a mandate, the banklet now provides feedback regarding whether the request has been recorded successfully or not. If it was not successful and the server provided a reason, the banklet will also show the user messages from the back-end response, e.g. if the operation is not allowed for administrator users logged on behalf."
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-43162",
         "cat": "Bug",
         "summary": "Object formatters do not show the configured values throughout payment banklets",
         "details": "Multiple payment related banklets were not displaying the currency or any amount with currency when showing payment money accounts. This has now been fixed."
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-45374",
         "cat": "Bug",
         "summary": "Missing xrate information for domestic payments",
         "details": "Show exchange rate info in payment and account transfer details (@avaloq/web-banking-common, @avaloq/web-banking-payment-core)"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-45551",
         "cat": "Bug",
         "summary": "Currency not preselected when debit account is set as default in user settings",
         "details": "Preselect currency when debit macc is default one (@avaloq/web-banking-payment-form)"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-45849",
         "cat": "Bug",
         "summary": "Missing xrate information for payments/account transfer detail export",
         "details": "Show xrate information in exported files (@avaloq/web-banking-payment-core)"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-45775",
         "cat": "Bug",
         "summary": "Display legacy address information in confirmation step for SEPA payments",
         "details": "There was a problem for sepa payments that had beneficiary1...beneficiary4 format. This information was not displayed when copying and reaching the confirmation step in payment form. With this fix, the beneficiary data is displayed in the confirmation."
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-45848",
         "cat": "Bug",
         "summary": "Missing Error Message after failed move of a Payment Template without Debit MACC from Detail page",
         "details": "Show error message returned from backendin template detail when it has no debit macc (@avaloq/web-banking-payment-template-details-actions-banklet)"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-45984",
         "cat": "Bug",
         "summary": "Reinforce modal filters banklet configuration",
         "details": "Improved payment overview banklets configuration to use new properties for filter modal and bulk actions (@avaloq/web-banking-payment-overview-collective-banklet, @avaloq/web-banking-payment-overview-file-banklet, @avaloq/web-banking-payment-overview-group-banklet, @avaloq/web-banking-payment-overview-recurring-banklet, @avaloq/web-banking-payment-overview-single-banklet)"
       },
       {
+        "compo": "AFP_PORTAL",
         "ref": "AFP-41718",
         "cat": "Story",
         "summary": "Language specified on URL parameter should be used if user setting not defined",
         "details": "For applications consuming 'getWebBankingI18nConfiguration()' from '@avaloq/web-banking-banklet-sdk'. A new property 'externalLocaleId' is added to 'WebBankingCommonLocaleConfig'. \r\n\r\nThe logic in 'getWebBankingI18nConfiguration()' determines the locale Id to use from the 'preferred locale' user setting. \r\n\r\nWith 'externalLocaleId', application developers can now define an external source (e.g. URL, cookie, REST end-point) where from to fetch the locale Id to use in case the user settings does not specify a preferred locale. \r\n\r\nIf the user setting did not specify a preferred locale. Nor it is possible to retrieve a locale from the external source. Then 'getWebBankingI18nConfiguration()' will fallback to the hardcoded 'defaultLocaleId' in 'WebBankingCommonLocaleConfig'."
       },
       {
+        "compo": "AFP_PORTAL",
         "ref": "AFP-45744",
         "cat": "Story",
         "summary": "Language change for session without user settings for login on behalf",
         "details": "For applications consuming 'getWebBankingI18nConfiguration()' from '@avaloq/web-banking-banklet-sdk'. A new property 'activeLocaleUpdateHook' is added to 'WebBankingCommonLocaleConfig'. \r\n\r\nWhenever the user changes the active locale in a banklet, web-banking will invoke the method referenced by 'activeLocaleUpdateHook'. This let application developers react to changes to the active locale. For example, to update the source used in the 'externalLocaleId' property. \r\n\r\nBesides, when the user is a bank-employee logged on behalf of the bank-client, 'getWebBankingI18nConfiguration()' will ignore the user-settings at the time of determining the active locale. Thus being 'externalLocaleId' the primary source for the active locale. \r\n\r\nThese two changes allow application developers to setup their application to support bank-employees changing the active locale via the banklet '@avaloq/web-banking-self-service-locale-selector-banklet'. \r\nTo achieve it, application developers will have to provide logic for both the 'externalLocaleId' and 'activeLocaleUpdateHook' properties of 'WebBankingCommonLocaleConfig'."
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-42683",
         "cat": "Story",
         "summary": "Position List does not automatically update",
         "details": "The Wealth Position List banklet (web-banking-wealth-position-list-banklet) fetches the list of position from the backend each time is open to insure latest data is presented."
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-42813",
         "cat": "Bug",
         "summary": "Position List Store shared by banklet instances, breaking assetAllocationSelection configuration",
         "details": "The position list banklet now supports the banklet context feature allowing it to restore its previous UI context when it is reinstated; typically used after navigating back to it. \r\n\r\nIncluded in the UI context that is saved and restored (the controls for some of these options are only visible if enabled by configuration): \r\n\r\n* asset allocation tree \r\n* asset allocation level \r\n* grouping \r\n* portfolio \r\n* business partner \r\n\r\nNot included in the UI context that is saved and restored: \r\n\r\n* reporting currency; this is currently kept in sync across banklets, there is a separate issue logged for that \r\n* the expanded rows in the hierarchical table; the current API of the table \r\nprovided in the UI-SDK does not support this and is being extended to make this feature possible in the position list"
       },
       {
+        "compo": "AFP_REP_ORDER, AFP_REPL",
         "ref": "AFP-45991",
         "cat": "Bug",
         "summary": "Adapter: Fix in bbs_repord_in",
         "details": "Fixed a bug in BBS_REPORD_IN (SCRIPT PACKAGE) which could lead to an error in the handling of report ordering requests, in case that not all WFAs from code_bbs_wfa.docm$repord are implemented."
       },
       {
+        "compo": "AFP_REPL",
         "ref": "AFP-46116",
         "cat": "Bug",
         "summary": "Adapter: Provide param exit for card repl filter",
@@ -2157,36 +2509,42 @@
         "impact": "If required, set the item \"repl_card_sub_type_list\" of base parameter \"repl_card_sub_type_list\" to a list of card sub types (code_card_sub_type)."
       },
       {
+        "compo": "AFP_REPL",
         "ref": "AFP-46147",
         "cat": "Bug",
         "summary": "Adapter: Stabilize execution plan of bu_id migration",
         "details": "Only relevant for upgrades from AFP versions < 2.4.63: The performance of AFS adapter migration \"3315745.ADD_BU_ID_ON_AFS_OBJ_TABLES\" has been improved and stabilized."
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-45788",
         "cat": "Bug",
         "summary": "Customer ticket: Position problem during order creation",
         "details": "Fixed a bug where the position was requested during a new purchase of a not yet used instrument"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-45836",
         "cat": "Bug",
         "summary": "Customer ticket: Forex entry - After neutralizing an Order it keeps saved in the state",
         "details": "Fixed a bug where the Neutralization of a Forex Order would keep being saved for the next, subsequent Forex Order"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-46073",
         "cat": "Bug",
         "summary": "Customer ticket: Modification Request does not work properly",
         "details": "fixed a bug in the modification process"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-45486",
         "cat": "Bug",
         "summary": "Customer ticket: Cost breakdown in PDF export to be corrected",
         "details": "Fixed a bug where the PDF export of the single details view would not display the \"Net\""
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-45503",
         "cat": "Bug",
         "summary": "Customer ticket: Add config for \"Billing\" section",
@@ -2194,42 +2552,49 @@
         "impact": "/** A list of available sections the banklet can display. \r\n* Sections will be shown in the order specified in this list. \r\n* Accepted values are: \r\n* 'billing': display all existing executions (Date/Execution quantity/Execution price/Transaction date/ Value date) \r\n* 'execution': displays all partially executed quantities with all the related information \r\n* (Quantity/Price/Gross Amount/Costs/Net Amount/ Exchange Rate/Total) \r\n* 'status': displays all workflow transitions of the order (Transitions (order status)/Timestamp) \r\n*/ \r\nsections: TradingSingleHistorySection[];"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-45668",
         "cat": "Bug",
         "summary": "Customer ticket: Fix small issue group order",
         "details": "We have solved the following points for the \"Group Order\" \r\n\r\nAllocation method input with validation error when switching between methods \r\nApply button should be disabled when no value is in the allocation input field \r\nTrigger dependencies call only when the user clicks next in the instrument step \r\nApply button on \"Sell All\" is not enabled \r\nPropagation of the allocation method quantity triggers calculation in the background when a different exchange rate is used \r\nNotification message \"web-banking-trading-collective-entry-banklet.maximum-portfolios.error.title\" is now translated \r\nOverlap of quantity label and real quantity \r\nWhen going back from the confirmation view, the table gets not re-setted anymore \r\nAfter removing all the transactions \"No portfolios have been added yet\" is displayed \r\nNotification \"xx transactions with no quantity have been removed\" is displayed when orders are not included (no entry of quantity) \r\nAllocation method \"Available amount portfolio\" no quantity is displayed when no money account is available or has a negative balance"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-45734",
         "cat": "Bug",
         "summary": "Customer ticket: IBAN should not be mandatory for securities trading",
         "details": "Securities trading orders can now be created even without IBAN of the used money accounts"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-45702",
         "cat": "Bug",
         "summary": "Export crashes after fixing AFP-45642",
         "details": "Fixed a bug in the export"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-45709",
         "cat": "Bug",
         "summary": "Trading - portal pages cannot depend on web-banking-common",
         "details": "Library web-banking-portal-trading contains several imports to web-banking-common. \r\nExcept for rare exceptions, portal pages should not include imports to @avaloq/web-banking-common. \r\nThese exceptions include testing-core-module for the test-id directive and jest related test utilities. \r\nThe other imports have been removed."
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-45725",
         "cat": "Bug",
         "summary": "Ambiguous labels in user settings Trading default accounts",
         "details": "Added a specific description for similar settings used for securities trading or forex trading"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-45781",
         "cat": "Bug",
         "summary": "Remove notification \"Request submitted\"",
         "details": "With the success notification pop-up window, the notification \"Request submitted\" on the bottom right-hand side is not needed anymore. It has now been removed"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-45967",
         "cat": "Bug",
         "summary": "Remove X Button from Trading form",
@@ -2241,36 +2606,42 @@
     "version": "2022.1.4",
     "items": [
       {
+        "compo": "AFP_COLLAB",
         "ref": "AFP-43398",
         "cat": "Story",
         "summary": "Different subject validation for creating different collaboration types configuration",
         "details": "Allow for additional configuration of collaboration issues subjects in 'web-banking-self-service-collaboration-issue-creation-banklet' per each specific issue type."
       },
       {
+        "compo": "AFP_COMMON",
         "ref": "AFP-43061",
         "cat": "Bug",
         "summary": "CSS style scoping, icon font. (not using shadow DOM)",
         "details": "New possibility to isolate the theme of @avaloq/web-banking to a subtree of your applications' DOM. \r\n\r\nThis is the continuation of an activity that started allowing to instantiate the web-banking theme (including the icons font) under a CSS selector instead of the root. \r\nWeb banking makes makes it now possible to add the theming of charts and overlays to the scoped subtree(s) of your DOM. \r\n\r\nA CSS class 'avq-web-banking-theme-scope' must be now used in order to define the scope for the theme. \r\nUse this class in your style sheets and DOM elements to define the boundaries of the theme. \r\nCharts and overlays will only react to this CSS class. \r\n\r\nBesides, for overlays, a new 'avqOverlayContainerProvider' has been added to @avaloq/web-banking-banklet-sdk that substitutes the original 'OverlayContainer' from Angular Material, so that every Angular Material overlay of the application applies the web-banking theme. \r\n\r\nThe web banking UI documentation site also includes a new recipe explaining in more detail how to define a scope for the web-banking theme. \r\n\r\nNotice that this technique does not relies on Shadow DOM, and there are currently no plans to make web-banking actively support Shadow DOM."
       },
       {
+        "compo": "AFP_DOCU_SAFE",
         "ref": "AFP-45860",
         "cat": "Bug",
         "summary": "Report Subscriptions Details banklet should hide the mailbox, if user has access to only one",
         "details": "The \"Report subscription details\" banklet now hides the \"mailbox\" section if the user has access only to one mailbox. The behavior is in line with what was already happening in the report subscription form."
       },
       {
+        "compo": "AFP_FILE_XFER",
         "ref": "AFP-44852",
         "cat": "Bug",
         "summary": "Progress information missing on uploaded files",
         "details": "The user can now see the number of payments that were already processed from an uploaded payment data transfer file."
       },
       {
+        "compo": "AFP_FILE_XFER",
         "ref": "AFP-45493",
         "cat": "Bug",
         "summary": "Quick Filters: Open, Processed and Failed are not working in Data Transfer",
         "details": "In the Data Transfer Upload Overview Banklet the filters on status did not have any effect. \r\nthese filters are now correctly processed so only the relevant order s will be displayed."
       },
       {
+        "compo": "AFP_FILE_XFER",
         "ref": "AFP-45747",
         "cat": "Bug",
         "summary": "AFP 3.x: Missing DataTransfer upload config",
@@ -2278,210 +2649,245 @@
         "impact": "If the Description field should be hidden then optionalFieldsToHide should be set to ['description']."
       },
       {
+        "compo": "AFP_FILE_XFER",
         "ref": "AFP-44698",
         "cat": "Bug",
         "summary": "Preselect file type in data transfer file upload",
         "details": "In the Data Transfer Upload banklet, if only one file type can be chosen then this file type will be auto-selected on loading the banklet."
       },
       {
+        "compo": "AFP_FILE_XFER",
         "ref": "AFP-45510",
         "cat": "Bug",
         "summary": "Filter List: Status is not working in Data Transfer",
         "details": "In the Data Transfer Upload Overview Banklet the filters on status did not have any effect. \r\nthese filters are now correctly processed so only the relevant order s will be displayed."
       },
       {
+        "compo": "AFP_FILE_XFER",
         "ref": "AFP-45785",
         "cat": "Bug",
         "summary": "Web3x: Data transfer upload detail banklet lacks information about file",
         "details": "The user can now see the \"file type\" and \"total amount per currency\" from an uploaded payment data transfer file."
       },
       {
+        "compo": "AFP_MOBILE_HYB, AFP_TRX_SIGN",
         "ref": "AFP-46303",
         "cat": "Story",
         "summary": "Add support for 'challenge' field of 2FA by native service",
         "details": "Transaction Signing related field 'challenge' is now being passed via native service to mobile app."
       },
       {
+        "compo": "AFP_NTFCN",
         "ref": "AFP-45246",
         "cat": "Bug",
         "summary": "Restore filters in Notifications Subscriptions overview when navigating Back to it",
         "details": "Added input [bankletContext] to banklet @avaloq/web-banking-self-service-notifications-subscription-banklet. \r\n\r\nWired the banklet context of this banklet in the NotificationsPage of @avaloq/web-banking-portal. Besides, updated the behaviour of cancel event when creating / editing a subscription in NotificationsSubscriptionFormPage to navigate back to the previous page and restore context (would the previous page be the NotificationsPage)."
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-44586",
         "cat": "Story",
         "summary": "Default sort order of payment orders according to their status",
         "details": "Initial sort order for single payment overview banklet has been configured to be applied in the following way per quickfilter: \r\n- Pending, Pending approval: sort by execution date ascending \r\n- Processed and all: sorting by execution date descending"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-44764",
         "cat": "Story",
         "summary": "useDefaultDateRange in single payment overview",
         "details": "default date range for finding paymens of pending approval status is not used any more"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-43076",
         "cat": "Bug",
         "summary": "Store for Payment Overviews for single payments should distinguish data by filters",
         "details": "The following banklets now support the bankletContext input, meaning that multiple instances of the banklet can co-exist with distinct filtering, sorting and pagination. And that they will remember these settings when navigating back to the banklet in the portal. \r\n\r\nweb-banking-payment-overview-collective-banklet \r\nweb-banking-payment-overview-file-banklet \r\nweb-banking-payment-overview-group-banklet \r\nweb-banking-payment-overview-single-banklet \r\nweb-banking-payment-recent-single-banklet"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-45554",
         "cat": "Bug",
         "summary": "Multi selection and mass context action not working in payment overview",
         "details": "Solve multiselection not working in payment overview (@avaloq/web-banking-common, @avaloq/web-banking-payment-overview)"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-45558",
         "cat": "Bug",
         "summary": "beneficiaryAccountOrPcAccount missing for orange payment slip in payment overviews",
         "details": "A bug was fixed that made beneficiary accounts to not show up in payment overview."
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-45957",
         "cat": "Bug",
         "summary": "New Payment button should not be FAB on mobile payment overview. Cannot go to next page",
         "details": "Moved up new payment button on mobile view (@avaloq/web-banking-portal-pages-payments)"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-43110",
         "cat": "Bug",
         "summary": "Error message for failed collaboration form submit should use more detailed notification",
         "details": "When a collaboration message fails to be submitted and an error message is returned from the server, which might be more specific about what is wrong, that message is now displayed on top of the form in an error box."
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-45758",
         "cat": "Bug",
         "summary": "Multi-line debit/credit account dropdown in Mass Account payment popup should show full text",
         "details": "in mass payment, when selecting a credit/debit from the dropdown, if the content is too big to be displayed in single line, then it will be displayed in multiline."
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-45839",
         "cat": "Bug",
         "summary": "PEG 629: payment overview - export is missing currency and total in currency",
         "details": "Add visualization of totals in currency in payment overview export (@avaloq/web-banking-payment-overview, @avaloq/web-banking-payment-overview-collective-banklet, @avaloq/web-banking-payment-overview-file-banklet, @avaloq/web-banking-payment-overview-group-banklet, @avaloq/web-banking-payment-overview-single-banklet)"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-45857",
         "cat": "Bug",
         "summary": "xrate in confirmation step - display decimal points as returned from http call",
         "details": "Show xrate with digits coming from backend in confirmation step (@avaloq/web-banking-payment-form)"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-46049",
         "cat": "Bug",
         "summary": "Standing orders Overview - missing columns: Medium type",
         "details": "Add medium type column to recurring payments overview (@avaloq/web-banking-payment-overview, @avaloq/web-banking-payment-overview-recurring-banklet)"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-46155",
         "cat": "Bug",
         "summary": "Payment Overview breaks when trying to show Mixed debit account",
         "details": "Show \"Mixed\" label in payment overview when payment has debitMoneyAccountIsMixed set to true (@avaloq/web-banking-payment-core, @avaloq/web-banking-payment-overview)"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-46156",
         "cat": "Bug",
         "summary": "Add select all checkbox in recurring payment overview filters",
         "details": "Add select all checkbox in filters modal for recurring payment overview (@avaloq/web-banking-payment-overview-recurring-banklet)"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-46157",
         "cat": "Bug",
         "summary": "Add select all checkbox in single payment overview filters",
         "details": "Add select all checkbox in filters modal for single payment overview (@avaloq/web-banking-payment-overview)"
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-46392",
         "cat": "Bug",
         "summary": "avq-web-banking-data-transfer-upload-details-banklet using a hard-coded date format",
         "details": "Aligned formatting of dates displayed in the banklet \"Data transfer upload details\". Instead of using an hard-coded date format, now the date format is adapted to the locale of the user (as other overviews were already doing)."
       },
       {
+        "compo": "AFP_PAY, AFP_REPL",
         "ref": "AFP-46470",
         "cat": "Bug",
         "summary": "Adapter: dta_ref_nr addition handling",
         "details": "Fix in the handling of APF messages from AFP to ACP, which are related to payments which have are part of a DTA file upload: The DTA reference number being sent with the \"dta_ref_nr\" tag on <extnText> made it mandatory to set up an addition and a base parameter (avq.afs_pay.pay#dta_ref_nr_add_id), even if this information was not required to be stored on the payment order in ACP. This has been fixed now, DTA file upload also works without this parametrization."
       },
       {
+        "compo": "AFP_PORTAL",
         "ref": "AFP-45399",
         "cat": "Bug",
         "summary": "Nav item not selected when initially loading the page",
         "details": "Fixed bug where the main menu item corresponding to the root path of the application (i.e. '/') would not show as active when the user starts the application on the root URL."
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-43340",
         "cat": "Bug",
         "summary": "High severity vulnerability/ies in commons-compress-1.19.jar",
         "details": "Changes the version of commons-compress-1.19.jar to commons-compress-1.21.jar on the following branches: \r\n4.4.x \r\n4.3. x \r\n4.2.x \r\n4.5.x \r\n4.x \r\n3.3.x \r\nmaster"
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-45323",
         "cat": "Bug",
         "summary": "CTX action on maturity analysis doesn't work",
         "details": "Fix the context actions not working in Wealth portfolio maturity banklet (web-banking-wealth-portfolio-analysis-maturity-banklet)"
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-45913",
         "cat": "Bug",
         "summary": "Balance forecast - \"balance at the end of period\" takes too much space",
         "details": "In balance forecast overview, the space taken by the \"Balance at the end of period\" on desktop screens has been reduced. This makes the view better balanced in terms of content spacing."
       },
       {
+        "compo": "AFP_REP_ORDER",
         "ref": "AFP-45935",
         "cat": "Bug",
         "summary": "Order Reports - Account statement - Currency not customizable to Automatic on Web 3+",
         "details": "web-banking-document-safe-order-report-banklet offers now the 'Automatic' option for the Currency select in the reports where currency is not mandatory"
       },
       {
+        "compo": "AFP_TOOLS",
         "ref": "AFP-46239",
         "cat": "Story",
         "summary": "Upgrade Nx and Angular to ^13 as pre-requisite to 14 upgrade",
         "details": "The version of the Angular libraries required by the Web Banking UI packages has been updated to 13.3."
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-46084",
         "cat": "Story",
         "summary": "Replace mat-chip with lozenge for order status",
         "details": "Replaced all the mat-chip components in trading banklets with lozenge."
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-46208",
         "cat": "Story",
         "summary": "Rest - Split CSVOrders and groupOrders into 2 services due to export issues.",
         "details": "Fixed a bug in the Group order overview export."
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-46321",
         "cat": "Bug",
         "summary": "Customer ticket - avq-web-banking-collective-entry-banklet / validation failing",
         "details": "Refactored moment library imports"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-46086",
         "cat": "Bug",
         "summary": "Customer ticket: Update Amounts in FX Order",
         "details": "Fixed a bug where the amounts would not be updated after the counter refresh"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-46128",
         "cat": "Bug",
         "summary": "Customer ticket: Attention Item Counter -- Rejected",
         "details": "fixed a bug where the invalid order counter would not display the number of all invalids anymore"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-46181",
         "cat": "Bug",
         "summary": "Customer ticket: search portfolio via businessPartnerName is not working",
         "details": "Fixed a bug where the business partner name was not taken into consideration when searching for the related portfolio"
       },
       {
+        "compo": "AFP_TRADE",
         "ref": "AFP-45784",
         "cat": "Bug",
         "summary": "Notification on status icon",
         "details": "The notification item or symbol has been moved to the inside of the status icon"
       },
       {
+        "compo": "AFP_TRX_SIGN",
         "ref": "AFP-45412",
         "cat": "Bug",
         "summary": "WB UI Trx sign - Polling doesn't stop and causes errors",
@@ -2493,42 +2899,49 @@
     "version": "2022.2.0",
     "items": [
       {
+        "compo": "AFP_ADMIN_TOOL",
         "ref": "AFP-44481",
         "cat": "Bug",
         "summary": "Move to log4j>=2.17.0 in avaloq-wb-front-web for CVE-2021-45105",
         "details": "Fixes Log4J2 vulnerabilities, by upgrading the dependencies of Log4J to 2.17.2."
       },
       {
+        "compo": "AFP_COMMON",
         "ref": "AFP-45253",
         "cat": "Bug",
         "summary": "Wrong property name",
         "details": "Fix the property name for the jwt token password."
       },
       {
+        "compo": "AFP_FILE_XFER, AFP_REPL",
         "ref": "AFP-45993",
         "cat": "Bug",
         "summary": "Adapter: Fix in afs_rep_exec_util due to 5.3 compiler change",
         "details": "Fixed a bug in the file download functionality, which was caused by a wrongly used \"id obj\" parameter together with an Avaloq Script compiler change on ACP 5.3 and higher. The impact of the bug was that the file download request could fail in ACP with an \"ORA-01426: numeric overflow\" exception."
       },
       {
+        "compo": "AFP_FX, AFP_REPL",
         "ref": "AFP-46057",
         "cat": "Bug",
         "summary": "Adapter: Fix display-xrate calc in fxtr repl",
         "details": "Fixed a bug in the FXTR order replication: The \"xrate_display\" was sometimes replicated wrongly (currencies interchanged). This has been fixed."
       },
       {
+        "compo": "AFP_PAY",
         "ref": "AFP-45551",
         "cat": "Bug",
         "summary": "Currency not preselected when debit account is set as default in user settings",
         "details": "Preselect currency when debit macc is default one (@avaloq/web-banking-payment-form)"
       },
       {
+        "compo": "AFP_PAY, AFP_REPL",
         "ref": "AFP-45553",
         "cat": "Bug",
         "summary": "Adapter: Support QR bill in payment migr API",
         "details": "Payment migration API now also supports QR bill payments."
       },
       {
+        "compo": "AFP_PERF, AFP_REPL",
         "ref": "AFP-45992",
         "cat": "Bug",
         "summary": "Adapter: Use prl degree of task_afs_upld for performance figure replication",
@@ -2536,24 +2949,28 @@
         "impact": "No required adaptions, but please be aware of the change when doing a full replication including the performance figures step, and consider doing an override of the prl_nr_prc for entry \"perf_fig\" in CODE_AFS_REPL_EXEC (CODE TAB)."
       },
       {
+        "compo": "AFP_REP",
         "ref": "AFP-44938",
         "cat": "Bug",
         "summary": "Improve performance figure migration",
         "details": "Improve database migration performance of the performance figure table."
       },
       {
+        "compo": "AFP_REP_ORDER, AFP_REPL",
         "ref": "AFP-45991",
         "cat": "Bug",
         "summary": "Adapter: Fix in bbs_repord_in",
         "details": "Fixed a bug in BBS_REPORD_IN (SCRIPT PACKAGE) which could lead to an error in the handling of report ordering requests, in case that not all WFAs from code_bbs_wfa.docm$repord are implemented."
       },
       {
+        "compo": "AFP_REPKIT",
         "ref": "AFP-44049",
         "cat": "Story",
         "summary": "Export of Hierarchical Tables in RepKit",
         "details": "Adds export config options to show / hide export button in hierarchical tailored reports. AvqRepkitHierarchicalTableDisplayConfig now contains: \r\nhideButton: false, \r\nfileNameKey: ''"
       },
       {
+        "compo": "AFP_REPL",
         "ref": "AFP-45324",
         "cat": "Task",
         "summary": "Adapter: Option to replicate closed users",
@@ -2561,6 +2978,7 @@
         "impact": "Use new task parameter \"Include closed users\" (i_incl_closed_user) in task_afs_upld (task ID 1694) if required."
       },
       {
+        "compo": "AFP_REPL, AFP_SECEVT",
         "ref": "AFP-45274",
         "cat": "Story",
         "summary": "Adapter: Exclude sectrx replication by container class",
@@ -2568,42 +2986,49 @@
         "impact": "To user the feature to exclude security transaction orders by container class, the item \"excl_cont_class_id_list\" of base parameter avq.afs can be set to a list of container classes. \r\nPlease note that already replicated orders are not affected by this option, they won't get deleted/de-replicated, neither when the base parameter is set or changed, nor when a container class changes."
       },
       {
+        "compo": "AFP_REPL",
         "ref": "AFP-44926",
         "cat": "Bug",
         "summary": "Adapter: Adaptions for change of code_invstr_prot_docm_status",
         "details": "Fix in replication of code table afs_code_inpr_docm_status: The source code table has been changed from code_invstr_prot_docm_status to code_invstr_prot_docm_state, as code_invstr_prot_docm_status has been replaced by code_invstr_prot_docm_state in ACP already with 5.1 (IDs have been preserved)."
       },
       {
+        "compo": "AFP_REPL",
         "ref": "AFP-45278",
         "cat": "Bug",
         "summary": "Adapter: Fix in parallelization of obj repl",
         "details": "Fix in initial person replication: In task_afs_upld (task ID 1694), there was a bug in the parallelization logic for person objects. In case that there are persons and OE objects to be replicated and the task is started with parallel degree > 1, it could happen that some of the chunks of person objects was not replicated. This has been fixed now."
       },
       {
+        "compo": "AFP_REPL",
         "ref": "AFP-45407",
         "cat": "Bug",
         "summary": "Adapter: Replace precondition for duplicate source cleanup with script",
         "details": "The \"unstable\" installation precondition \"3595044.CHECK_DUPL_SRC_DROP\" in AFS adapter has been replaced by a script which prepares the installer tables for the drop of duplicate source CODE_UI_APPL_POBJ_LOOKUP.AFS (CODE TAB)."
       },
       {
+        "compo": "AFP_REPL",
         "ref": "AFP-45512",
         "cat": "Bug",
         "summary": "Adapter: Adapt \"gather stats\" for IBANKING",
         "details": "The possibility to trigger the \"gather stats\" script for IBANKING schema ACP (as part of or after the initial replication) has been fixed, after it was broken since the introduction of the containerized backend. \r\nIt can be triggered by the script report TASK_AFS_EXTL_SYS.AFS_INSTALL_GATHER_STATS"
       },
       {
+        "compo": "AFP_REPL",
         "ref": "AFP-45677",
         "cat": "Bug",
         "summary": "Adapter: Drop afs_util_stex (script package)",
         "details": "Script Package AFS_UTIL_STEX has been dropped, as it has not been in use already since a long time."
       },
       {
+        "compo": "AFP_REPL",
         "ref": "AFP-45855",
         "cat": "Bug",
         "summary": "Adapter: Registration of trusted WFA callers",
         "details": "Registration of trusted caller of WF actions: Starting with ACP 4.10, there is an additional security check which assures that the user is eligible to execute the WF action. This also affects AFP users which perform actions that trigger the execution of WF actions in ACP. \"Trusted callers\" of WF actions can be registered in CODE_SEC_WFA_TRUST_CALLER, to avoid the necessity of setting up all required WFA rights on the users. \"Trusted callers\" are programs which execute WF actions that cannot be overruled by the session user (e.g. AFP user), but are given by the system and therefore do not need to be explicitly granted to the user, which simplifies the WFA security administration. \r\nWith this release, we have registered all relevant sources in which WF actions are triggered by AFP users."
       },
       {
+        "compo": "AFP_REPL",
         "ref": "AFP-46116",
         "cat": "Bug",
         "summary": "Adapter: Provide param exit for card repl filter",
@@ -2611,18 +3036,21 @@
         "impact": "If required, set the item \"repl_card_sub_type_list\" of base parameter \"repl_card_sub_type_list\" to a list of card sub types (code_card_sub_type)."
       },
       {
+        "compo": "AFP_REPL",
         "ref": "AFP-46147",
         "cat": "Bug",
         "summary": "Adapter: Stabilize execution plan of bu_id migration",
         "details": "Only relevant for upgrades from AFP versions < 2.4.63: The performance of AFS adapter migration \"3315745.ADD_BU_ID_ON_AFS_OBJ_TABLES\" has been improved and stabilized."
       },
       {
+        "compo": "AFP_TRX_SIGN",
         "ref": "AFP-44411",
         "cat": "Story",
         "summary": "Improve Logging for Generic Transaction Signing",
         "details": "Improves logging for Generic Transaction Signing, in order to accommodate development, customisation, and problem identification. \r\nIn particular, a warning related to mTAN is not shown if it's not relevant. \r\nAlso, in DEBUG logging mode, all the HTTP requests / responses between AFP and IAM will be logged, during Transaction Approval."
       },
       {
+        "compo": "AFP_TRX_SIGN",
         "ref": "AFP-45163",
         "cat": "Bug",
         "summary": "AFP Trx Signing: MODIFY generates SUBMIT message",
@@ -2630,6 +3058,7 @@
         "impact": "Transaction signing decisions and messages may need updated to expect actionStep=MODIFY."
       },
       {
+        "compo": "AFP_TRX_SIGN",
         "ref": "AFP-45737",
         "cat": "Bug",
         "summary": "Transaction signing cannot use https to contact Airlock",

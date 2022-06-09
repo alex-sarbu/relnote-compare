@@ -38,6 +38,7 @@ function extract(relnoteData) {
 
 function extractLine(relnoteDataLine) {
     let relnoteLine = {}
+    relnoteLine.compo = relnoteDataLine[0];
     relnoteLine.ref = relnoteDataLine[1];
     relnoteLine.cat = relnoteDataLine[3];
     relnoteLine.summary = relnoteDataLine[4];

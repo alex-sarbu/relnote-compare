@@ -11,26 +11,58 @@ import relNotes from '../assets/relnotes.json'
 export class AppComponent implements OnInit {
   title = 'relnote-viewer';
   public relNotesList: any = relNotes;
+  public relNotesCompos: string[] = [];
   public relNoteSelect1 = new FormControl('');
+  public selectedCompos = [];
   public selectedVersions : string[] = [];
   public selectedCompareVersions : string[] = [];
   public selectedRelNotes: any[] = [];
 
-  displayedColumns: string[] = ['version', 'cat', 'ref', 'summary', 'details', 'impact'];
+  public allColumns: string[] = ['version', 'compo', 'ref', 'summary', 'details', 'impact', 'side'];
+  public displayedColumns: string[] = ['version', 'compo', 'ref', 'summary', 'details', 'impact'];
 
   public constructor() {
-    console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
-    console.log(this.relNotesList);
+    //console.log(this.relNotesList);
   }
 
   ngOnInit(): void {
-    console.log('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb');
-    console.log(this.relNotesList);
+    //console.log(this.relNotesList);
+    this.updateComposForDisplayedRelNotes(this.relNotesList);
   }
 
   public updateRelNoteItems($event : any): void {
-    console.log($event);
-    this.selectedVersions = $event.value;
+    //this.selectedVersions = $event.value;
+    this.selectedCompareVersions = [];
+    this.filterSelectedRelNotes();
+  }
+
+  public compareRelNoteItems($event : any): void {
+    //this.selectedCompareVersions = $event.value;
+    this.compareSelectedRelNotes();
+  }
+
+  public updateCompoFilter($event: any): void {
+    //this.selectedCompos = $event.value;
+    this.filterSelectedRelNotes();
+  }
+
+  private updateComposForDisplayedRelNotes(relNotesList: any[]): void {
+    if (relNotesList[0].items.length <= 0) return;
+    this.relNotesCompos = [];
+    relNotesList.forEach((r: any) => {
+      console.log(r);
+      r.items.forEach((i: any) => {
+        if (i.compo != null) i.compo.split(',').map((x: string) => x.trim()).forEach((c: string) => {
+          if (!this.relNotesCompos.includes(c)) this.relNotesCompos.push(c);
+        });
+      });
+    });
+    this.relNotesCompos.sort();
+    //console.log(this.relNotesCompos);
+  }
+
+  private updateSelectedRelNotes(): void {
+    //if (this.selectedVersions.length <= 0) return;
     this.selectedRelNotes = [];
     for (let relNote of this.relNotesList) {
       if (this.selectedVersions.includes(relNote.version)) {
@@ -39,11 +71,19 @@ export class AppComponent implements OnInit {
         });
       }
     }
+    this.displayedColumns = this.displayedColumns.filter((e: any) => e != 'side');
+    this.updateComposForDisplayedRelNotes([{items: this.selectedRelNotes}]);
   }
 
-  public compareRelNoteItems($event : any): void {
-    console.log($event);
-    this.selectedCompareVersions = $event.value;
+  private filterSelectedRelNotes(): void {
+    //this.updateSelectedRelNotes();
+    this.selectedCompareVersions.length > 0 ? this.compareSelectedRelNotes() : this.updateSelectedRelNotes();
+    if (this.selectedRelNotes.length <= 0 || this.selectedCompos.length <= 0) return;
+    this.selectedRelNotes = this.selectedRelNotes.filter((i: any) => this.compoFilter(this.selectedCompos, i.compo));
+  }
+
+  private compareSelectedRelNotes(): void {
+    this.updateSelectedRelNotes()
     let selectedRelNotes = this.selectedRelNotes;
     this.selectedRelNotes = [];
     let selectedCompareRelNotes: any = [];
@@ -57,6 +97,10 @@ export class AppComponent implements OnInit {
     for (let leftEntry of selectedRelNotes) {
       let match: boolean = false;
       for (let rightEntry of selectedCompareRelNotes) {
+        if (!this.compoFilter(this.selectedCompos, rightEntry.compo)) {
+          selectedCompareRelNotes = selectedCompareRelNotes.filter((item: any) => item != rightEntry);
+          continue;
+        }
         if (leftEntry.ref == rightEntry.ref) {
           this.selectedRelNotes.push({...leftEntry, version: `${leftEntry.version} + ${rightEntry.version}`, side: '<>'});
           selectedCompareRelNotes = selectedCompareRelNotes.filter((item: any) => item != rightEntry);
@@ -70,8 +114,9 @@ export class AppComponent implements OnInit {
     selectedCompareRelNotes.forEach((item: any) => 
       this.selectedRelNotes.push({...item, version: `${item.version}`, side: '>'})
     );
+    if (!this.displayedColumns.includes('side')) this.displayedColumns.push('side');
   }
 
-  
+  private compoFilter = (compoList: string[], compoString: string) => compoString != null && compoList.some(c => compoString.includes(c));
 
 }
