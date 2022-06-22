@@ -1,0 +1,25 @@
+{
+    "aliases": {},
+    "fields": ["summary", "details", "impact"],
+    "extensions": [],
+    "generators": {
+      "summary": {
+        "generator": "sentence",
+        "params": {
+          "words": 20
+        }
+      },
+      "details": {
+        "generator": "sentence",
+        "params": {
+          "words": 20
+        }
+      },
+      "impact": {
+        "generator": "sentence",
+        "params": {
+          "words": 20
+        }
+      }
+    }
+  }
