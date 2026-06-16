@@ -1,9 +1,10 @@
-
 <ng-container>
   <mat-form-field appearance="fill">
     <mat-label>Columns</mat-label>
     <mat-select multiple [(ngModel)]="displayedColumns">
-      <mat-option *ngFor="let column of allColumns" [value]="column">{{column}}</mat-option>
+      @for (column of allColumns; track column) {
+        <mat-option [value]="column">{{column}}</mat-option>
+      }
     </mat-select>
   </mat-form-field>
 </ng-container>
@@ -12,7 +13,9 @@
   <mat-form-field appearance="fill">
     <mat-label>Compo</mat-label>
     <mat-select multiple (selectionChange)="updateCompoFilter($event)" [(ngModel)]="selectedCompos">
-      <mat-option *ngFor="let compo of relNotesCompos" [value]="compo">{{compo}}</mat-option>
+      @for (compo of relNotesCompos; track compo) {
+        <mat-option [value]="compo">{{compo}}</mat-option>
+      }
     </mat-select>
   </mat-form-field>
 </ng-container>
@@ -20,8 +23,10 @@
 <ng-container>
   <mat-form-field appearance="fill">
     <mat-label>Versions</mat-label>
-    <mat-select multiple (selectionChange)="updateRelNoteItems($event)" [(ngModel)]="selectedVersions" >
-      <mat-option *ngFor="let relNote of relNotesList" [value]="relNote.version">{{relNote.version}}</mat-option>
+    <mat-select multiple (selectionChange)="updateRelNoteItems($event)" [(ngModel)]="selectedVersions">
+      @for (relNote of relNotesList; track relNote.version) {
+        <mat-option [value]="relNote.version">{{relNote.version}}</mat-option>
+      }
     </mat-select>
   </mat-form-field>
 </ng-container>
@@ -29,18 +34,20 @@
 <ng-container>
   <mat-form-field appearance="fill">
     <mat-label>Compare Versions</mat-label>
-    <mat-select multiple (selectionChange)="compareRelNoteItems($event)" [(ngModel)]="selectedCompareVersions" >
-      <mat-option *ngFor="let relNote of relNotesList" [value]="relNote.version">{{relNote.version}}</mat-option>
+    <mat-select multiple (selectionChange)="compareRelNoteItems($event)" [(ngModel)]="selectedCompareVersions">
+      @for (relNote of relNotesList; track relNote.version) {
+        <mat-option [value]="relNote.version">{{relNote.version}}</mat-option>
+      }
     </mat-select>
   </mat-form-field>
 </ng-container>
 
 <ng-container>
-  <mat-table class="" [dataSource]="selectedRelNotes">
+  <mat-table [dataSource]="selectedRelNotes">
 
     <ng-container matColumnDef="version">
-        <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
-        <mat-cell *matCellDef="let relnotes">{{relnotes.version}}</mat-cell>
+      <mat-header-cell *matHeaderCellDef>#</mat-header-cell>
+      <mat-cell *matCellDef="let relnotes">{{relnotes.version}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="compo">
@@ -73,13 +80,12 @@
       <mat-cell *matCellDef="let relnotes">{{relnotes.impact}}</mat-cell>
     </ng-container>
 
-    <ng-container style="width: 10%" matColumnDef="side">
+    <ng-container matColumnDef="side">
       <mat-header-cell *matHeaderCellDef>side</mat-header-cell>
       <mat-cell *matCellDef="let relnotes">{{relnotes.side}}</mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      
     <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
 
   </mat-table>
