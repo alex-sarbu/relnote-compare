@@ -221,7 +221,7 @@ export class AppComponent implements OnInit {
     for (const leftEntry of left) {
       let match = false;
       for (const rightEntry of right) {
-        if (!this.compoFilter(this.selectedCompos, rightEntry.compo)) {
+        if (this.selectedCompos.length > 0 && !this.compoFilter(this.selectedCompos, rightEntry.compo)) {
           right = right.filter(i => i !== rightEntry); continue;
         }
         if (leftEntry.ref === rightEntry.ref) {
