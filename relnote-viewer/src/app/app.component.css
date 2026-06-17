@@ -236,3 +236,7 @@
 }
 .no-data mat-icon { font-size: 48px; width: 48px; height: 48px; opacity: .4; }
 .no-data span { font-size: .9rem; }
+
+/* Info button */
+.info-btn { color: rgba(255,255,255,.75); }
+.info-btn:hover { color: #fff; }

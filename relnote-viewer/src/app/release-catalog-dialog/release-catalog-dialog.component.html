@@ -1,0 +1,70 @@
+<h2 mat-dialog-title class="dialog-title">
+  <mat-icon>info_outline</mat-icon>
+  Release Catalog
+  <span class="dialog-subtitle">{{ catalog.source }} &middot; updated {{ generatedAt }}</span>
+</h2>
+
+<mat-dialog-content class="dialog-content">
+  <mat-form-field appearance="outline" subscriptSizing="dynamic" class="dialog-filter">
+    <mat-label>Filter</mat-label>
+    <input matInput [(ngModel)]="filterText" placeholder="version, date, status...">
+    @if (filterText) {
+      <button matSuffix mat-icon-button (click)="filterText = ''"><mat-icon>close</mat-icon></button>
+    }
+  </mat-form-field>
+
+  <div class="dialog-table-wrap">
+    <mat-table [dataSource]="entries" class="catalog-table">
+
+      <ng-container matColumnDef="version">
+        <mat-header-cell *matHeaderCellDef>Version</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+          <span class="ver-text">{{ e.version }}</span>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="releaseDate">
+        <mat-header-cell *matHeaderCellDef>Release Date</mat-header-cell>
+        <mat-cell *matCellDef="let e">{{ e.releaseDate ?? '--' }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="links">
+        <mat-header-cell *matHeaderCellDef>Links</mat-header-cell>
+        <mat-cell *matCellDef="let e" class="link-cell">
+          @if (e.xlsxUrl) {
+            <a [href]="e.xlsxUrl" target="_blank" mat-icon-button matTooltip="Download XLSX">
+              <mat-icon class="link-icon">table_chart</mat-icon>
+            </a>
+          }
+          @if (e.pdfUrl) {
+            <a [href]="e.pdfUrl" target="_blank" mat-icon-button matTooltip="View PDF">
+              <mat-icon class="link-icon link-icon--pdf">picture_as_pdf</mat-icon>
+            </a>
+          }
+          @if (!e.xlsxUrl && !e.pdfUrl) {
+            <span class="no-links">--</span>
+          }
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+        <mat-cell *matCellDef="let e">
+          <span class="status-chip status-{{ e.status }}">{{ statusLabel(e.status) }}</span>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="columns; sticky: true"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: columns"></mat-row>
+
+    </mat-table>
+  </div>
+
+  <div class="dialog-summary">
+    {{ entries.length }} of {{ allEntries.length }} entries
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

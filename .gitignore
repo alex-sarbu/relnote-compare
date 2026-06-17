@@ -1,6 +1,7 @@
 node_modules/
-relnote-viewer/src/assets/relnotes.json
+anonymize.js
 *.xlsx
 credentials.properties
 input/failed-downloads.json
 input/last-min-version.txt
+relnote-viewer/src/assets/relnote-catalog.json

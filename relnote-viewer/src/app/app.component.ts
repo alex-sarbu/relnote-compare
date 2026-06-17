@@ -1,6 +1,7 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgStyle } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
@@ -13,36 +14,27 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatDialog } from '@angular/material/dialog';
+import { catchError, of } from 'rxjs';
 import relNotes from '../assets/relnotes.json';
+import { VersionPickerComponent } from './version-picker/version-picker.component';
+import { ReleaseCatalogDialogComponent, RelnoteCatalog } from './release-catalog-dialog/release-catalog-dialog.component';
 
-interface ColumnConfig {
-  label: string;
-  width: number;
-  flexible: boolean;
-}
+interface ColumnConfig { label: string; width: number; flexible: boolean; }
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    FormsModule,
-    NgStyle,
-    MatInputModule,
-    MatFormFieldModule,
-    MatTableModule,
-    MatSelectModule,
-    MatOptionModule,
-    MatRippleModule,
-    MatExpansionModule,
-    MatButtonModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatDividerModule,
-    MatTooltipModule,
-    MatBadgeModule,
+    FormsModule, NgStyle,
+    MatInputModule, MatFormFieldModule, MatTableModule,
+    MatSelectModule, MatOptionModule, MatRippleModule,
+    MatExpansionModule, MatButtonModule, MatIconModule,
+    MatToolbarModule, MatDividerModule, MatTooltipModule, MatBadgeModule,
+    VersionPickerComponent,
   ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
 })
 export class AppComponent implements OnInit {
   public relNotesList: any = relNotes;
@@ -76,10 +68,18 @@ export class AppComponent implements OnInit {
   private resizingCol: string | null = null;
   private resizeStartX = 0;
   private resizeStartWidth = 0;
+  private catalog: RelnoteCatalog | null = null;
+
+  constructor(private dialog: MatDialog, private http: HttpClient) {}
 
   ngOnInit(): void {
     this.updateComposForDisplayedRelNotes(this.relNotesList);
+    this.http.get<RelnoteCatalog>('/assets/relnote-catalog.json')
+      .pipe(catchError(() => of(null)))
+      .subscribe(c => this.catalog = c);
   }
+
+  public readonly allVersionStrings: string[] = (this.relNotesList as any[]).map((r: any) => r.version);
 
   get tableData(): any[] {
     let rows = this.selectedRelNotes;
@@ -103,6 +103,18 @@ export class AppComponent implements OnInit {
     return (this.selectedVersions.length > 0 ? 1 : 0)
       + (this.selectedCompareVersions.length > 0 ? 1 : 0)
       + (this.selectedCompos.length > 0 ? 1 : 0);
+  }
+
+  get hasCatalog(): boolean {
+    return (this.catalog?.entries?.length ?? 0) > 0;
+  }
+
+  openCatalog(): void {
+    this.dialog.open(ReleaseCatalogDialogComponent, {
+      data: this.catalog ?? { generatedAt: null, source: 'none', entries: [] },
+      width: '720px',
+      maxHeight: '85vh',
+    });
   }
 
   getColStyle(col: string): { [key: string]: string } {
@@ -141,33 +153,29 @@ export class AppComponent implements OnInit {
     document.body.classList.remove('col-resizing');
   }
 
-  // Select all/none
-  selectAllVersions(): void { this.selectedVersions = this.relNotesList.map((r: any) => r.version); this.filterSelectedRelNotes(); }
-  clearVersions(): void { this.selectedVersions = []; this.filterSelectedRelNotes(); }
-  selectAllCompareVersions(): void { this.selectedCompareVersions = this.relNotesList.map((r: any) => r.version); this.filterSelectedRelNotes(); }
-  clearCompareVersions(): void { this.selectedCompareVersions = []; this.filterSelectedRelNotes(); }
-  selectAllCompos(): void { this.selectedCompos = [...this.relNotesCompos]; this.filterSelectedRelNotes(); }
-  clearCompos(): void { this.selectedCompos = []; this.filterSelectedRelNotes(); }
-  selectAllColumns(): void { this.displayedColumns = [...this.allColumns]; }
-  clearColumns(): void { this.displayedColumns = []; }
-
-  clearColumnFilter(col: string): void { this.columnFilters[col] = ''; }
-
-  public updateRelNoteItems(_event: any): void {
+  // Version picker callbacks
+  onVersionsChanged(versions: string[]): void {
+    this.selectedVersions = versions;
     this.selectedCompareVersions = [];
     this.filterSelectedRelNotes();
   }
 
-  public compareRelNoteItems(_event: any): void {
-    this.compareSelectedRelNotes();
-  }
-
-  public updateCompoFilter(_event: any): void {
+  onCompareVersionsChanged(versions: string[]): void {
+    this.selectedCompareVersions = versions;
     this.filterSelectedRelNotes();
   }
 
+  // Compo / column actions (still use flat mat-select)
+  selectAllCompos(): void   { this.selectedCompos = [...this.relNotesCompos]; this.filterSelectedRelNotes(); }
+  clearCompos(): void       { this.selectedCompos = []; this.filterSelectedRelNotes(); }
+  updateCompoFilter(_e: any): void { this.filterSelectedRelNotes(); }
+  selectAllColumns(): void  { this.displayedColumns = [...this.allColumns]; }
+  clearColumns(): void      { this.displayedColumns = []; }
+  clearColumnFilter(col: string): void { this.columnFilters[col] = ''; }
+
+  // ── Private filtering / compare logic ──────────────────────────
   private updateComposForDisplayedRelNotes(relNotesList: any[]): void {
-    if (relNotesList[0].items.length <= 0) return;
+    if (relNotesList[0]?.items?.length <= 0) return;
     this.relNotesCompos = [];
     relNotesList.forEach((r: any) => {
       r.items.forEach((i: any) => {
@@ -212,8 +220,7 @@ export class AppComponent implements OnInit {
       let match = false;
       for (const rightEntry of right) {
         if (!this.compoFilter(this.selectedCompos, rightEntry.compo)) {
-          right = right.filter(i => i !== rightEntry);
-          continue;
+          right = right.filter(i => i !== rightEntry); continue;
         }
         if (leftEntry.ref === rightEntry.ref) {
           this.selectedRelNotes.push({ ...leftEntry, version: `${leftEntry.version} + ${rightEntry.version}`, side: '<>' });

@@ -9,16 +9,18 @@ const xlsx = require('node-xlsx');
 // ── Constants ──────────────────────────────────────────────────────────────
 const INPUT_DIR      = 'input/';
 const OUTPUT_FILE    = 'relnote-viewer/src/assets/relnotes.json';
-const CREDS_FILE     = 'credentials.properties';
-const FAILED_FILE    = 'failed-downloads.json';
-const RELNOTES_URL   = 'https://docs.avaloq.com/abs/Web_Banking_3/Web3_Release_Notes.htm';
+const CREDS_FILE        = 'credentials.properties';
+const FAILED_FILE       = path.join(INPUT_DIR, 'failed-downloads.json');
+const CATALOG_FILE = 'relnote-viewer/src/assets/relnote-catalog.json';
+const MIN_VERSION_FILE  = path.join(INPUT_DIR, 'last-min-version.txt');
+const RELNOTES_URL      = 'https://docs.avaloq.com/abs/Web_Banking_3/Web3_Release_Notes.htm';
 
 // ── Entry point ────────────────────────────────────────────────────────────
 const args = parseArgs(process.argv.slice(2));
-const mode = args.mode ?? 'local';
 
 (async () => {
   try {
+    const mode = await resolveMode(args);
     if (mode === 'local') {
       runLocal();
     } else if (mode === 'download') {
@@ -55,6 +57,7 @@ function runLocal() {
   }
 
   fs.writeFileSync(OUTPUT_FILE, JSON.stringify(entries, null, 2), 'utf-8');
+  mergeLocalIntoCatalog(entries);
   console.log(`\n✓ Wrote ${entries.length} version(s) to ${OUTPUT_FILE}`);
 }
 
@@ -160,6 +163,22 @@ async function runDownload(args) {
       console.log('\n✓ All downloads completed successfully.');
     }
 
+    // Write catalog
+    const downloadedVersions = new Set(unique.filter((l, i) => !failed.find(f => f.url === l.url)).map(l => l.version));
+    const failedUrls = new Set(failed.map(f => f.url));
+    writeCatalog({
+      source: 'download',
+      entries: links.map(l => ({
+        version: l.version,
+        xlsxUrl: l.url,
+        pdfUrl: l.pdfUrl ?? null,
+        releaseDate: l.releaseDate ?? null,
+        status: failedUrls.has(l.url) ? 'failed'
+              : downloadedVersions.has(l.version) ? 'loaded'
+              : 'skipped',
+      })),
+    });
+
   } finally {
     await browser.close();
   }
@@ -254,34 +273,29 @@ async function scrapeExcelLinks(page) {
   return page.evaluate(() => {
     const container = document.getElementById('webnotes');
     if (!container) return [];
-
-    // The table may be a direct child or nested inside the <ul>
     const table = container.querySelector('table');
     if (!table) return [];
-
     const results = [];
     for (const row of table.querySelectorAll('tr')) {
-      // Find an anchor whose visible text is "Excel" (case-insensitive)
-      const anchor = Array.from(row.querySelectorAll('a'))
-        .find(a => /^excel$/i.test(a.textContent.trim()));
-      if (!anchor) continue;
-
-      const url = anchor.href;
-
-      // Primary: extract version from filename
-      //   Release_Notes_AFP_R30_2025_4_5.xlsx  →  2025.4.5
-      //   Release_Notes_AFP_R30_2025_3_1_1.xlsx →  2025.3.1.1
+      const anchors = Array.from(row.querySelectorAll('a'));
+      const excelAnchor = anchors.find(a => /^excel$/i.test(a.textContent.trim()));
+      if (!excelAnchor) continue;
+      const pdfAnchor = anchors.find(a => /^pdf$/i.test(a.textContent.trim()));
+      const url = excelAnchor.href;
+      const pdfUrl = pdfAnchor ? pdfAnchor.href : null;
+      // Release date: try ISO, then DD.MM.YYYY / DD/MM/YYYY
+      const rowText = row.textContent.trim();
+      const dateMatch = rowText.match(/\b(\d{4}-\d{2}-\d{2})\b/)
+        ?? rowText.match(/\b(\d{1,2}[./]\d{1,2}[./]\d{4})\b/);
+      const releaseDate = dateMatch ? dateMatch[1] : null;
+      // Version from filename: R30_2025_4_5.xlsx or R30_2025_3_1_1.xlsx
       const fnMatch = url.match(/R\d+[_-](\d{4}(?:[_-]\d+)+)\.xlsx/i);
       let version = fnMatch ? fnMatch[1].replace(/_/g, '.') : null;
-
-      // Fallback: version from visible row text
       if (!version) {
-        const rowText = row.textContent.trim();
         const txtMatch = rowText.match(/\b(\d{4}\.\d+\.\d+(?:\.\d+)?)\b/);
         if (txtMatch) version = txtMatch[1];
       }
-
-      results.push({ url, version });
+      results.push({ url, version, pdfUrl, releaseDate });
     }
     return results;
   });
@@ -359,12 +373,22 @@ function validateXlsx(data, filename) {
 
 function getVersion(relnoteData) {
   const cell = relnoteData[0].data[0]?.[0] ?? '';
-  return String(cell).replace('AFP Web Banking Release Notes ', '').trim();
+  return String(cell).replace(/^AFP Web Banking (?:Release Notes )?/i, '').trim();
 }
 
 // ══════════════════════════════════════════════════════════════════════════
 // UTILITIES
 // ══════════════════════════════════════════════════════════════════════════
+
+async function resolveMode(args) {
+  if (args.mode) return args.mode;
+  let m = '';
+  while (m !== 'local' && m !== 'download') {
+    if (m !== '') console.error('  Please enter "local" or "download".');
+    m = await ask('Mode (local / download): ');
+  }
+  return m;
+}
 
 async function resolveCredentials(args) {
   // Priority: CLI args > credentials file > interactive prompt
@@ -388,14 +412,35 @@ async function resolveMinVersion(args) {
   if (args.minVersion) {
     if (!isValidVersion(args.minVersion))
       die(`Invalid minVersion "${args.minVersion}" — expected format e.g. 2025.3.0`);
+    saveMinVersion(args.minVersion);
     return args.minVersion;
   }
+  const saved = loadLastMinVersion();
+  const prompt = saved
+    ? `Minimum version to download [${saved}]: `
+    : 'Minimum version to download (e.g. 2025.3.0): ';
   let v = '';
   while (!isValidVersion(v)) {
     if (v !== '') console.error('  Invalid format. Try e.g. 2025.3.0');
-    v = await ask('Minimum version to download (e.g. 2025.3.0): ');
+    const input = await ask(prompt);
+    v = input === '' && saved ? saved : input;
   }
+  saveMinVersion(v);
   return v;
+}
+
+function loadLastMinVersion() {
+  try {
+    const v = fs.readFileSync(MIN_VERSION_FILE, 'utf-8').trim();
+    return isValidVersion(v) ? v : null;
+  } catch { return null; }
+}
+
+function saveMinVersion(v) {
+  try {
+    if (!fs.existsSync(INPUT_DIR)) fs.mkdirSync(INPUT_DIR, { recursive: true });
+    fs.writeFileSync(MIN_VERSION_FILE, v, 'utf-8');
+  } catch { /* non-fatal */ }
 }
 
 function parseArgs(argv) {
@@ -438,6 +483,45 @@ function compareVersions(a, b) {
 
 function isValidVersion(v) {
   return /^\d+(\.\d+)+$/.test(String(v ?? ''));
+}
+
+function tryReadCatalog() {
+  try { return JSON.parse(fs.readFileSync(CATALOG_FILE, 'utf-8')); }
+  catch { return null; }
+}
+
+function mergeLocalIntoCatalog(entries) {
+  const loadedSet = new Set(entries.map(e => e.version));
+  const existing = tryReadCatalog();
+
+  if (existing?.source === 'download') {
+    // Preserve all URL metadata from the download run; only update status.
+    const inCatalog = new Set(existing.entries.map(e => e.version));
+    const merged = existing.entries.map(e => ({
+      ...e,
+      status: loadedSet.has(e.version) ? 'loaded' : e.status,
+    }));
+    // Entries that exist locally but were never scraped (e.g. manually placed xlsx)
+    for (const e of entries) {
+      if (!inCatalog.has(e.version)) merged.push({ version: e.version, status: 'local-only' });
+    }
+    writeCatalog({ source: 'download', entries: merged });
+  } else {
+    writeCatalog({ source: 'local', entries: entries.map(e => ({ version: e.version, status: 'local-only' })) });
+  }
+}
+
+function writeCatalog({ source, entries }) {
+  const catalog = {
+    generatedAt: new Date().toISOString(),
+    source,
+    entries,
+  };
+  try {
+    fs.writeFileSync(CATALOG_FILE, JSON.stringify(catalog, null, 2), 'utf-8');
+  } catch (e) {
+    console.warn('Could not write catalog:', e.message);
+  }
 }
 
 function die(msg) {

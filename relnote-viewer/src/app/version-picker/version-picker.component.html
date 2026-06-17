@@ -1,0 +1,98 @@
+<div class="vpick-wrap" cdkOverlayOrigin #origin="cdkOverlayOrigin">
+  <mat-form-field appearance="outline" subscriptSizing="dynamic" class="vpick-field">
+    <mat-label>{{ label }}</mat-label>
+    <input matInput readonly class="vpick-input" [value]="displayValue" (click)="toggle()">
+    <mat-icon matSuffix (click)="toggle()" style="cursor:pointer">
+      {{ isOpen ? 'arrow_drop_up' : 'arrow_drop_down' }}
+    </mat-icon>
+  </mat-form-field>
+</div>
+
+<ng-template
+  cdkConnectedOverlay
+  [cdkConnectedOverlayOrigin]="origin"
+  [cdkConnectedOverlayOpen]="isOpen"
+  [cdkConnectedOverlayHasBackdrop]="true"
+  cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop"
+  [cdkConnectedOverlayPositions]="overlayPositions"
+  [cdkConnectedOverlayMinWidth]="panelMinWidth"
+  (backdropClick)="close()"
+>
+  <div class="vpick-panel">
+
+    <div class="vpick-actions">
+      <button mat-button (click)="selectAll()">All</button>
+      <button mat-button (click)="clearAll()">None</button>
+    </div>
+    <mat-divider></mat-divider>
+
+    <div class="vpick-scroll">
+      @if (groups.length === 0) {
+        <div class="vpick-empty">No versions available</div>
+      }
+
+      @for (group of groups; track group.groupKey) {
+        <div class="vpick-group">
+
+          <!-- Group row -->
+          <div class="vpick-row vpick-group-row">
+            <mat-checkbox
+              [checked]="groupAll(group)"
+              [indeterminate]="groupSome(group)"
+              (change)="toggleGroup(group, $event.checked)"
+              (click)="$event.stopPropagation()">
+            </mat-checkbox>
+            <button class="vpick-expand-btn" (click)="group.expanded = !group.expanded">
+              <mat-icon>{{ group.expanded ? 'expand_less' : 'expand_more' }}</mat-icon>
+            </button>
+            <span class="vpick-label-text" (click)="group.expanded = !group.expanded">
+              {{ group.groupKey }}
+            </span>
+          </div>
+
+          @if (group.expanded) {
+            @for (patch of group.patches; track patch.patchKey) {
+
+              <!-- Patch row -->
+              <div class="vpick-row vpick-patch-row">
+                <mat-checkbox
+                  [checked]="patchAll(patch)"
+                  [indeterminate]="patchSome(patch)"
+                  (change)="togglePatch(patch, $event.checked)"
+                  (click)="$event.stopPropagation()">
+                </mat-checkbox>
+                @if (patch.hotfixes.length > 0) {
+                  <button class="vpick-expand-btn" (click)="patch.expanded = !patch.expanded">
+                    <mat-icon>{{ patch.expanded ? 'expand_less' : 'expand_more' }}</mat-icon>
+                  </button>
+                } @else {
+                  <span class="vpick-expand-spacer"></span>
+                }
+                <span class="vpick-label-text" [class.vpick-virtual]="!patch.isReal">
+                  {{ patch.patchKey }}
+                </span>
+              </div>
+
+              @if (patch.expanded) {
+                @for (hf of patch.hotfixes; track hf.version) {
+                  <!-- Hotfix row -->
+                  <div class="vpick-row vpick-hotfix-row">
+                    <mat-checkbox
+                      [checked]="has(hf.version)"
+                      (change)="toggleLeaf(hf.version, $event.checked)"
+                      (click)="$event.stopPropagation()">
+                    </mat-checkbox>
+                    <span class="vpick-label-text vpick-hotfix-label">{{ hf.version }}</span>
+                  </div>
+                }
+              }
+
+            }
+          }
+
+        </div>
+      }
+    </div>
+
+  </div>
+</ng-template>

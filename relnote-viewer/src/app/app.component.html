@@ -5,6 +5,11 @@
   @if (tableData.length > 0) {
     <span class="result-count">{{ tableData.length }} item{{ tableData.length !== 1 ? 's' : '' }}</span>
   }
+  <button mat-icon-button class="info-btn"
+    [matTooltip]="hasCatalog ? 'Show release catalog' : 'No catalog data (run node main.js first)'"
+    (click)="hasCatalog && openCatalog()">
+    <mat-icon>info_outline</mat-icon>
+  </button>
 </mat-toolbar>
 
 <div class="app-container">
@@ -26,6 +31,7 @@
 
     <div class="filter-row">
 
+      <!-- Columns (stays as flat select) -->
       <mat-form-field appearance="outline" class="filter-field">
         <mat-label>Columns</mat-label>
         <mat-select multiple [(ngModel)]="displayedColumns">
@@ -40,34 +46,25 @@
         </mat-select>
       </mat-form-field>
 
-      <mat-form-field appearance="outline" class="filter-field filter-field--wide">
-        <mat-label>Versions</mat-label>
-        <mat-select multiple (selectionChange)="updateRelNoteItems($event)" [(ngModel)]="selectedVersions">
-          <div class="select-actions">
-            <button mat-button (mousedown)="$event.preventDefault(); selectAllVersions()">All</button>
-            <button mat-button (mousedown)="$event.preventDefault(); clearVersions()">None</button>
-          </div>
-          <mat-divider></mat-divider>
-          @for (relNote of relNotesList; track relNote.version) {
-            <mat-option [value]="relNote.version">{{ relNote.version }}</mat-option>
-          }
-        </mat-select>
-      </mat-form-field>
+      <!-- Versions — hierarchical picker -->
+      <app-version-picker
+        class="filter-field filter-field--wide"
+        label="Versions"
+        [versions]="allVersionStrings"
+        [selected]="selectedVersions"
+        (selectedChange)="onVersionsChanged($event)">
+      </app-version-picker>
 
-      <mat-form-field appearance="outline" class="filter-field filter-field--wide">
-        <mat-label>Compare With</mat-label>
-        <mat-select multiple (selectionChange)="compareRelNoteItems($event)" [(ngModel)]="selectedCompareVersions">
-          <div class="select-actions">
-            <button mat-button (mousedown)="$event.preventDefault(); selectAllCompareVersions()">All</button>
-            <button mat-button (mousedown)="$event.preventDefault(); clearCompareVersions()">None</button>
-          </div>
-          <mat-divider></mat-divider>
-          @for (relNote of relNotesList; track relNote.version) {
-            <mat-option [value]="relNote.version">{{ relNote.version }}</mat-option>
-          }
-        </mat-select>
-      </mat-form-field>
+      <!-- Compare With — hierarchical picker -->
+      <app-version-picker
+        class="filter-field filter-field--wide"
+        label="Compare With"
+        [versions]="allVersionStrings"
+        [selected]="selectedCompareVersions"
+        (selectedChange)="onCompareVersionsChanged($event)">
+      </app-version-picker>
 
+      <!-- Component (stays as flat select) -->
       <mat-form-field appearance="outline" class="filter-field filter-field--wide">
         <mat-label>Component</mat-label>
         <mat-select multiple (selectionChange)="updateCompoFilter($event)" [(ngModel)]="selectedCompos">
@@ -101,7 +98,7 @@
                 </mat-icon>
               </button>
               <mat-form-field appearance="outline" subscriptSizing="dynamic" class="col-filter">
-                <input matInput [(ngModel)]="columnFilters['version']" placeholder="Filter…" (click)="$event.stopPropagation()">
+                <input matInput [(ngModel)]="columnFilters['version']" placeholder="Filter..." (click)="$event.stopPropagation()">
                 @if (columnFilters['version']) {
                   <button matSuffix mat-icon-button (click)="clearColumnFilter('version'); $event.stopPropagation()"><mat-icon>close</mat-icon></button>
                 }
@@ -120,12 +117,10 @@
             <div class="col-header-inner">
               <button class="sort-btn" (click)="toggleSort('compo')">
                 <span>Compo</span>
-                <mat-icon class="sort-icon" [class.sort-active]="sortColumn==='compo'">
-                  {{ sortColumn === 'compo' ? (sortDirection === 'asc' ? 'arrow_upward' : 'arrow_downward') : 'unfold_more' }}
-                </mat-icon>
+                <mat-icon class="sort-icon" [class.sort-active]="sortColumn==='compo'">{{ sortColumn === 'compo' ? (sortDirection === 'asc' ? 'arrow_upward' : 'arrow_downward') : 'unfold_more' }}</mat-icon>
               </button>
               <mat-form-field appearance="outline" subscriptSizing="dynamic" class="col-filter">
-                <input matInput [(ngModel)]="columnFilters['compo']" placeholder="Filter…" (click)="$event.stopPropagation()">
+                <input matInput [(ngModel)]="columnFilters['compo']" placeholder="Filter..." (click)="$event.stopPropagation()">
                 @if (columnFilters['compo']) {
                   <button matSuffix mat-icon-button (click)="clearColumnFilter('compo'); $event.stopPropagation()"><mat-icon>close</mat-icon></button>
                 }
@@ -142,12 +137,10 @@
             <div class="col-header-inner">
               <button class="sort-btn" (click)="toggleSort('ref')">
                 <span>Ref</span>
-                <mat-icon class="sort-icon" [class.sort-active]="sortColumn==='ref'">
-                  {{ sortColumn === 'ref' ? (sortDirection === 'asc' ? 'arrow_upward' : 'arrow_downward') : 'unfold_more' }}
-                </mat-icon>
+                <mat-icon class="sort-icon" [class.sort-active]="sortColumn==='ref'">{{ sortColumn === 'ref' ? (sortDirection === 'asc' ? 'arrow_upward' : 'arrow_downward') : 'unfold_more' }}</mat-icon>
               </button>
               <mat-form-field appearance="outline" subscriptSizing="dynamic" class="col-filter">
-                <input matInput [(ngModel)]="columnFilters['ref']" placeholder="Filter…" (click)="$event.stopPropagation()">
+                <input matInput [(ngModel)]="columnFilters['ref']" placeholder="Filter..." (click)="$event.stopPropagation()">
                 @if (columnFilters['ref']) {
                   <button matSuffix mat-icon-button (click)="clearColumnFilter('ref'); $event.stopPropagation()"><mat-icon>close</mat-icon></button>
                 }
@@ -164,12 +157,10 @@
             <div class="col-header-inner">
               <button class="sort-btn" (click)="toggleSort('cat')">
                 <span>Type</span>
-                <mat-icon class="sort-icon" [class.sort-active]="sortColumn==='cat'">
-                  {{ sortColumn === 'cat' ? (sortDirection === 'asc' ? 'arrow_upward' : 'arrow_downward') : 'unfold_more' }}
-                </mat-icon>
+                <mat-icon class="sort-icon" [class.sort-active]="sortColumn==='cat'">{{ sortColumn === 'cat' ? (sortDirection === 'asc' ? 'arrow_upward' : 'arrow_downward') : 'unfold_more' }}</mat-icon>
               </button>
               <mat-form-field appearance="outline" subscriptSizing="dynamic" class="col-filter">
-                <input matInput [(ngModel)]="columnFilters['cat']" placeholder="Filter…" (click)="$event.stopPropagation()">
+                <input matInput [(ngModel)]="columnFilters['cat']" placeholder="Filter..." (click)="$event.stopPropagation()">
                 @if (columnFilters['cat']) {
                   <button matSuffix mat-icon-button (click)="clearColumnFilter('cat'); $event.stopPropagation()"><mat-icon>close</mat-icon></button>
                 }
@@ -188,12 +179,10 @@
             <div class="col-header-inner">
               <button class="sort-btn" (click)="toggleSort('summary')">
                 <span>Summary</span>
-                <mat-icon class="sort-icon" [class.sort-active]="sortColumn==='summary'">
-                  {{ sortColumn === 'summary' ? (sortDirection === 'asc' ? 'arrow_upward' : 'arrow_downward') : 'unfold_more' }}
-                </mat-icon>
+                <mat-icon class="sort-icon" [class.sort-active]="sortColumn==='summary'">{{ sortColumn === 'summary' ? (sortDirection === 'asc' ? 'arrow_upward' : 'arrow_downward') : 'unfold_more' }}</mat-icon>
               </button>
               <mat-form-field appearance="outline" subscriptSizing="dynamic" class="col-filter">
-                <input matInput [(ngModel)]="columnFilters['summary']" placeholder="Filter…" (click)="$event.stopPropagation()">
+                <input matInput [(ngModel)]="columnFilters['summary']" placeholder="Filter..." (click)="$event.stopPropagation()">
                 @if (columnFilters['summary']) {
                   <button matSuffix mat-icon-button (click)="clearColumnFilter('summary'); $event.stopPropagation()"><mat-icon>close</mat-icon></button>
                 }
@@ -210,12 +199,10 @@
             <div class="col-header-inner">
               <button class="sort-btn" (click)="toggleSort('details')">
                 <span>Details</span>
-                <mat-icon class="sort-icon" [class.sort-active]="sortColumn==='details'">
-                  {{ sortColumn === 'details' ? (sortDirection === 'asc' ? 'arrow_upward' : 'arrow_downward') : 'unfold_more' }}
-                </mat-icon>
+                <mat-icon class="sort-icon" [class.sort-active]="sortColumn==='details'">{{ sortColumn === 'details' ? (sortDirection === 'asc' ? 'arrow_upward' : 'arrow_downward') : 'unfold_more' }}</mat-icon>
               </button>
               <mat-form-field appearance="outline" subscriptSizing="dynamic" class="col-filter">
-                <input matInput [(ngModel)]="columnFilters['details']" placeholder="Filter…" (click)="$event.stopPropagation()">
+                <input matInput [(ngModel)]="columnFilters['details']" placeholder="Filter..." (click)="$event.stopPropagation()">
                 @if (columnFilters['details']) {
                   <button matSuffix mat-icon-button (click)="clearColumnFilter('details'); $event.stopPropagation()"><mat-icon>close</mat-icon></button>
                 }
@@ -232,12 +219,10 @@
             <div class="col-header-inner">
               <button class="sort-btn" (click)="toggleSort('impact')">
                 <span>Impact</span>
-                <mat-icon class="sort-icon" [class.sort-active]="sortColumn==='impact'">
-                  {{ sortColumn === 'impact' ? (sortDirection === 'asc' ? 'arrow_upward' : 'arrow_downward') : 'unfold_more' }}
-                </mat-icon>
+                <mat-icon class="sort-icon" [class.sort-active]="sortColumn==='impact'">{{ sortColumn === 'impact' ? (sortDirection === 'asc' ? 'arrow_upward' : 'arrow_downward') : 'unfold_more' }}</mat-icon>
               </button>
               <mat-form-field appearance="outline" subscriptSizing="dynamic" class="col-filter">
-                <input matInput [(ngModel)]="columnFilters['impact']" placeholder="Filter…" (click)="$event.stopPropagation()">
+                <input matInput [(ngModel)]="columnFilters['impact']" placeholder="Filter..." (click)="$event.stopPropagation()">
                 @if (columnFilters['impact']) {
                   <button matSuffix mat-icon-button (click)="clearColumnFilter('impact'); $event.stopPropagation()"><mat-icon>close</mat-icon></button>
                 }
@@ -253,10 +238,8 @@
           <mat-header-cell *matHeaderCellDef [ngStyle]="getColStyle('side')" class="col-header">
             <div class="col-header-inner">
               <button class="sort-btn" (click)="toggleSort('side')">
-                <span>Δ</span>
-                <mat-icon class="sort-icon" [class.sort-active]="sortColumn==='side'">
-                  {{ sortColumn === 'side' ? (sortDirection === 'asc' ? 'arrow_upward' : 'arrow_downward') : 'unfold_more' }}
-                </mat-icon>
+                <span>Delta</span>
+                <mat-icon class="sort-icon" [class.sort-active]="sortColumn==='side'">{{ sortColumn === 'side' ? (sortDirection === 'asc' ? 'arrow_upward' : 'arrow_downward') : 'unfold_more' }}</mat-icon>
               </button>
             </div>
             <div class="resize-handle" (mousedown)="startResize($event, 'side')"></div>
@@ -268,13 +251,12 @@
 
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-
       </mat-table>
 
       @if (tableData.length === 0) {
         <div class="no-data">
           <mat-icon>inbox</mat-icon>
-          <span>No entries — select at least one version to display data.</span>
+          <span>No entries - select at least one version to display data.</span>
         </div>
       }
     </div>
