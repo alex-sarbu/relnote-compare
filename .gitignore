@@ -1,1 +1,3 @@
 node_modules/
+relnote-viewer/src/assets/relnotes.json
+*.xlsx

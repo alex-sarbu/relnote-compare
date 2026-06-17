@@ -1,4 +1,78 @@
-/* You can add global styles to this file, and also import other style files */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: #f0f2f5;
+  overflow: hidden;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+* { box-sizing: border-box; }
+
+/* Column resize cursor */
+body.col-resizing,
+body.col-resizing * { cursor: col-resize !important; user-select: none !important; }
+
+/* Smooth scrollbars */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #f0f2f5; }
+::-webkit-scrollbar-thumb { background: #bdbdbd; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #9e9e9e; }
+
+/* ── Table rows (mat-table own template — not reachable via component CSS) ── */
+.relnote-table .mat-mdc-header-row {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #3f51b5;
+  min-height: 0;
+}
+
+.relnote-table .mat-mdc-row {
+  transition: background 120ms;
+  border-bottom: 1px solid #eef0f3 !important;
+  min-height: 0;
+  align-items: flex-start;
+}
+.relnote-table .mat-mdc-row:hover { background: #f5f7ff; }
+.relnote-table .mat-mdc-row:last-child { border-bottom: none !important; }
+
+/* ── Mat-table cell reset (MDC adds extra padding) ── */
+.relnote-table .mat-mdc-header-cell,
+.relnote-table .mat-mdc-cell {
+  border-right: 1px solid rgba(0,0,0,.08);
+  overflow: hidden;
+  padding: 0 !important;
+}
+.relnote-table .mat-mdc-header-cell:last-child,
+.relnote-table .mat-mdc-cell:last-child { border-right: none; }
+
+.relnote-table .mat-mdc-cell {
+  padding: 8px 10px !important;
+  align-items: flex-start;
+}
+
+/* ── Filter expansion panel (mat-expansion-panel own template) ── */
+.filter-panel.mat-expansion-panel { border-radius: 8px !important; }
+.filter-panel .mat-expansion-panel-header { height: 44px !important; padding: 0 16px !important; }
+.filter-panel .mat-expansion-panel-body { padding: 0 16px 12px !important; }
+
+/* ── Select all/none inside mat-select overlay (CDK portal, outside component) ── */
+.select-actions {
+  display: flex;
+  gap: 4px;
+  padding: 4px 8px;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 4px;
+}
+.select-actions .mat-mdc-button { min-width: 0; padding: 0 10px; height: 28px; font-size: .78rem; }
+
+/* ── Compact mat-option ── */
+.mat-mdc-option { min-height: 36px !important; font-size: .85rem !important; }
+
+/* ── Filter field subscript suppression ── */
+.filter-field .mat-mdc-form-field-subscript-wrapper { display: none; }
+
+/* ── Column filter input inside header ── */
+.col-filter .mat-mdc-form-field-infix { padding-top: 4px !important; padding-bottom: 4px !important; min-height: 0 !important; }
+.col-filter .mdc-text-field--outlined { --mdc-outlined-text-field-container-shape: 4px; }
+.col-filter .mdc-notched-outline .mdc-notched-outline__notch { border-top: none; }
