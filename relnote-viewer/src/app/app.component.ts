@@ -76,7 +76,9 @@ export class AppComponent implements OnInit {
     this.updateComposForDisplayedRelNotes(this.relNotesList);
     this.http.get<RelnoteCatalog>('/assets/relnote-catalog.json')
       .pipe(catchError(() => of(null)))
-      .subscribe(c => this.catalog = c);
+      // setTimeout defers the mutation to the next macrotask so it lands
+      // outside the current CD pass, preventing NG0100 in dev mode.
+      .subscribe(c => setTimeout(() => { this.catalog = c; }));
   }
 
   public readonly allVersionStrings: string[] = (this.relNotesList as any[]).map((r: any) => r.version);

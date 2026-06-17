@@ -22,7 +22,10 @@ export interface RelnoteCatalog {
   entries: CatalogEntry[];
 }
 
-function cmpVer(a: string, b: string): number {
+function cmpVer(a: string | null | undefined, b: string | null | undefined): number {
+  if (!a && !b) return 0;
+  if (!a) return 1;   // null versions sort last
+  if (!b) return -1;
   const va = a.split('.').map(Number), vb = b.split('.').map(Number);
   for (let i = 0; i < Math.max(va.length, vb.length); i++) {
     const d = (va[i] ?? 0) - (vb[i] ?? 0);
