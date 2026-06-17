@@ -54,7 +54,8 @@ npm run download   # mode=download
 2. Run `node main.js mode=local`
 3. Output is written to `relnote-viewer/src/assets/relnotes.json`
 
-Files are processed in alphabetical order. Every `.xlsx` must contain exactly one worksheet whose first cell matches the pattern `AFP Web Banking Release Notes X.Y.Z`.
+Files are processed in alphabetical order. Every `.xlsx` must contain exactly one
+worksheet whose first cell matches the pattern `AFP Web Banking Release Notes X.Y.Z`.
 
 ---
 
@@ -76,6 +77,30 @@ The site requires login. Credentials are resolved in this order:
 
 `credentials.properties` is listed in `.gitignore` and will never be committed.
 
+#### Proxy
+
+By default the tool uses the **system proxy** (Windows proxy settings or the
+`HTTPS_PROXY` / `HTTP_PROXY` environment variables). No configuration is needed
+unless you want to override the system proxy explicitly.
+
+To set an explicit proxy, add the following keys to `credentials.properties`
+(or pass them as CLI arguments):
+
+```
+proxy=http://proxy.example.com:8080
+proxyUser=alice
+proxyPassword=secret
+```
+
+CLI equivalent:
+
+```
+node main.js mode=download proxy=http://proxy.example.com:8080 proxyUser=alice proxyPassword=secret
+```
+
+The tool always accepts self-signed and corporate CA certificates (SSL
+interception is handled transparently).
+
 #### Minimum version
 
 Only versions **>= minVersion** are downloaded. The value is resolved as follows:
@@ -86,9 +111,11 @@ Only versions **>= minVersion** are downloaded. The value is resolved as follows
 | `input/last-min-version.txt` (shown as default) | press Enter to reuse |
 | Interactive prompt | entered at runtime |
 
-The chosen value is automatically saved to `input/last-min-version.txt` so the next run pre-fills it.
+The chosen value is automatically saved to `input/last-min-version.txt` so the
+next run pre-fills it.
 
-Version numbers follow a `YEAR.QUARTER.PATCH` scheme. Hotfix releases add a fourth segment (e.g. `2025.3.1.1`). Comparison is numeric segment-by-segment:
+Version numbers follow a `YEAR.QUARTER.PATCH` scheme. Hotfix releases add a
+fourth segment (e.g. `2025.3.1.1`). Comparison is numeric segment-by-segment:
 
 ```
 2025.3.0 < 2025.3.1 < 2025.3.1.1 < 2025.4.0 < 2026.1.0
@@ -100,12 +127,29 @@ Version numbers follow a `YEAR.QUARTER.PATCH` scheme. Hotfix releases add a four
 node main.js mode=download minVersion=2025.3.0
 ```
 
-Credentials are loaded from `credentials.properties`; min-version is taken from the CLI arg and saved for next time.
+Credentials and proxy are loaded from `credentials.properties`; min-version is
+taken from the CLI arg and saved for next time.
 
 #### Error handling
 
-- **Broken or non-xlsx links** are reported to stdout and written to `input/failed-downloads.json` (gitignored). Each entry records the version, URL and error message.
-- After all downloads finish (including partial failures) the local extraction runs automatically.
+- **Broken or non-xlsx links** are reported to stdout and written to
+  `input/failed-downloads.json` (gitignored). Each entry records the version,
+  URL and error message.
+- After all downloads finish (including partial failures) the local extraction
+  runs automatically.
+
+#### Complete `credentials.properties` reference
+
+```
+# Site login
+user=alice
+password=secret
+
+# Proxy (all optional - omit to use system proxy)
+proxy=http://proxy.example.com:8080
+proxyUser=alice
+proxyPassword=secret
+```
 
 ---
 
@@ -118,20 +162,28 @@ npm start          # dev server at http://localhost:4200
 npm run build      # production build -> dist/relnote-viewer/
 ```
 
-See the viewer's own source for feature details (version/component filtering, side-by-side comparison, sortable/resizable columns).
+See the viewer's own source for feature details (version/component filtering,
+side-by-side comparison, sortable/resizable columns, release catalog).
 
 ---
 
 ## Anonymising the output
 
-To replace free-text fields with fake sentences before sharing:
-
-Requires [jsonymize](https://github.com/cameronhunter/jsonymize).
+To replace free-text fields with generated placeholder text before sharing, run
+`anonymize.js` from the repo root:
 
 ```
-cd relnote-viewer/src/assets
-cat relnotes.json | jsonymize -c ../../../jsonymize.config.json > relnotes.json.tmp
-mv relnotes.json.tmp relnotes.json
+node anonymize.js
 ```
 
-Fields anonymised: `summary`, `details`, `impact`.
+What it replaces:
+
+| Field | Transformation |
+|---|---|
+| `compo` | `AFP_XXX` prefix -> `COMPO_XXX` |
+| `ref` | `AFP-NNNNN` -> `REF-NNNNN` |
+| `summary` / `details` / `impact` | replaced with generated text |
+| `version`, `cat` | unchanged |
+
+Output is deterministic (seeded by version + item index), so repeated runs
+produce identical results and do not create noise in git diffs.

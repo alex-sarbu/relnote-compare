@@ -91,9 +91,20 @@ async function runDownload(args) {
     console.log(`Created ${INPUT_DIR}`);
   }
 
-  const browser = await playwright.chromium.launch({ headless: true });
+  const proxy = resolveProxy(args, creds);
+  if (proxy) console.log(`Proxy: ${proxy.server}${proxy.username ? ` (user: ${proxy.username})` : ''}`);
+  else        console.log('Proxy: system default');
+
+  const browser = await playwright.chromium.launch({
+    headless: true,
+    // Suppress SSL errors from corporate MITM / self-signed CA chains.
+    args: ['--ignore-certificate-errors'],
+  });
   const context = await browser.newContext({
     userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+    ignoreHTTPSErrors: true,
+    // Explicit proxy overrides system proxy; omitting the key keeps system default.
+    ...(proxy ? { proxy } : {}),
   });
   const page = await context.newPage();
 
@@ -388,6 +399,21 @@ async function resolveMode(args) {
     m = await ask('Mode (local / download): ');
   }
   return m;
+}
+
+function resolveProxy(args, creds) {
+  // Priority: CLI args > credentials file > null (use system proxy)
+  // credentials.properties keys: proxy, proxyUser, proxyPassword
+  // CLI args: proxy=http://host:port  proxyUser=alice  proxyPassword=secret
+  const server = args.proxy ?? creds?.proxy ?? null;
+  if (!server) return null;
+
+  const proxy = { server };
+  const username = args.proxyUser ?? creds?.proxyUser ?? null;
+  const password = args.proxyPassword ?? creds?.proxyPassword ?? null;
+  if (username) proxy.username = username;
+  if (password) proxy.password = password;
+  return proxy;
 }
 
 async function resolveCredentials(args) {
