@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import { BUILD_TIMESTAMP } from '../build-timestamp';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -34,6 +35,9 @@ function cmpVer(a: string | null | undefined, b: string | null | undefined): num
   return 0;
 }
 
+// AFP release versions are YYYY.Q.P or YYYY.Q.P.H
+const VERSION_RE = /^\d{4}\.\d+\.\d+(\.\d+)?$/;
+
 @Component({
   selector: 'app-release-catalog-dialog',
   standalone: true,
@@ -47,6 +51,7 @@ function cmpVer(a: string | null | undefined, b: string | null | undefined): num
 })
 export class ReleaseCatalogDialogComponent implements OnInit {
   readonly columns = ['version', 'releaseDate', 'links', 'status'];
+  readonly buildTimestamp = BUILD_TIMESTAMP;
   filterText = '';
   allEntries: CatalogEntry[] = [];
 
@@ -54,6 +59,7 @@ export class ReleaseCatalogDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.allEntries = [...(this.catalog?.entries ?? [])]
+      .filter(e => e.version != null && VERSION_RE.test(e.version))
       .sort((a, b) => cmpVer(b.version, a.version));
   }
 

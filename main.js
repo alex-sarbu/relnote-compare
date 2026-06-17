@@ -362,7 +362,9 @@ function extract(relnoteData) {
   entry.version = getVersion(relnoteData);
   relnoteData[0].data.shift(); // row 0: "AFP Web Banking Release Notes X.Y.Z"
   relnoteData[0].data.shift(); // row 1: column headers
-  entry.items = relnoteData[0].data.map(extractLine);
+  entry.items = relnoteData[0].data
+    .filter(row => row[1] != null || row[4] != null)  // skip fully empty rows
+    .map(extractLine);
   return entry;
 }
 

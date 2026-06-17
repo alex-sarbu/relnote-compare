@@ -194,7 +194,8 @@ export class AppComponent implements OnInit {
     for (const relNote of this.relNotesList) {
       if (this.selectedVersions.includes(relNote.version)) {
         relNote.items.forEach((item: any) => {
-          this.selectedRelNotes.push({ ...item, version: relNote.version });
+          if (item.ref != null || item.summary != null)
+            this.selectedRelNotes.push({ ...item, version: relNote.version });
         });
       }
     }
@@ -215,7 +216,10 @@ export class AppComponent implements OnInit {
     let right: any[] = [];
     for (const relNote of this.relNotesList) {
       if (this.selectedCompareVersions.includes(relNote.version)) {
-        relNote.items.forEach((item: any) => right.push({ ...item, version: relNote.version }));
+        relNote.items.forEach((item: any) => {
+          if (item.ref != null || item.summary != null)
+            right.push({ ...item, version: relNote.version });
+        });
       }
     }
     for (const leftEntry of left) {

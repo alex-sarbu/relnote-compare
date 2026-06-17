@@ -145,6 +145,28 @@
   font-size: .73rem;
 }
 
+::ng-deep .col-filter .mdc-notched-outline__leading,
+::ng-deep .col-filter .mdc-notched-outline__notch,
+::ng-deep .col-filter .mdc-notched-outline__trailing {
+  border-color: white !important;
+}
+
+.col-filter input::placeholder {
+  color: white !important;
+  opacity: 0.7;
+}
+
+.col-filter input {
+  color: white !important;
+  opacity: 1;
+}
+
+.col-filter button {
+  height: 10px;
+  margin-top: -15px;
+}
+
+
 /* ── Resize handle ───────────────────────────────────────────────── */
 .resize-handle {
   position: absolute;
@@ -238,5 +260,5 @@
 .no-data span { font-size: .9rem; }
 
 /* Info button */
-.info-btn { color: rgba(255,255,255,.75); }
-.info-btn:hover { color: #fff; }
+.info-btn { color: rgba(0,0,0,.75); }
+.info-btn:hover { color: #000; }
