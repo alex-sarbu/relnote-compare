@@ -1,7 +1,6 @@
 :host {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
+  /* block — not flex — so flex:1 from parent distributes width correctly */
+  display: block;
 }
 
 .vpick-wrap { width: 100%; }
@@ -10,6 +9,7 @@
 
 /* ── Panel ── */
 .vpick-panel {
+  width: 100%;        /* fill the CDK overlay pane — prevents content from widening the panel */
   background: #fff;
   border-radius: 6px;
   box-shadow: 0 4px 20px rgba(0,0,0,.18);

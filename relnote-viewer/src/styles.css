@@ -69,10 +69,22 @@ body.col-resizing * { cursor: col-resize !important; user-select: none !importan
 /* ── Compact mat-option ── */
 .mat-mdc-option { min-height: 36px !important; font-size: .85rem !important; }
 
-/* ── Filter field subscript suppression ── */
+/* ── Compact filter-bar and column header form fields ── */
 .filter-field .mat-mdc-form-field-subscript-wrapper { display: none; }
+.filter-field .mat-mdc-form-field-infix,
+.col-filter   .mat-mdc-form-field-infix {
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+  min-height: 0 !important;
+}
+/* Re-centre the resting label inside the compact infix.
+   Works for both mat-select and mat-input filter fields.
+   The :not() excludes the float-above state so the flying animation is untouched. */
+.filter-field .mdc-floating-label:not(.mdc-floating-label--float-above) {
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+}
 
 /* ── Column filter input inside header ── */
-.col-filter .mat-mdc-form-field-infix { padding-top: 4px !important; padding-bottom: 4px !important; min-height: 0 !important; }
 .col-filter .mdc-text-field--outlined { --mdc-outlined-text-field-container-shape: 4px; }
 .col-filter .mdc-notched-outline .mdc-notched-outline__notch { border-top: none; }

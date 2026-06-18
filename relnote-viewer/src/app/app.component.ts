@@ -20,7 +20,7 @@ import relNotes from '../assets/relnotes.json';
 import { VersionPickerComponent } from './version-picker/version-picker.component';
 import { ReleaseCatalogDialogComponent, RelnoteCatalog } from './release-catalog-dialog/release-catalog-dialog.component';
 
-interface ColumnConfig { label: string; width: number; flexible: boolean; }
+interface ColumnConfig { label: string; width: number; flexible: boolean; maxWidth?: number; }
 
 @Component({
   selector: 'app-root',
@@ -53,9 +53,9 @@ export class AppComponent implements OnInit {
     compo:   { label: 'Compo',    width: 155, flexible: false },
     ref:     { label: 'Ref',      width: 110, flexible: false },
     cat:     { label: 'Cat',      width: 95,  flexible: false },
-    summary: { label: 'Summary',  width: 280, flexible: true  },
-    details: { label: 'Details',  width: 380, flexible: true  },
-    impact:  { label: 'Impact',   width: 220, flexible: true  },
+    summary: { label: 'Summary',  width: 280, flexible: true,  maxWidth: 480 },
+    details: { label: 'Details',  width: 380, flexible: true,  maxWidth: 640 },
+    impact:  { label: 'Impact',   width: 220, flexible: true,  maxWidth: 400 },
     side:    { label: 'Side',     width: 65,  flexible: false },
   };
 
@@ -68,6 +68,7 @@ export class AppComponent implements OnInit {
   private resizingCol: string | null = null;
   private resizeStartX = 0;
   private resizeStartWidth = 0;
+  private lastResizeTap: { col: string; t: number } | null = null;
   private catalog: RelnoteCatalog | null = null;
 
   constructor(private dialog: MatDialog, private http: HttpClient) {}
@@ -122,9 +123,14 @@ export class AppComponent implements OnInit {
   getColStyle(col: string): { [key: string]: string } {
     const cfg = this.columnConfig[col];
     const w = this.columnWidths[col] ?? cfg.width;
-    return cfg.flexible
-      ? { flex: `1 1 ${w}px`, 'min-width': `${w}px`, 'max-width': 'none' }
-      : { flex: `0 0 ${w}px`, width: `${w}px`, 'min-width': `${w}px`, 'max-width': `${w}px` };
+    // Flexible columns grow to fill space by default, but cap at maxWidth.
+    // Once the user has dragged the handle the column is locked to a fixed width;
+    // double-click the handle to release it back to auto.
+    if (cfg.flexible && !(col in this.columnWidths)) {
+      const max = cfg.maxWidth ?? 600;
+      return { flex: `1 1 ${w}px`, 'min-width': `${w}px`, 'max-width': `${max}px` };
+    }
+    return { flex: `0 0 ${w}px`, width: `${w}px`, 'min-width': `${w}px`, 'max-width': `${w}px` };
   }
 
   toggleSort(col: string): void {
@@ -134,6 +140,16 @@ export class AppComponent implements OnInit {
   }
 
   startResize(event: MouseEvent, col: string): void {
+    // Double-click the handle: reset flexible columns back to auto-width
+    const now = Date.now();
+    if (this.lastResizeTap?.col === col && now - this.lastResizeTap.t < 400) {
+      delete this.columnWidths[col];
+      this.lastResizeTap = null;
+      event.preventDefault();
+      return;
+    }
+    this.lastResizeTap = { col, t: now };
+
     this.resizingCol = col;
     this.resizeStartX = event.clientX;
     this.resizeStartWidth = this.columnWidths[col] ?? this.columnConfig[col].width;
