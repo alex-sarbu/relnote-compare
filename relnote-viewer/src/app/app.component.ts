@@ -64,6 +64,8 @@ export class AppComponent implements OnInit {
   public sortColumn = '';
   public sortDirection: 'asc' | 'desc' | '' = '';
 
+  public compoColors: { [key: string]: { background: string; color: string } } = {};
+
   private selectedRelNotes: any[] = [];
   private resizingCol: string | null = null;
   private resizeStartX = 0;
@@ -75,6 +77,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.updateComposForDisplayedRelNotes(this.relNotesList);
+    this.http.get<{ [key: string]: { background: string; color: string } }>('/assets/compo-colors.json')
+      .pipe(catchError(() => of({})))
+      .subscribe(c => { this.compoColors = c ?? {}; });
     this.http.get<RelnoteCatalog>('/assets/relnote-catalog.json')
       .pipe(catchError(() => of(null)))
       // setTimeout defers the mutation to the next macrotask so it lands
@@ -258,4 +263,16 @@ export class AppComponent implements OnInit {
 
   private compoFilter = (compoList: string[], compoString: string) =>
     compoString != null && compoList.some(c => compoString.includes(c));
+
+  getCompoList(compoStr: string): string[] {
+    if (!compoStr) return [];
+    return compoStr.split(',').map((c: string) => c.trim()).filter((c: string) => c);
+  }
+
+  getCompoBadgeStyle(compo: string): { [key: string]: string } {
+    const entry = this.compoColors[compo.trim()];
+    return entry
+      ? { background: entry.background, color: entry.color }
+      : { background: '#3f51b5', color: '#ffffff' };
+  }
 }

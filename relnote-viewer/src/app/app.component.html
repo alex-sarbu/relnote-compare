@@ -128,7 +128,13 @@
             </div>
             <div class="resize-handle" (mousedown)="startResize($event, 'compo')"></div>
           </mat-header-cell>
-          <mat-cell *matCellDef="let row" [ngStyle]="getColStyle('compo')"><span class="cell-text">{{ row.compo }}</span></mat-cell>
+          <mat-cell *matCellDef="let row" [ngStyle]="getColStyle('compo')">
+            <div class="compo-badges">
+              @for (c of getCompoList(row.compo); track c) {
+                <span class="compo-badge" [ngStyle]="getCompoBadgeStyle(c)">{{ c }}</span>
+              }
+            </div>
+          </mat-cell>
         </ng-container>
 
         <!-- ref -->

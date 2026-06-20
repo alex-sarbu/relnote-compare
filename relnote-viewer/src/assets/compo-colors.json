@@ -1,0 +1,5 @@
+{
+  "AFP_PAY":      { "background": "#ffcdd2", "color": "#000000" },
+  "AFP_TRX_SIGN": { "background": "#ffcdd2", "color": "#000000" },
+  "AFP_TRADE":    { "background": "#ffe0b2", "color": "#000000" }
+}

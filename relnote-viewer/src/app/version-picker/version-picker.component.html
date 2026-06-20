@@ -36,7 +36,7 @@
 
           <!-- Group row -->
           <div class="vpick-row vpick-group-row">
-            <mat-checkbox
+            <mat-checkbox color="primary"
               [checked]="groupAll(group)"
               [indeterminate]="groupSome(group)"
               (change)="toggleGroup(group, $event.checked)"
@@ -55,7 +55,7 @@
 
               <!-- Patch row -->
               <div class="vpick-row vpick-patch-row">
-                <mat-checkbox
+                <mat-checkbox color="primary"
                   [checked]="patchAll(patch)"
                   [indeterminate]="patchSome(patch)"
                   (change)="togglePatch(patch, $event.checked)"
@@ -77,7 +77,7 @@
                 @for (hf of patch.hotfixes; track hf.version) {
                   <!-- Hotfix row -->
                   <div class="vpick-row vpick-hotfix-row">
-                    <mat-checkbox
+                    <mat-checkbox color="primary"
                       [checked]="has(hf.version)"
                       (change)="toggleLeaf(hf.version, $event.checked)"
                       (click)="$event.stopPropagation()">
